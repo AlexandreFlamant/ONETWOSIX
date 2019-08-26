@@ -3,5 +3,6 @@ class Movie < ApplicationRecord
   validates :genre, presence: true
   validates :description, presence: true, uniqueness: true
   validates :photo_url, presence: true, uniqueness: true
-  has_many :combos
+  validates :link_url, presence: true
+  has_many :combos, dependent: :destroy
 end
