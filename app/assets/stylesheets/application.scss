@@ -11,3 +11,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+html, body {
+  min-height: 100vh;
+}
+
+
+
