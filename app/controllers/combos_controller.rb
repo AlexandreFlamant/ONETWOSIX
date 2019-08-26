@@ -1,18 +1,19 @@
 class CombosController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
     @combos = Combo.all
   end
 
-  def create
-    @combo = Combo.new(combo_params)
-    if @combo.save
-      redirect_to profile_path
-    end
-  end
+  # def create
+  #   @combo = Combo.new(combo_params)
+  #   if @combo.save
+  #     redirect_to profile_path
+  #   end
+  # end
 
-  private
+  # private
 
-  def combo_params
-    params.require(:combo).permit(:name, :description, :food_type, :movie, :name_from_sponsor)
-  end
+  # def combo_params
+  #   params.require(:combo).permit(:name, :description, :food_type, :movie, :name_from_sponsor)
+  # end
 end
