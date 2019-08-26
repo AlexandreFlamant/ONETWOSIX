@@ -1,4 +1,4 @@
-.index-card {
+.combo-card {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -6,26 +6,26 @@
   margin: 0 auto;
 }
 
-.index-card img {
+.combo-card img {
   height: 200px;
   width: 100%;
   object-fit: cover;
 }
 
-.index-card h2 {
+.combo-card h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
   padding: 10px 16px;
 }
 
-.index-card p {
+.combo-card p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
 }
 
-.index-card .index-cad-infos {
+.combo-card .combo-cad-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
