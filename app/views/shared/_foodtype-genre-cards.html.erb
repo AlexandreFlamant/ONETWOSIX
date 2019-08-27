@@ -1,0 +1,32 @@
+<%= simple_form_for :search, url: combos_path, method: "get" do |f| %>
+  <fieldset class="form-group check_boxes required search_genre">
+    <input type="hidden" name="search[genre][]" value="">
+    <% Movie::GENRE_CATEGORIES.each do |genre| %>
+      <div class="form-check">
+        <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= genre %>" name="search[genre][]" id="search_genre_<%= genre %>">
+        <div class="select-choice">
+          <label class="collection_check_boxes" for="search_genre_<%= genre %>"><%= genre.capitalize %></label>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+<fieldset class="form-group check_boxes required search_genre"><input type="hidden" name="search[genre][]" value=""><div class="form-check">
+
+  <fieldset class="form-group check_boxes required search_foodtype">
+    <input type="hidden" name="search[foodtype][]" value="">
+    <% Restaurant::FOODTYPE_CATEGORIES.each do |foodtype| %>
+      <div class="form-check">
+        <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= foodtype %>" name="search[foodtypes][]" id="search_foodtype_<%= foodtype %>">
+        <div class="select-choice">
+          <label class="collection_check_boxes" for="search_foodtype_<%= foodtype %>"><%= foodtype.capitalize %></label>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+<fieldset class="form-group check_boxes required search_foodtype"><input type="hidden" name="search[foodtype][]" value=""><div class="form-check">
+
+    <%= submit_tag "Ready?", class: "btn btn-primary" %>
+    </div>
+<% end %>
+
+
