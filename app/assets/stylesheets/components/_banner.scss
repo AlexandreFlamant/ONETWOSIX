@@ -3,21 +3,35 @@
   background-position: center;
   padding: 150px 0;
   height: 60vh;
+  position: relative;
 }
 
 .banner h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  font-size: 36px;
   font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+#logo {
+  font-family: "Amatic SC";
+  font-size: 15vw;
+  font-weight: bold;
+  line-height: 0.8;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  position: absolute;
+  bottom: 20px;
+  right: 11%;
 }
 
 .banner p {
   font-size: 20px;
   color: white;
   opacity: .8;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 .banner .btn {

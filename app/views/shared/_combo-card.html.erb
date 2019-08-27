@@ -2,8 +2,7 @@
 <!-- iteration outside of row -->
 
 <% @combos.sample(3).each do |combo| %>
-
-<div class="row d-flex align-items-center">
+  <div class="row d-flex align-items-center">
     <div class="col-sm-12 col-md-6">
       <div class="combination">
         <div class="combo-box d-flex justify-content-center align-items-center">
@@ -27,7 +26,7 @@
             <img src="https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg" />
             <div class="combo-card-infos">
               <% food_type = combo.food_type %>
-              <h6 class="combo-item-name"><%= Restaurant.where(food_type: food_type).sample.name %>
+              <h6 class="combo-item-name"><%= @restaurants_geocode.sample.name %>
               </h6>
             </div>
           </div>
@@ -39,7 +38,7 @@
       <div class="index-content">
         <h4><%= combo.name %></h4>
         <p><%= combo.description %></p>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Select</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Select</button>
         <% if user_signed_in? %>
           <a href="#" class="btn btn-success">Save for Later</a>
         <% else %>
@@ -75,8 +74,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Save changes</button>
       </div>
     </div>
   </div>

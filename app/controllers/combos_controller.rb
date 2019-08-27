@@ -1,7 +1,12 @@
 class CombosController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+
   def index
-    @combos = Combo.all
+    @combos = Combo.where(food_type: params[:food_type])
+    query = params.dig(:search, :query)
+      if query.present?
+        @restaurants_geocode = Restaurant.near(query, 6).where(food_type: params[:food_type])
+      end
   end
 
   # def create
