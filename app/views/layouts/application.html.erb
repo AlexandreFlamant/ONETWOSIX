@@ -12,16 +12,19 @@
     <!-- <link rel="stylesheet" type="text/css" href="../../assets/slick/slick-theme.css"/> -->
   </head>
   <body>
-    <% if params[:action] == 'home' %>
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/banner' %>
-    <% else %>
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/small-banner' %>
+    <div class="min-height">
+      <% if params[:action] == 'home' %>
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/banner' %>
+      <% else %>
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/small-banner' %>
+      <% end %>
+      <%= render 'shared/flashes' %>
 
-    <% end %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
+      <%= yield %>
+    </div>
+
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
