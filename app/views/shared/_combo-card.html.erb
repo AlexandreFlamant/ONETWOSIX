@@ -27,6 +27,8 @@
             <img src="https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg" />
             <div class="combo-card-infos">
               <h6 class="combo-item-name"><%= combo.food_type %></h6>
+              <% food_type = combo.food_type %>
+               <h2><%= Restaurant.where(food_type: food_type).sample.name%></h2>
             </div>
           </div>
         </div>
@@ -48,7 +50,7 @@
 
   </div>
 <% end %>
-
+  
 
 <!-- bootstrap popup modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -61,10 +63,16 @@
           <img src="https://media3.giphy.com/media/3ohhwliPYARsRHK2Aw/giphy.gif" alt="#" style="width: 120px; height:100px">
         </div>
         <h6>You will be redirected to Netflix and Deliveroo in 3 seconds...</h6>
-        <div class="row">
-
+        <div class="row d-flex justify-content-center align-items-center">
+          <img src="https://logos-download.com/wp-content/uploads/2016/03/Netflix_logo_n.png" alt="netflix" class="mr-1" style="height:60px">
+          <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/587a5a650000ff00059ac805/0x0.png" alt="deliveroo" class="ml-1" style="height:60px">
         </div>
-        <img src="" alt="">
+        <h6>In the meantime, why not share your combo with your friends?</h6>
+        <div class="row d-flex justify-content-center align-items-center" id="modal-icons">
+          <a href="#"><i class="fab fa-instagram mx-1"></i></a>
+          <a href="#"><i class="fab fa-facebook mx-1"></i></a>
+          <a href="#"><i class="fab fa-twitter mx-1"></i></a>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
