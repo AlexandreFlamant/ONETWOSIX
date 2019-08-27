@@ -13,6 +13,7 @@
   </head>
   <body>
     <% if params[:action] == 'home' %>
+      <%= render 'shared/navbar' %>
       <%= render 'shared/banner' %>
     <% else %>
       <%= render 'shared/navbar' %>

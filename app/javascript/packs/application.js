@@ -17,3 +17,6 @@ $(document).ready(function(){
 });
 
 
+import { initAutocomplete } from '../plugins/init_autocomplete';
+
+initAutocomplete();
