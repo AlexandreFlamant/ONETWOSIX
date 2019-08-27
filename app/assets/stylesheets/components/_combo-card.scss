@@ -1,9 +1,14 @@
+.combination {
+  margin-bottom: 20px;
+}
+
 .combo-card {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 400px;
-  margin: 0 auto;
+  width: 180px;
+  border-radius: 2px;
+  text-decoration: none;
 }
 
 .combo-card img {
@@ -12,23 +17,51 @@
   object-fit: cover;
 }
 
-.combo-card h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-  padding: 10px 16px;
-}
-
-.combo-card p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
-
-.combo-card .combo-cad-infos {
-  padding: 16px;
+.plus {
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  margin-right: -20px;
+  margin-left: -20px;
+  z-index: 10;
 }
+
+.y-line {
+  background-color: black;
+  height: 30px;
+  width: 5px;
+  border-radius: 4px;
+}
+
+.x-line {
+  background-color: black;
+  height: 5px;
+  width: 30px;
+  border-radius: 4px;
+  position: absolute;
+}
+
+.combo-card-infos {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.index-content {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#modal-icons > a > i {
+  color: #000000;
+  font-size: 24px;
+}
+
