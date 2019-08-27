@@ -11,14 +11,19 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <% if params[:action] == 'home' %>
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/banner' %>
-    <% else %>
-      <%= render 'shared/navbar' %>
-    <% end %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="min-height">
+      <% if params[:action] == 'home' %>
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/banner' %>
+      <% else %>
+        <%= render 'shared/navbar' %>
+        <%= render 'shared/small-banner' %>
+      <% end %>
+      <%= render 'shared/flashes' %>
+
+      <%= yield %>
+    </div>
+
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
