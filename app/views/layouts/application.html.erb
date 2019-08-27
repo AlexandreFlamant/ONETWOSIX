@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ONETWOSIX</title>
+    <link rel="shortcut icon" type="image/x-icon" href="<%= asset_url 'favicon.png' %>">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-    <!-- <link rel="stylesheet" type="text/css" href="../../assets/slick/slick.css"/> -->
-    <!-- <link rel="stylesheet" type="text/css" href="../../assets/slick/slick-theme.css"/> -->
   </head>
   <body>
     <div class="min-height">
@@ -28,12 +27,6 @@
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-    <!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
-    <!-- <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
-    <!-- <script type="text/javascript" src="./../assets/slick/slick.min.js"></script> -->
-    <script type="text/javascript">
-
-    </script>
   </body>
 </html>
 
