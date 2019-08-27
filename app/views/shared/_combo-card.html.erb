@@ -26,7 +26,7 @@
             <img src="https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg" />
             <div class="combo-card-infos">
               <% food_type = combo.food_type %>
-              <h6 class="combo-item-name"><%= @restaurants_geocode.sample.name %>
+              <h6 class="combo-item-name"><%= Restaurant.where(food_type: food_type).sample.name %>
               </h6>
             </div>
           </div>
