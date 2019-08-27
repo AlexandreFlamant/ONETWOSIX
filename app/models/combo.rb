@@ -3,5 +3,5 @@ class Combo < ApplicationRecord
   validates :food_type, presence: true
   validates :description, presence: true
   belongs_to :movie
-  has_many :combo_selectons, dependent: :destroy
+  has_many :combo_selections, dependent: :destroy
 end

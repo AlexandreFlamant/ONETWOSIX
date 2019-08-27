@@ -26,9 +26,9 @@
           <div class="combo-card">
             <img src="https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg" />
             <div class="combo-card-infos">
-              <h6 class="combo-item-name"><%= combo.food_type %></h6>
               <% food_type = combo.food_type %>
-               <h2><%= Restaurant.where(food_type: food_type).sample.name%></h2>
+              <h6 class="combo-item-name"><%= Restaurant.where(food_type: food_type).sample.name %>
+              </h6>
             </div>
           </div>
         </div>
@@ -50,7 +50,7 @@
 
   </div>
 <% end %>
-  
+
 
 <!-- bootstrap popup modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
