@@ -1,7 +1,17 @@
 .select-choice {
   border-radius: 4px;
-  padding:20px;
   background-color: #fff;
   opacity: 0.4;
-  width: 300px;
+  padding: 20px;
+}
+
+.select-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.select-choice-box {
+  border-radius: 4px;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
 }
