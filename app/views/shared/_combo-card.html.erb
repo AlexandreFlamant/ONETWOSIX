@@ -1,24 +1,39 @@
 <!-- do iteration instead copy 3 sets of card when the seeds are ready -->
 <!-- iteration outside of row -->
+
 <% @combos.sample(3).each do |combo| %>
   <div class="row d-flex align-items-center">
     <div class="col-sm-12 col-md-6">
-      <div class="combo-box d-flex justify-content-center align-items-center">
-        <div class="combo-card">
-          <img src="https://images.unsplash.com/photo-1539786774582-0707555f1f72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" />
-          <div class="combo-card-infos">
-          <h2><%= combo.movie.name %></h2>
+      <div class="combination">
+        <div class="combo-box d-flex justify-content-center align-items-center">
+          <div class="combo-card">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/51U4g1JHgjL.jpg" />
+            <div class="combo-card-infos">
+            <h6 class="combo-item-name"><%= combo.movie.name %></h6>
+            </div>
           </div>
-        </div>
-        <div class="combo-card">
-          <img src="https://images.unsplash.com/photo-1539786774582-0707555f1f72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" />
-          <div class="combo-card-infos">
-          <% food_type = combo.food_type %>
-          <h2><%= Restaurant.where(food_type: food_type).sample.name%></h2>
+
+          <div class="plus">
+            <div class="y-line">
+
+            </div>
+            <div class="x-line">
+
+            </div>
+          </div>
+
+          <div class="combo-card">
+            <img src="https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg" />
+            <div class="combo-card-infos">
+              <% food_type = combo.food_type %>
+              <h6 class="combo-item-name"><%= Restaurant.where(food_type: food_type).sample.name %>
+              </h6>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="col-sm-12 col-md-6">
       <div class="index-content">
         <h4><%= combo.name %></h4>
@@ -31,9 +46,9 @@
         <% end %>
       </div>
     </div>
+
   </div>
 <% end %>
-
 
 
 <!-- bootstrap popup modal -->

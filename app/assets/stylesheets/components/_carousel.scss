@@ -1,0 +1,49 @@
+.carousel {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+// CARD SIZE
+.slick-slide {
+  transform: scale(0.8);
+  transition: all 300ms ease;
+  opacity: 0.7;
+}
+
+.slick-center {
+  transform: none;
+  opacity: 1;
+}
+
+
+// TERRIBLE ARROWS
+.slick-prev, .slick-prev:before, .slick-next, .slick-next:before {
+  font-size: 25px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 10px grey;
+  background-color: grey;
+  line-height: 1rem;
+}
+
+.slick-prev {
+  position: absolute;
+  top: 124px;
+  z-index: 5;
+  opacity: 0.5;
+  left: 52px;
+}
+
+.slick-prev:before {
+  opacity: 0.5;
+}
+
+.slick-next {
+  position: absolute;
+  top: 124px;
+  right: 52px;
+  opacity: 0.5;
+}
+
+.slick-next:before {
+  opacity: 0.5;
+}

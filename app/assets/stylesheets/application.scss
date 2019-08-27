@@ -11,10 +11,18 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "../slick/slick.scss";
+@import "../slick/slick-theme.scss";
+@import "components/carousel";
 
 
-html, body {
-  min-height: 100vh;
+// html, body {
+//   min-height: 100vh;
+// }
+
+.min-height {
+  min-height: calc(100vh - 100px);
+  width: 100vw;
 }
 
 
