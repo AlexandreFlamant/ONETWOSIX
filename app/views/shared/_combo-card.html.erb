@@ -3,12 +3,21 @@
 <% @combos.sample(3).each do |combo| %>
 <div class="row d-flex align-items-center">
     <div class="col-sm-12 col-md-6">
-      <div class="combo-card">
-        <img src="https://images.unsplash.com/photo-1539786774582-0707555f1f72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" />
-        <div class="combo-card-infos">
-        <h2><%= combo.movie.name %></h2>
+      <div class="combo-box d-flex justify-content-center align-items-center">
+        <div class="combo-card">
+          <img src="https://images.unsplash.com/photo-1539786774582-0707555f1f72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" />
+          <div class="combo-card-infos">
+          <h2><%= combo.movie.name %></h2>
+          </div>
+        </div>
+        <div class="combo-card">
+          <img src="https://images.unsplash.com/photo-1539786774582-0707555f1f72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" />
+          <div class="combo-card-infos">
+          <% food_type = combo.food_type %>
+          <h2><%= Restaurant.where(food_type: food_type).sample.name%></h2>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
     <div class="col-sm-12 col-md-6">
       <div class="index-content">
