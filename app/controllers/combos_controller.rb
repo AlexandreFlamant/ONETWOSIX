@@ -3,11 +3,12 @@ class CombosController < ApplicationController
 
   def index
     @combos = Combo.all
-    # @combos = Combo.where(food_type: params[:food_type])
+    # @combos = Combo.where(food_type: params[:foodtype])
     # query = params.dig(:search, :query)
     #   if query.present?
-    #     @restaurants_geocode = Restaurant.near(query, 6).where(food_type: params[:food_type])
+    #     @restaurants_geocode = Restaurant.near(query, 3).where(food_type: params[:foodtype])
     #   end
+
   end
 
   # def create

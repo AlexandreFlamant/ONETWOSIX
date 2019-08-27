@@ -20,3 +20,13 @@ $(document).ready(function(){
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
 initAutocomplete();
+
+
+// for genre and foodtype selection in carousel
+$(document).ready(function(){
+  $(".select-choice").click(function(){
+    $(this).toggleClass("selected");
+    // $(".selected > .fa-check-circle").addClass("show");
+  });
+});
+

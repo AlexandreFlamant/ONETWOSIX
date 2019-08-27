@@ -2,7 +2,25 @@
   border-radius: 4px;
   background-color: #fff;
   box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
-  width: 340px;
+  width: 100%;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  position: relative;
+  color: $blue;
+}
+
+.fa-check-circle {
+  color: $blue;
+  z-index: 3;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 36px;
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 .select-choice img {
@@ -16,5 +34,9 @@
   font-weight: bold;
 }
 
+.selected {
+  filter: grayscale(0%);
+  opacity: 1.0;
+}
 
 
