@@ -8,6 +8,8 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/slick/slick.css"/> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/slick/slick-theme.css"/> -->
   </head>
   <body>
     <% if params[:action] == 'home' %>
@@ -20,6 +22,12 @@
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+    <!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+    <!-- <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+    <!-- <script type="text/javascript" src="./../assets/slick/slick.min.js"></script> -->
+    <script type="text/javascript">
+
+    </script>
   </body>
 </html>
 
