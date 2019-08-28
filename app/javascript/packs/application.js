@@ -26,7 +26,16 @@ initAutocomplete();
 $(document).ready(function(){
   $(".select-choice").click(function(){
     $(this).toggleClass("selected");
-    // $(".selected > .fa-check-circle").addClass("show");
+    $(this).find(".fa-check-circle").toggleClass("show");
   });
+});
+
+$(":checkbox").click(function(){
+  $length = $(":checkbox").length();
+  if ( $length > 2 ) {
+    $(":checkbox:checked").attr("disabled", true);
+  } else {
+    $(":checkbox").removeAttr("disabled");
+  }
 });
 

@@ -71,7 +71,7 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
-      <%= simple_form_for :search, url: combos_path, method: "get" do |f| %>
+      <%= simple_form_for :search, url: combos_path, method: :get, html: { id: 'search_form' } do |f| %>
         <fieldset class="form-group check_boxes required search_genre">
         <input type="hidden" name="search[genre][]" value="">
         <div class="carousel">
@@ -100,6 +100,7 @@
             <div class="form-check pl-0">
               <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= foodtype %>" name="search[foodtype][]" id="search_foodtype_<%= foodtype %>">
               <label class="collection_check_boxes select-choice" for="search_foodtype_<%= foodtype %>">
+                <i class="far fa-check-circle"></i>
                 <img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80" alt="#">
                 <span><%= foodtype.capitalize %></span>
               </label>
