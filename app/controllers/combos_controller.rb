@@ -17,11 +17,11 @@ class CombosController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
-  def upvote_select
-    @combo = Combo.find(params[:id])
-    @combo.liked_by current_or_guest_user
-    # redirect_back fallback_location: root_path
-  end
+  # def upvote_select
+  #   @combo = Combo.find(params[:id])
+  #   @combo.liked_by current_or_guest_user
+  #   # redirect_back fallback_location: root_path
+  # end
 end
 
 

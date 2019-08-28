@@ -1,6 +1,6 @@
 <div class="carousel">
   <!-- start of combo card -->
-  <% @selected_combos.each do |combo| %>
+  <% @fresh_combos.each do |combo| %>
     <div class="combo-box d-flex justify-content-center align-items-center">
       <div class="combo-card carousel-card">
         <div class="poster" style="background-image: url('<%=image_path combo.movie.photo_url%>')">
