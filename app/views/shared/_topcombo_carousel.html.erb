@@ -3,7 +3,7 @@
   <% @selected_combos.each do |combo| %>
     <div class="combo-box d-flex justify-content-center align-items-center">
       <div class="combo-card carousel-card">
-        <div class="poster">
+        <div class="poster" style="background-image: url('<%=image_path combo.movie.photo_url%>')">
         </div>
         <div class="combo-card-infos">
           <h6 class="combo-item-name"><%= combo.movie.name %></h6>
@@ -18,7 +18,7 @@
       </div>
 
       <div class="combo-card">
-        <img src="https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg" />
+        <img src="<%=image_path combo.restaurant.photo_url%>" />
         <div class="combo-card-infos">
           <h6 class="combo-item-name"><%= combo.restaurant.name %></h6>
         </div>
@@ -80,5 +80,3 @@
     </div>
   </div>
 </div>
-
-
