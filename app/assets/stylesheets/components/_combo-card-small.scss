@@ -1,0 +1,73 @@
+.combination {
+  margin-bottom: 20px;
+}
+
+.combo-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 180px;
+  border-radius: 10px;
+  text-decoration: none;
+
+}
+
+.combo-card img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+h6 {
+  margin-bottom:0px;
+}
+
+.plus {
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: -20px;
+  margin-left: -20px;
+  z-index: 10;
+}
+
+.y-line {
+  background-color: black;
+  height: 30px;
+  width: 5px;
+  border-radius: 4px;
+}
+
+.x-line {
+  background-color: black;
+  height: 5px;
+  width: 30px;
+  border-radius: 4px;
+  position: absolute;
+}
+
+.combo-card-infos {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #effffc;
+}
+
+.index-content {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#modal-icons > a > i {
+  color: #000000;
+  font-size: 24px;
+}
+
+
