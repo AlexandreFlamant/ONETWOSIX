@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_132144) do
+ActiveRecord::Schema.define(version: 2019_08_28_164448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,9 @@ ActiveRecord::Schema.define(version: 2019_08_28_132144) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+    t.bigint "restaurant_id"
     t.index ["movie_id"], name: "index_combos_on_movie_id"
+    t.index ["restaurant_id"], name: "index_combos_on_restaurant_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -99,4 +101,5 @@ ActiveRecord::Schema.define(version: 2019_08_28_132144) do
   add_foreign_key "combo_selections", "restaurants"
   add_foreign_key "combo_selections", "users"
   add_foreign_key "combos", "movies"
+  add_foreign_key "combos", "restaurants"
 end

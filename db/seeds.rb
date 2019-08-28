@@ -74,24 +74,24 @@ Restaurant.create!(name:"Turkish Delight3", food_type:"shawarma", photo_url:"htt
 
 
 
-Combo.create!(name:"Panda Express", description:"Panda Express description",food_type:"chinese", movie: Movie.find_by_name("Kung Fu Panda"))
-Combo.create!(name:"Fresh from the Sea", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("Blackfish"))
-Combo.create!(name:"Swimming with the Fish", description:"Swimming with the sea description",food_type:"fish&chips", movie: Movie.find_by_name("Jaws"))
-Combo.create!(name:"Angry Bird Combo", description:"Angry bird combo description",food_type:"chicken", movie: Movie.find_by_name("The Angry Birds Movie"))
-Combo.create!(name:"Silence of Lamb Combo", description:"Silence of lamb description",food_type:"shawarma", movie: Movie.find_by_name("The Silence of Lambs"))
+Combo.create!(name:"Panda Express", description:"Panda Express description",food_type:"chinese", movie: Movie.find_by_name("Kung Fu Panda"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Fresh from the Sea", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("Blackfish"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Swimming with the Fish", description:"Swimming with the sea description",food_type:"fish&chips", movie: Movie.find_by_name("Jaws"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Angry Bird Combo", description:"Angry bird combo description",food_type:"chicken", movie: Movie.find_by_name("The Angry Birds Movie"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Silence of Lamb Combo", description:"Silence of lamb description",food_type:"shawarma", movie: Movie.find_by_name("The Silence of Lambs"), restaurant: Restaurant.all.sample)
 
 
-Combo.create!(name:"Panda Express2", description:"Panda Express description",food_type:"chinese", movie: Movie.find_by_name("Kung Fu Panda2"))
-Combo.create!(name:"Screen to plate", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("Jiro Dreams of Sushi"))
-Combo.create!(name:"Swimming with the Fish2", description:"Swimming with the sea description",food_type:"fish&chips", movie: Movie.find_by_name("Jaws2"))
-Combo.create!(name:"Angry Bird Combo2", description:"Angry bird combo description",food_type:"chicken", movie: Movie.find_by_name("The Angry Birds Movie2"))
-Combo.create!(name:"Silence of Lamb Combo2", description:"Silence of lamb description",food_type:"shawarma", movie: Movie.find_by_name("The Silence of Lambs2"))
+Combo.create!(name:"Panda Express2", description:"Panda Express description",food_type:"chinese", movie: Movie.find_by_name("Kung Fu Panda2"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Screen to plate", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("Jiro Dreams of Sushi"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Swimming with the Fish2", description:"Swimming with the sea description",food_type:"fish&chips", movie: Movie.find_by_name("Jaws2"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Angry Bird Combo2", description:"Angry bird combo description",food_type:"chicken", movie: Movie.find_by_name("The Angry Birds Movie2"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Silence of Lamb Combo2", description:"Silence of lamb description",food_type:"shawarma", movie: Movie.find_by_name("The Silence of Lambs2"), restaurant: Restaurant.all.sample)
 
 
-Combo.create!(name:"Panda Express3", description:"Panda Express description",food_type:"chinese", movie: Movie.find_by_name("Kung Fu Panda3"))
-Combo.create!(name:"Surf & Surf", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("The Endless Summer"))
-Combo.create!(name:"Swimming with the Fish3", description:"Swimming with the sea description",food_type:"fish&chips", movie: Movie.find_by_name("Jaws3"))
-Combo.create!(name:"Angry Bird Combo3", description:"Angry bird combo description",food_type:"chicken", movie: Movie.find_by_name("The Angry Birds Movie3"))
-Combo.create!(name:"Silence of Lamb Combo3", description:"Silence of lamb description",food_type:"shawarma", movie: Movie.find_by_name("The Silence of Lambs3"))
+Combo.create!(name:"Panda Express3", description:"Panda Express description",food_type:"chinese", movie: Movie.find_by_name("Kung Fu Panda3"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Surf & Surf", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("The Endless Summer"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Swimming with the Fish3", description:"Swimming with the sea description",food_type:"fish&chips", movie: Movie.find_by_name("Jaws3"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Angry Bird Combo3", description:"Angry bird combo description",food_type:"chicken", movie: Movie.find_by_name("The Angry Birds Movie3"), restaurant: Restaurant.all.sample)
+Combo.create!(name:"Silence of Lamb Combo3", description:"Silence of lamb description",food_type:"shawarma", movie: Movie.find_by_name("The Silence of Lambs3"), restaurant: Restaurant.all.sample)
 
 
