@@ -2,12 +2,17 @@ class CombosController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    # @combos = Combo.all
     @combos = Combo.where(food_type: params[:search][:foodtype].reject(&:empty?).first)
     location = params.dig(:location)
       if location.present?
         @restaurants_geocode = Restaurant.near(location, 3).where(food_type: params[:search][:foodtype].reject(&:empty?).first)
       end
+  end
+
+  def upvote
+    @combo = Combo.find(params[:id])
+    @combo.liked_by current_user
+    redirect_back fallback_location: root_path
   end
 
   # def create
