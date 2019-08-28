@@ -35,6 +35,9 @@ $(document).ready(function(){
 
 
 
+
+
+
 // $(":checkbox").click(function(){
 //   $length = $(":checkbox").length();
 //   if ( $length > 2 ) {
