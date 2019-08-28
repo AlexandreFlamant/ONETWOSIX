@@ -9,7 +9,6 @@
   width: 180px;
   border-radius: 10px;
   text-decoration: none;
-
 }
 
 .combo-card img {
@@ -70,4 +69,11 @@ h6 {
   font-size: 24px;
 }
 
+.combo-card .close-button img{
+  width: 30px;
+  height: 30px;
+  right: 8%;
+  top: 1%;
+  position: absolute;
+}
 

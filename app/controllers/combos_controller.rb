@@ -2,11 +2,13 @@ class CombosController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @combos = Combo.where(food_type: params[:search][:foodtype].reject(&:empty?).first)
+    # @combos = Combo.all
+    genre = Movie.where(genre: params[:search][:genre].reject(&:empty?).first)
+    @combos = Combo.where(food_type: params[:search][:foodtype].reject(&:empty?).first, movie: genre)
     location = params.dig(:location)
-    if location.present?
-      @restaurants_geocode = Restaurant.near(location, 3).where(food_type: params[:search][:foodtype].reject(&:empty?).first)
-    end
+      if location.present?
+        @restaurants_geocode = Restaurant.geocoded.near(location, 10).where(food_type: params[:search][:foodtype].reject(&:empty?).first)
+      end
   end
 
   def upvote
