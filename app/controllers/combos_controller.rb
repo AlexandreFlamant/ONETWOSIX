@@ -1,5 +1,5 @@
 class CombosController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :upvote_select]
 
   def index
     # @combos = Combo.all
@@ -15,6 +15,12 @@ class CombosController < ApplicationController
     @combo = Combo.find(params[:id])
     @combo.liked_by current_user
     redirect_back fallback_location: root_path
+  end
+
+  def upvote_select
+    @combo = Combo.find(params[:id])
+    @combo.liked_by current_or_guest_user
+    # redirect_back fallback_location: root_path
   end
 
   # def create

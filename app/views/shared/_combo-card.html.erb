@@ -40,12 +40,13 @@
       <div class="index-content">
         <h4><%= combo.name %></h4>
         <p><%= combo.description %></p>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Select</button>
+        <%= link_to select_combo_path(combo), class: "select", method: :put, remote: true do %>
+          <button class="btn btn-success" id="select_show">Select</button>
+        <% end %>
         <% if user_signed_in? %>
           <div class="job-star">
             <%= link_to like_combo_path(combo), class: "like", method: :put do %>
-              <button type="button" class="btn btn-success">Save for Later</button>
-              <% combo.get_upvotes.size %>
+              <button type="button" class="btn btn-success">Save for Later <%= combo.get_upvotes.size %></button>
             <% end %>
           </div>
         <% else %>
@@ -53,12 +54,12 @@
         <% end %>
       </div>
     </div>
-
   </div>
 <% end %>
 
 
 <!-- bootstrap popup modal -->
+<button type="button" class="btn btn-success d-none" id="select_hidden" data-toggle="modal" data-target="#exampleModal">Select Hidden</button>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
