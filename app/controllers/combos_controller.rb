@@ -4,9 +4,9 @@ class CombosController < ApplicationController
   def index
     @combos = Combo.where(food_type: params[:search][:foodtype].reject(&:empty?).first)
     location = params.dig(:location)
-      if location.present?
-        @restaurants_geocode = Restaurant.near(location, 3).where(food_type: params[:search][:foodtype].reject(&:empty?).first)
-      end
+    if location.present?
+      @restaurants_geocode = Restaurant.near(location, 3).where(food_type: params[:search][:foodtype].reject(&:empty?).first)
+    end
   end
 
   def upvote
