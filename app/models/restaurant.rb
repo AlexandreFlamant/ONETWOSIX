@@ -9,4 +9,8 @@ class Restaurant < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def self.get_food_type(food_type)
+    self.all.where(food_type: food_type).first
+  end
 end
