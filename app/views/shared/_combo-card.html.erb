@@ -39,7 +39,7 @@
         <h4><%= combo.name %></h4>
         <p><%= combo.description %></p>
         <%= link_to select_combo_path(combo), class: "select", method: :put, remote: true do %>
-          <button class="btn btn-success" id="select_show">Select</button>
+          <button type="button" class="btn btn-success" id="select_show">Select</button>
         <% end %>
         <% if user_signed_in? %>
           <div class="job-star">
@@ -52,5 +52,38 @@
         <% end %>
       </div>
     </div>
+    <!-- render start -->
+      <button type="button" class="btn btn-success d-none" id="select_hidden" data-toggle="modal" data-target="#exampleModal">Select Hidden</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h5 class="text-center">You have chosen</h5>
+              <h5 class="text-center"><strong><%= combo.name %></strong></h5>
+              <div class="row d-flex justify-content-center">
+                <img src="https://media3.giphy.com/media/3ohhwliPYARsRHK2Aw/giphy.gif" alt="#" style="width: 120px; height:100px">
+              </div>
+              <h6>Click below to be directed to your choices:</h6>
+              <div class="row d-flex justify-content-center align-items-center">
+                <a href="#" class="redirect"><%= image_tag("https://logos-download.com/wp-content/uploads/2016/03/Netflix_logo_n.png", alt: "netflix", style: 'height:60px;', class: 'mr-1-n') %></a>
+                <a href="#" class="redirect"><%= image_tag("https://www.drivetax.com.au/wp-content/uploads/2017/04/DT-MAR-Deliveroo-Logo-Icon-Transparent.png", alt: "deliveroo", style: 'height:60px;', class: 'mr-1-d') %></a>
+              </div>
+              <h6>Why not share your combo with your friends?</h6>
+              <div class="row d-flex justify-content-center align-items-center" id="modal-icons">
+                <a href="#"><i class="fab fa-instagram mx-1"></i></a>
+                <a href="#"><i class="fab fa-facebook mx-1"></i></a>
+                <a href="#"><i class="fab fa-twitter mx-1"></i></a>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- render end -->
   </div>
 <% end %>
+
+

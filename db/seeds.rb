@@ -11,11 +11,11 @@ Combo.destroy_all
 
 
 # Movie seeds
-# Movie.create!(name:"Kung Fu Panda", genre:"animation", description:"The Dragon Warrior has to clash against the savage Tai Lung as China's fate hangs in the balance. However, the Dragon Warrior mantle is supposedly mistaken to be bestowed upon an obese panda who is a novice in martial arts.
+Movie.create!(name:"Kung Fu Panda", genre:"animation", description:"The Dragon Warrior has to clash against the savage Tai Lung as China's fate hangs in the balance. However, the Dragon Warrior mantle is supposedly mistaken to be bestowed upon an obese panda who is a novice in martial arts.
 # ",photo_url:"https://m.media-amazon.com/images/M/MV5BODJkZTZhMWItMDI3Yy00ZWZlLTk4NjQtOTI1ZjU5NjBjZTVjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SY1000_CR0,0,689,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt0441773/?ref_=nv_sr_1?ref_=nv_sr_1")
 Movie.create!(name:"Blackfish", genre:"documentary", description:"A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.
 ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt2545118/?ref_=nv_sr_1?ref_=nv_sr_1")
-# Movie.create!(name:"Jaws", genre:"adventure", description:"When a killer shark unleashes chaos on a beach community, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.
+Movie.create!(name:"Jaws", genre:"adventure", description:"When a killer shark unleashes chaos on a beach community, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.
 # ",photo_url:"https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX651_CR0,0,651,999_AL_.jpg",link_url:"https://www.imdb.com/title/tt0073195/?ref_=fn_al_tt_1")
 # Movie.create!(name:"The Angry Birds Movie", genre:"comedy", description:"Find out why the birds are so angry. When an island populated by happy, flightless birds is visited by mysterious green piggies, it's up to three unlikely outcasts - Red, Chuck and Bomb - to figure out what the pigs are up to.
 # ",photo_url:"https://m.media-amazon.com/images/M/MV5BMTY3MjU0NDA0OF5BMl5BanBnXkFtZTgwNTc0MTU3OTE@._V1_SY1000_CR0,0,702,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt1985949/?ref_=fn_al_tt_4")
@@ -55,9 +55,9 @@ Movie.create!(name:"The Endless Summer", genre:"documentary", description:"The c
 
 
 # Restaurant seeds
-# Restaurant.create!(name:"The Old Street Chinese", food_type:"chinese", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/old-street/the-old-street-chinese?day=today&postcode=E28DY&time=ASAP", address:"EC1V 9FR")
+Restaurant.create!(name:"The Old Street Chinese", food_type:"chinese", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/old-street/the-old-street-chinese?day=today&postcode=E28DY&time=ASAP", address:"EC1V 9FR")
 Restaurant.create!(name:"Suito Japanese", food_type:"sushi", photo_url:"http://suito.uk/wp-content/uploads/2014/07/Ichi_platters.jpg", link_url:"https://deliveroo.co.uk/menu/london/brick-lane/suito-japanese-platters?day=today&postcode=E28DY&time=ASAP", address:"E1 6RL")
-# Restaurant.create!(name:"Great British Fish & Chips", food_type:"fish&chips", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/tower-hill/great-british-fish-and-chips?day=today&postcode=E28DY&time=1100", address:"SE1 7PB")
+Restaurant.create!(name:"Great British Fish & Chips", food_type:"fish&chips", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/tower-hill/great-british-fish-and-chips?day=today&postcode=E28DY&time=1100", address:"SE1 7PB")
 # Restaurant.create!(name:"Nando's Dalston", food_type:"chicken", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/dalston/nandos-dalston?day=today&postcode=E28DY&time=1100", address:"E8 2NS")
 # Restaurant.create!(name:"Turkish Delight", food_type:"shawarma", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/old-street/turkish-delight-london?day=today&postcode=E28DY&time=ASAP", address:"EC1V 9HE")
 
@@ -78,9 +78,9 @@ Restaurant.create!(name:"Island Poke", food_type:"sushi", photo_url:"https://ima
 
 
 # Combo seeds
-# Combo.create!(name:"Panda Express", description:"Panda Express description", movie: Movie.find_by_name("Kung Fu Panda"))
+Combo.create!(name:"Panda Express", description:"Panda Express description", movie: Movie.find_by_name("Kung Fu Panda"), restaurant: Restaurant.find_by_name("The Old Street Chinese"))
 Combo.create!(name:"Fresh from the Sea", description:"Fresh from the Sea description", movie: Movie.find_by_name("Blackfish"), restaurant: Restaurant.find_by_name("Suito Japanese"))
-# Combo.create!(name:"Swimming with the Fish", description:"Swimming with the sea description", movie: Movie.find_by_name("Jaws"))
+Combo.create!(name:"Swimming with the Fish", description:"Swimming with the sea description", movie: Movie.find_by_name("Jaws"), restaurant: Restaurant.find_by_name("Great British Fish & Chips"))
 # Combo.create!(name:"Angry Bird Combo", description:"Angry bird combo description", movie: Movie.find_by_name("The Angry Birds Movie"))
 # Combo.create!(name:"Silence of Lamb Combo", description:"Silence of lamb description", movie: Movie.find_by_name("The Silence of Lambs"))
 
