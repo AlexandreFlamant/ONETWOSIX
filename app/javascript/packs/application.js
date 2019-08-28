@@ -3,6 +3,7 @@ import $ from "jquery";
 import slick from "../../assets/slick/slick.min.js";
 
 
+
 $(document).ready(function(){
 
   $('.carousel').slick({
