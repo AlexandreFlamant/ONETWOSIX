@@ -58,17 +58,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <h5 class="text-center">You have Chosen</h5>
-        <h5 class="text-center">Eat, Eat, Eat</h5>
+        <h5 class="text-center">You have chosen</h5>
+        <h5 class="text-center"><strong>movie.name & restaurant.name</strong></h5>
         <div class="row d-flex justify-content-center">
           <img src="https://media3.giphy.com/media/3ohhwliPYARsRHK2Aw/giphy.gif" alt="#" style="width: 120px; height:100px">
         </div>
-        <h6>You will be redirected to Netflix and Deliveroo in 3 seconds...</h6>
+        <h6>Click below to be directed to your choices:</h6>
         <div class="row d-flex justify-content-center align-items-center">
-          <img src="https://logos-download.com/wp-content/uploads/2016/03/Netflix_logo_n.png" alt="netflix" class="mr-1" style="height:60px">
-          <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/587a5a650000ff00059ac805/0x0.png" alt="deliveroo" class="ml-1" style="height:60px">
+          <a href="#" class="redirect"><%= image_tag("https://logos-download.com/wp-content/uploads/2016/03/Netflix_logo_n.png", alt: "netflix", style: 'height:60px;', class: 'mr-1-n') %></a>
+          <a href="#" class="redirect"><%= image_tag("https://www.drivetax.com.au/wp-content/uploads/2017/04/DT-MAR-Deliveroo-Logo-Icon-Transparent.png", alt: "deliveroo", style: 'height:60px;', class: 'mr-1-d') %></a>
         </div>
-        <h6>In the meantime, why not share your combo with your friends?</h6>
+        <h6>Why not share your combo with your friends?</h6>
         <div class="row d-flex justify-content-center align-items-center" id="modal-icons">
           <a href="#"><i class="fab fa-instagram mx-1"></i></a>
           <a href="#"><i class="fab fa-facebook mx-1"></i></a>
