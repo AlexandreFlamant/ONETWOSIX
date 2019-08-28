@@ -9,14 +9,14 @@ body {
 }
 
 a.icon-play {
-  margin-left: 32px;
+  // margin-left: 32px;
   position: absolute;
   width: 100px;
   height: 100px;
   border: solid 2px $border-color;
   border-radius: 100px;
-  top: 50px;
-  left: 50px;
+  top: 63px;
+  left: 39px;
 
   &:before {
     content: "";
