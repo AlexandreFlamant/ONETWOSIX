@@ -8,7 +8,6 @@ class CombosController < ApplicationController
     #   if query.present?
     #     @restaurants_geocode = Restaurant.near(query, 3).where(food_type: params[:foodtype])
     #   end
-
   end
 
   # def create
