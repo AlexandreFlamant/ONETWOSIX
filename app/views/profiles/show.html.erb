@@ -3,5 +3,9 @@
   <div class="header mx-2">
     <h2>Saved Combos</h2>
   </div>
-  <%= render 'shared/combo-selection-cards' %>
+  <% if @user_combos.empty? %>
+    <%= render 'no-saved-cards' %>
+  <% else %>
+    <%= render 'shared/combo-selection-cards' %>
+  <% end %>
 </div>
