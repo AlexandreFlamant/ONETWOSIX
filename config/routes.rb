@@ -8,6 +8,5 @@ Rails.application.routes.draw do
       put "like" => "combos#upvote"
     end
   end
-  resources :combo_selections #, only: :create
   resource :profile, only: :show
 end
