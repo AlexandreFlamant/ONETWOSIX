@@ -1,0 +1,31 @@
+<div class="carousel">
+  <!-- start of combo card -->
+  <% @selected_combos.each do |combo| %>
+    <div class="combo-box d-flex justify-content-center align-items-center">
+      <div class="combo-card carousel-card">
+        <div class="poster">
+        </div>
+        <div class="combo-card-infos">
+          <h6 class="combo-item-name"><%= combo.movie.name %></h6>
+        </div>
+      </div>
+
+      <div class="plus">
+        <div class="y-line">
+        </div>
+        <div class="x-line">
+        </div>
+      </div>
+
+      <div class="combo-card">
+        <img src="https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg" />
+        <div class="combo-card-infos">
+          <% food_type = combo.food_type %>
+          <h6 class="combo-item-name"><%= Restaurant.get_food_type(combo.food_type).name %></h6>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
