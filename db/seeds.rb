@@ -26,8 +26,8 @@ Movie.create!(name:"Blade Runner", genre:"sci-fi", description:"A blade runner m
 
 Movie.create!(name:"Kung Fu Panda2", genre:"animation", description:"The Dragon Warrior has to clash against the savage Tai Lung as China's fate hangs in the balance. However, the Dragon Warrior mantle is supposedly mistaken to be bestowed upon an obese panda who is a novice in martial arts.
 ",photo_url:"https://m.media-amazon.com/images/M/MV5BODJkZTZhMWItMDI3Yy00ZWZlLTk4NjQtOTI1ZjU5NjBjZTVjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SY1000_CR0,0,689,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt0441773/?ref_=nv_sr_1?ref_=nv_sr_1")
-Movie.create!(name:"Blackfish2", genre:"documentary", description:"A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.
-",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt2545118/?ref_=nv_sr_1?ref_=nv_sr_1")
+Movie.create!(name:"Jiro Dreams of Sushi", genre:"documentary", description:"Revered sushi chef Jiro Ono strives for perfection in his work, while his eldest son, Yoshikazu, has trouble living up to his father's legacy.
+",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt1772925/mediaviewer/rm1758442240?ref_=tt_ov_i")
 Movie.create!(name:"Jaws2", genre:"adventure", description:"When a killer shark unleashes chaos on a beach community, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.
 ",photo_url:"https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX651_CR0,0,651,999_AL_.jpg",link_url:"https://www.imdb.com/title/tt0073195/?ref_=fn_al_tt_1")
 Movie.create!(name:"The Angry Birds Movie2", genre:"comedy", description:"Find out why the birds are so angry. When an island populated by happy, flightless birds is visited by mysterious green piggies, it's up to three unlikely outcasts - Red, Chuck and Bomb - to figure out what the pigs are up to.
@@ -40,8 +40,8 @@ Movie.create!(name:"Blade Runner2", genre:"sci-fi", description:"A blade runner 
 
 Movie.create!(name:"Kung Fu Panda3", genre:"animation", description:"The Dragon Warrior has to clash against the savage Tai Lung as China's fate hangs in the balance. However, the Dragon Warrior mantle is supposedly mistaken to be bestowed upon an obese panda who is a novice in martial arts.
 ",photo_url:"https://m.media-amazon.com/images/M/MV5BODJkZTZhMWItMDI3Yy00ZWZlLTk4NjQtOTI1ZjU5NjBjZTVjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SY1000_CR0,0,689,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt0441773/?ref_=nv_sr_1?ref_=nv_sr_1")
-Movie.create!(name:"Blackfish3", genre:"documentary", description:"A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.
-",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt2545118/?ref_=nv_sr_1?ref_=nv_sr_1")
+Movie.create!(name:"The Endless Summer", genre:"documentary", description:"The crown jewel to ten years of Bruce Brown surfing documentaries. Brown follows two young surfers around the world in search of the perfect wave, and ends up finding quite a few in addition to some colorful local characters.
+",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt0060371/")
 Movie.create!(name:"Jaws3", genre:"adventure", description:"When a killer shark unleashes chaos on a beach community, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.
 ",photo_url:"https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX651_CR0,0,651,999_AL_.jpg",link_url:"https://www.imdb.com/title/tt0073195/?ref_=fn_al_tt_1")
 Movie.create!(name:"The Angry Birds Movie3", genre:"comedy", description:"Find out why the birds are so angry. When an island populated by happy, flightless birds is visited by mysterious green piggies, it's up to three unlikely outcasts - Red, Chuck and Bomb - to figure out what the pigs are up to.
@@ -60,14 +60,14 @@ Restaurant.create!(name:"Turkish Delight", food_type:"shawarma", photo_url:"http
 
 
 Restaurant.create!(name:"The Old Street Chinese2", food_type:"chinese", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/old-street/the-old-street-chinese?day=today&postcode=E28DY&time=ASAP", address:"EC1V 9FR")
-Restaurant.create!(name:"Suito Japanese2", food_type:"sushi", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/brick-lane/suito-japanese-platters?day=today&postcode=E28DY&time=ASAP", address:"E1 6RL")
+Restaurant.create!(name:"Miyako", food_type:"sushi", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/liverpool-street/miyako?day=today&postcode=E28DY&time=ASAP", address:"EC2M 7QN")
 Restaurant.create!(name:"Great British Fish & Chips2", food_type:"fish&chips", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/tower-hill/great-british-fish-and-chips?day=today&postcode=E28DY&time=1100", address:"SE1 7PB")
 Restaurant.create!(name:"Nando's Dalston2", food_type:"chicken", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/dalston/nandos-dalston?day=today&postcode=E28DY&time=1100", address:"E8 2NS")
 Restaurant.create!(name:"Turkish Delight2", food_type:"shawarma", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/old-street/turkish-delight-london?day=today&postcode=E28DY&time=ASAP", address:"EC1V 9HE")
 
 
 Restaurant.create!(name:"The Old Street Chinese3", food_type:"chinese", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/old-street/the-old-street-chinese?day=today&postcode=E28DY&time=ASAP", address:"EC1V 9FR")
-Restaurant.create!(name:"Suito Japanese3", food_type:"sushi", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/brick-lane/suito-japanese-platters?day=today&postcode=E28DY&time=ASAP", address:"E1 6RL")
+Restaurant.create!(name:"Island Poke", food_type:"sushi", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/shoreditch/island-poke-shoreditch?day=today&postcode=E28DY&time=ASAP", address:"EC2A 3EP")
 Restaurant.create!(name:"Great British Fish & Chips3", food_type:"fish&chips", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/tower-hill/great-british-fish-and-chips?day=today&postcode=E28DY&time=1100", address:"SE1 7PB")
 Restaurant.create!(name:"Nando's Dalston3", food_type:"chicken", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/dalston/nandos-dalston?day=today&postcode=E28DY&time=1100", address:"E8 2NS")
 Restaurant.create!(name:"Turkish Delight3", food_type:"shawarma", photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/old-street/turkish-delight-london?day=today&postcode=E28DY&time=ASAP", address:"EC1V 9HE")
@@ -82,14 +82,14 @@ Combo.create!(name:"Silence of Lamb Combo", description:"Silence of lamb descrip
 
 
 Combo.create!(name:"Panda Express2", description:"Panda Express description",food_type:"chinese", movie: Movie.find_by_name("Kung Fu Panda2"))
-Combo.create!(name:"Fresh from the Sea2", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("Blackfish2"))
+Combo.create!(name:"Screen to plate", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("Jiro Dreams of Sushi"))
 Combo.create!(name:"Swimming with the Fish2", description:"Swimming with the sea description",food_type:"fish&chips", movie: Movie.find_by_name("Jaws2"))
 Combo.create!(name:"Angry Bird Combo2", description:"Angry bird combo description",food_type:"chicken", movie: Movie.find_by_name("The Angry Birds Movie2"))
 Combo.create!(name:"Silence of Lamb Combo2", description:"Silence of lamb description",food_type:"shawarma", movie: Movie.find_by_name("The Silence of Lambs2"))
 
 
 Combo.create!(name:"Panda Express3", description:"Panda Express description",food_type:"chinese", movie: Movie.find_by_name("Kung Fu Panda3"))
-Combo.create!(name:"Fresh from the Sea3", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("Blackfish3"))
+Combo.create!(name:"Surf & Surf", description:"Fresh from the Sea description",food_type:"sushi", movie: Movie.find_by_name("The Endless Summer"))
 Combo.create!(name:"Swimming with the Fish3", description:"Swimming with the sea description",food_type:"fish&chips", movie: Movie.find_by_name("Jaws3"))
 Combo.create!(name:"Angry Bird Combo3", description:"Angry bird combo description",food_type:"chicken", movie: Movie.find_by_name("The Angry Birds Movie3"))
 Combo.create!(name:"Silence of Lamb Combo3", description:"Silence of lamb description",food_type:"shawarma", movie: Movie.find_by_name("The Silence of Lambs3"))
