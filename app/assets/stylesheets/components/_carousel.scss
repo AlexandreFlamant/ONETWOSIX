@@ -15,6 +15,10 @@
   opacity: 1;
 }
 
+.slick-center:focus {
+  outline: none;
+}
+
 
 // TERRIBLE ARROWS
 .slick-prev, .slick-prev:before, .slick-next, .slick-next:before {
