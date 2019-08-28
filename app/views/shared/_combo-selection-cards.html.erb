@@ -1,0 +1,29 @@
+<div class="row d-flex align-items-center">
+  <% @user_combos.each do |combo| %>
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="home-card mx-2">
+        <div class="combination">
+          <div class="combo-box d-flex justify-content-center align-items-center">
+            <div class="combo-card">
+              <div class="poster">
+                <a href="https://www.youtube.com/watch?v=wZdpNglLbt8" target="_blank" class="icon-play-small"></a>
+              </div>
+              <div class="combo-card-infos">
+                <h6 class="combo-item-name"> <a href="https://www.imdb.com/title/tt0266543/" target="_blank"> <%= combo.movie.name %></a></h6>
+              </div>
+              </div>
+              <div class="combo-card">
+                <img src="https://peasandcrayons.com/wp-content/uploads/2012/10/homemade-sushi-tutorial-recipe-peas-and-crayons-1250.jpg" />
+                <div class="combo-card-infos">
+                  <h6 class="combo-item-name"> <%= combo.food_type %></h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3><%= combo.name %></h3>
+          <p><%= combo.description %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
