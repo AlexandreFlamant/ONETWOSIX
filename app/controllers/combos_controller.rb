@@ -3,12 +3,12 @@ class CombosController < ApplicationController
 
   def index
     # @combos = Combo.all
-    genre = Movie.where(genre: params[:search][:genre].reject(&:empty?).first)
-    @combos = Combo.where(food_type: params[:search][:foodtype].reject(&:empty?).first, movie: genre)
     location = params.dig(:location)
-      if location.present?
-        @restaurants_geocode = Restaurant.geocoded.near(location, 10).where(food_type: params[:search][:foodtype].reject(&:empty?).first)
-      end
+    if location.present?
+      restaurants = Restaurant.where(food_type: params[:search][:foodtype].reject(&:empty?).first).near(location, 6).sort_by { |r| r.id }
+    end
+    movies = Movie.where(genre: params[:search][:genre].reject(&:empty?).first)
+    @combos = Combo.where(movie: movies, restaurant: restaurants)
   end
 
   def upvote
@@ -22,17 +22,7 @@ class CombosController < ApplicationController
     @combo.liked_by current_or_guest_user
     # redirect_back fallback_location: root_path
   end
-
-  # def create
-  #   @combo = Combo.new(combo_params)
-  #   if @combo.save
-  #     redirect_to profile_path
-  #   end
-  # end
-
-  # private
-
-  # def combo_params
-  #   params.require(:combo).permit(:name, :description, :food_type, :movie, :name_from_sponsor)
-  # end
 end
+
+
+

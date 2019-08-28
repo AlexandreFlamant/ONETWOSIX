@@ -63,57 +63,6 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-success d-none" id="triggersearch" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-
-
-<!-- start of simple form for -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-
-      <%= simple_form_for :search, url: combos_path, method: :get, html: { id: 'search_form' } do |f| %>
-        <fieldset class="form-group check_boxes required search_genre">
-        <input type="hidden" name="search[genre][]" value="">
-        <div class="carousel">
-          <% Movie::GENRE_CATEGORIES.each do |genre| %>
-            <div class="form-check pl-0">
-              <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= genre %>" name="search[genre][]" id="search_genre_<%= genre %>">
-              <label class="collection_check_boxes select-choice" for="search_genre_<%= genre %>">
-                <i class="far fa-check-circle"></i>
-                <img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80" alt="#">
-                <span><%= genre.capitalize %></span>
-              </label>
-            </div>
-          <% end %>
-        </div>
-        </fieldset>
-        <fieldset class="form-group check_boxes required search_genre"><input type="hidden" name="search[genre][]" value=""><div class="form-check"></div></fieldset>
-
-      <div class="row d-flex justify-content-center align-items-center">
-        <%= submit_tag "Ready?", class: "btn btn-success ready" %>
-      </div>
-
-        <fieldset class="form-group check_boxes required search_foodtype">
-        <input type="hidden" name="search[foodtype][]" value="">
-        <div class="carousel">
-          <% Restaurant::FOODTYPE_CATEGORIES.each do |foodtype| %>
-            <div class="form-check pl-0">
-              <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= foodtype %>" name="search[foodtype][]" id="search_foodtype_<%= foodtype %>">
-              <label class="collection_check_boxes select-choice" for="search_foodtype_<%= foodtype %>">
-                <i class="far fa-check-circle"></i>
-                <img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80" alt="#">
-                <span><%= foodtype.capitalize %></span>
-              </label>
-            </div>
-          <% end %>
-        </div>
-        </fieldset>
-        <fieldset class="form-group check_boxes required search_foodtype"><input type="hidden" name="search[foodtype][]" value=""><div class="form-check"></div></fieldset>
-      <% end %>
-
-    </div>
-  </div>
-</div>
 
 
 

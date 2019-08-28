@@ -10,22 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_132144) do
+ActiveRecord::Schema.define(version: 2019_08_28_182803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "combo_selections", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "combo_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "status"
-    t.bigint "restaurant_id"
-    t.index ["combo_id"], name: "index_combo_selections_on_combo_id"
-    t.index ["restaurant_id"], name: "index_combo_selections_on_restaurant_id"
-    t.index ["user_id"], name: "index_combo_selections_on_user_id"
-  end
 
   create_table "combos", force: :cascade do |t|
     t.string "name"
@@ -34,7 +22,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_132144) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name_from_sponsor"
-    t.string "food_type"
     t.integer "cached_votes_total", default: 0
     t.integer "cached_votes_score", default: 0
     t.integer "cached_votes_up", default: 0
@@ -42,7 +29,9 @@ ActiveRecord::Schema.define(version: 2019_08_28_132144) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+    t.bigint "restaurant_id"
     t.index ["movie_id"], name: "index_combos_on_movie_id"
+    t.index ["restaurant_id"], name: "index_combos_on_restaurant_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -95,8 +84,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_132144) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
-  add_foreign_key "combo_selections", "combos"
-  add_foreign_key "combo_selections", "restaurants"
-  add_foreign_key "combo_selections", "users"
   add_foreign_key "combos", "movies"
+  add_foreign_key "combos", "restaurants"
 end
