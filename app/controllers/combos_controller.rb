@@ -8,7 +8,12 @@ class CombosController < ApplicationController
     #   if query.present?
     #     @restaurants_geocode = Restaurant.near(query, 3).where(food_type: params[:foodtype])
     #   end
+  end
 
+  def upvote
+    @combo = Combo.find(params[:id])
+    @combo.liked_by current_user
+    redirect_back fallback_location: root_path
   end
 
   # def create

@@ -42,7 +42,12 @@
         <p><%= combo.description %></p>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Select</button>
         <% if user_signed_in? %>
-          <a href="#" class="btn btn-success">Save for Later</a>
+          <div class="job-star">
+            <%= link_to like_combo_path(combo), class: "like", method: :put do %>
+              <button type="button" class="btn btn-success">Save for Later</button>
+              <% combo.get_upvotes.size %>
+            <% end %>
+          </div>
         <% else %>
           <a href="/users/sign_in" class="btn btn-success">Log in to Save </a>
         <% end %>
