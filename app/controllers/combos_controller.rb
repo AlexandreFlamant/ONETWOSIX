@@ -11,6 +11,12 @@ class CombosController < ApplicationController
       end
   end
 
+  def upvote
+    @combo = Combo.find(params[:id])
+    @combo.liked_by current_user
+    redirect_back fallback_location: root_path
+  end
+
   # def create
   #   @combo = Combo.new(combo_params)
   #   if @combo.save

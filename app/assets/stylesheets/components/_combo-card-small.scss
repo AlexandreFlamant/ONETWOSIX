@@ -18,6 +18,10 @@
   object-fit: cover;
 }
 
+h6 {
+  margin-bottom:0px;
+}
+
 .plus {
   background-color: white;
   height: 50px;
@@ -61,33 +65,9 @@
   margin: 0 auto;
 }
 
-.modal-content {
-  background-color: #E8F4EF;
-  border-radius: 5px;
-}
-
-.modal-body {
-  text-align: center;
-}
-
-.modal-body h6 {
-  margin: 15px;
-}
-
-.redirect {
-  margin-bottom: 10px;
-}
-
-.mr-1-n {
-  padding-right: 10px;
-}
-
-.mr-1-d {
-  padding-left: 10px;
-}
-
 #modal-icons > a > i {
-  color: #255957;
-  font-size: 32px;
+  color: #000000;
+  font-size: 24px;
 }
+
 
