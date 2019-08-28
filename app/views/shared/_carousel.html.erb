@@ -71,7 +71,7 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
-      <%= simple_form_for :search, url: combos_path, method: "get" do |f| %>
+      <%= simple_form_for :search, url: combos_path, method: :get, html: { id: 'search_form' } do |f| %>
         <fieldset class="form-group check_boxes required search_genre">
         <input type="hidden" name="search[genre][]" value="">
         <div class="carousel">
