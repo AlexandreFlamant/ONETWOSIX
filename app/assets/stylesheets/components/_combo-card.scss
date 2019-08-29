@@ -6,12 +6,20 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.empty-heart {
-  color: white;
+.relative {
+  position: relative;
 }
 
-.full-heart {
+.like, .downvote {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.fa-heart {
+  text-decoration: none;
   color: white;
+  font-size: 25px;
 }
 
 .combo-card {

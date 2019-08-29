@@ -32,7 +32,7 @@
             </div>
           </div>
 
-          <div class="combo-card large-shadow">
+          <div class="combo-card large-shadow relative">
             <img src="<%= image_path combo.restaurant.photo_url %> " />
             <div class="combo-card-infos">
               <h6 class="combo-item-name">
@@ -40,6 +40,17 @@
                   <%= combo.restaurant.name %>
                 </a>
               </h6>
+            </div>
+            <div class="like" id="combo_<%= combo.id %>">
+              <% if user_signed_in? && (current_user.voted_for? combo) %>
+                <%= link_to downvote_combo_path(combo), method: :post, remote: true do %>
+                  <i class="fas fa-heart"></i>
+                <% end %>
+              <% elsif user_signed_in? && !(current_user.voted_for? combo) %>
+                <%= link_to like_combo_path(combo), method: :post, remote: true do %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -55,10 +66,10 @@
         <button type="button" class="btn btn-success" data-toggle="modal" data-target=<%= "#modal" + combo.id.to_s %> >Select
         </button>
       <!-- modal button end -->
-        <%= link_to like_combo_path(combo, combo_ids: random_combos.pluck(:id)), class: "like", method: :put do %>
-          <button type="button" class="btn btn-success">
-            <%= user_signed_in? ? 'Save for later' : 'Log in to Save' %>
-          </button>
+        <% unless user_signed_in? %>
+          <%= link_to like_combo_path(combo, combo_ids: random_combos.pluck(:id)), class: "like", method: :put, remote: user_signed_in? do %>
+              <button type="button" class="btn btn-success">Log in to Save</button>
+          <% end %>
         <% end %>
       </div>
     </div>
