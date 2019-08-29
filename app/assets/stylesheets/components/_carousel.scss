@@ -28,28 +28,30 @@
 .slick-prev, .slick-prev:before, .slick-next, .slick-next:before {
   font-size: 25px;
   border-radius: 50%;
-  box-shadow: 0 0 10px 10px grey;
-  background-color: grey;
+  // box-shadow: 0 0 10px 10px $gray;
+  background-color: $green;
+  width: 50px;
   line-height: 1rem;
 }
 
 .slick-prev {
   position: absolute;
-  top: 124px;
+  top: 112px;
   z-index: 5;
-  opacity: 0.5;
-  left: 52px;
+  // opacity: 0.5;
+  left: 113px;
 }
 
 .slick-prev:before {
-  opacity: 0.5;
+  // opacity: 0.5;
 }
 
 .slick-next {
   position: absolute;
-  top: 124px;
-  right: 52px;
-  opacity: 0.5;
+  top: 112px;
+  right: 113px;
+  // opacity: 0.5;
+  z-index: 5;
 }
 
 .slick-next:before {
