@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_182803) do
+ActiveRecord::Schema.define(version: 2019_08_29_110317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_182803) do
     t.bigint "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name_from_sponsor"
     t.integer "cached_votes_total", default: 0
     t.integer "cached_votes_score", default: 0
     t.integer "cached_votes_up", default: 0
@@ -34,19 +33,33 @@ ActiveRecord::Schema.define(version: 2019_08_28_182803) do
     t.index ["restaurant_id"], name: "index_combos_on_restaurant_id"
   end
 
+  create_table "food_types", force: :cascade do |t|
+    t.string "name"
+    t.string "photo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.string "photo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string "name"
-    t.string "genre"
     t.text "description"
     t.string "photo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link_url"
+    t.bigint "genre_id"
+    t.index ["genre_id"], name: "index_movies_on_genre_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
-    t.string "food_type"
     t.string "photo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,6 +67,8 @@ ActiveRecord::Schema.define(version: 2019_08_28_182803) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "food_type_id"
+    t.index ["food_type_id"], name: "index_restaurants_on_food_type_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,4 +101,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_182803) do
 
   add_foreign_key "combos", "movies"
   add_foreign_key "combos", "restaurants"
+  add_foreign_key "movies", "genres"
+  add_foreign_key "restaurants", "food_types"
 end
