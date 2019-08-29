@@ -51,7 +51,7 @@
         </button>
       <!-- modal button end -->
         <% if user_signed_in? %>
-          <div class="job-star">
+          <div class="save-button">
             <%= link_to like_combo_path(combo), class: "like", method: :put do %>
               <button type="button" class="btn btn-success">Save for Later </button>
             <% end %>
