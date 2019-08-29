@@ -13,7 +13,6 @@ $(document).ready(function(){
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,
-    autoplay: true,
     // autoplaySpeed: 3000,
     // pauseonFocus: true,
   })
