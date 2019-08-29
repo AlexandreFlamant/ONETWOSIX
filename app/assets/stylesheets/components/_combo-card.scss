@@ -2,14 +2,16 @@
   margin-bottom: 20px;
 }
 
+.large-shadow {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
 .combo-card {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   width: 180px;
   border-radius: 10px;
   text-decoration: none;
-
 }
 
 .combo-card img {
@@ -53,6 +55,10 @@
   justify-content: center;
   align-items: center;
   background-color: #effffc;
+}
+
+.combo-item-name {
+  text-align: center;
 }
 
 .index-content {

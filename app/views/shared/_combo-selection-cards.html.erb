@@ -2,21 +2,27 @@
   <% @user_combos.each do |combo| %>
     <div class="col-sm-12 col-md-6 col-lg-4">
       <div class="home-card mx-2">
-        <div class="combination">
+        <div class="combination" id="small-card">
           <div class="combo-box d-flex justify-content-center align-items-center">
             <div class="combo-card">
               <a class="close-button" href="https://www.youtube.com/watch?v=wZdpNglLbt8"><img src="https://img.icons8.com/color/48/000000/close-window.png"></a>
               <div class="poster" style="background-image: url('<%= image_path combo.movie.photo_url %>')">
-                <a href="https://www.youtube.com/watch?v=wZdpNglLbt8" target="_blank" class="icon-play-small"></a>
+                <%= render 'shared/play-button-small', combo: combo %>
               </div>
               <div class="combo-card-infos">
-                <h6 class="combo-item-name"> <a href="https://www.imdb.com/title/tt0266543/" target="_blank"> <%= combo.movie.name %></a></h6>
+                <h6 class="combo-item-name"> <a href="<%=combo.movie.link_url %>" target="_blank" class="link-to">
+                  <%= combo.movie.name %></a>
+                </h6>
               </div>
               </div>
-              <div class="combo-card">
+              <div class="combo-card" id="shadow-right">
                 <img src="<%= image_path combo.restaurant.photo_url %>" />
                 <div class="combo-card-infos">
-                  <h6 class="combo-item-name"> <%= combo.restaurant.name %></h6>
+                  <h6 class="combo-item-name">
+                    <a href="<%=combo.restaurant.link_url%>" target="_blank" class="link-to">
+                      <%= combo.restaurant.name %>
+                    </a>
+                  </h6>
                 </div>
               </div>
             </div>
