@@ -1,0 +1,7 @@
+console.log('upvote');
+heartDiv = document.getElementById('combo_<%= @combo.id %>');
+heartDiv.innerHTML = `
+  <a data-remote="true" rel="nofollow" data-method="post" href="/combos/<%= @combo.id %>/downvote">
+                  <i class="fas fa-heart"></i>
+  </a>
+`;
