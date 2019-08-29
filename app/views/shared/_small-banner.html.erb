@@ -1,18 +1,2 @@
-<div class="banner small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1461151304267-38535e780c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80);">
-  <div class="container">
-    <br>
-    <p>Search somewhere else...</p>
-
-    <div class="search-form-control form-group">
-      <%= simple_form_for :search, url: "https://www.google.com/search?hl=en-GB&biw=1280&bih=689&ei=0_hkXdWJJcWF1fAP7a2u8AE&q=hoxton100&oq=hoxton100&gs_l=psy-ab.3..0i10l5.4595.5786..5944...0.0..0.71.509.9......0....1..gws-wiz.......35i39j0i131j0j0i20i263.1ig3HVmAM2s&ved=0ahUKEwiVv6uu36LkAhXFQhUIHe2WCx4Q4dUDCAo&uact=5", method: "get" do |f| %>
-        <div class="row">
-          <div class="d-inline row" style="margin: 0">
-            <%= f.input :query, as: :string, input_html: { id: "flat_address", :style=> 'width: 200px'}, placeholder: "e.g. N1 6NG", label: false %>
-          </div>
-          <%= submit_tag "Search", class: "d-inline btn btn-success" %>
-        </div>
-      <% end %>
-    </div>
-
-  </div>
+<div class="banner small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://daily.jstor.org/wp-content/uploads/2017/11/popcorn_history_1050x700.jpg);">
 </div>
