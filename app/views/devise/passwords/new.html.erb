@@ -14,9 +14,7 @@
                         input_html: { autocomplete: "email" } %>
           </div>
 
-          <div class="btn btn-outline-success">
-            <%= f.button :submit, "Send me reset password instructions" %>
-          </div>
+          <%= f.button :submit, "Send me reset password instructions", class:"btn btn-success mb-3" %>
         <% end %>
 
         <%= render "devise/shared/links" %>
