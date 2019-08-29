@@ -1,4 +1,4 @@
-<div class="carousel">
+<div class="fresh-carousel">
   <!-- start of combo card -->
   <% @fresh_combos.each do |combo| %>
     <div class="combo-box d-flex justify-content-center align-items-center">
@@ -48,6 +48,8 @@
       <h4 class="text-center mt-4 mb-0"><strong>Now...choose a film & food type ♥</strong></h4>
 
       <%= simple_form_for :search, url: combos_path, class:'mt-0', method: :get, html: { id: 'search_form' } do |f| %>
+        <%= hidden_field_tag "hidden_genre" %>
+        <%= hidden_field_tag "hidden_foodtype" %>
         <fieldset class="form-group check_boxes required search_genre">
         <input type="hidden" name="search[genre][]" value="">
         <div class="carousel mb-0 mt-3">

@@ -4,11 +4,13 @@ class CombosController < ApplicationController
   def index
     # @combos = Combo.all
     location = params.dig(:location)
+    genre = params.dig(:hidden_genre).downcase
+    foodtype = params.dig(:hidden_foodtype).downcase
     if location.present?
-      restaurants = Restaurant.select { |r| params[:search][:foodtype].include?(r.food_type.name) }
+      restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
       # restaurants = Restaurant.where(food_type: params[:search][:foodtype].reject(&:empty?).first).near(location, 6).sort_by { |r| r.id }
     end
-    movies = Movie.select { |m| params[:search][:genre].include?(m.genre.name) }
+    movies = Movie.select { |m| genre.include?(m.genre.name) }
     if session[:combo_ids].present?
       @combos = session[:combo_ids].map { |id| Combo.find(id) }
     else
