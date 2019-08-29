@@ -1,4 +1,7 @@
 <div class="index-header">
-  <h2 class="text-center">Our Suggestions</h2>
+  <h2 class="text-center">Search results for <%= params[:search][:genre][1].capitalize %> & <%= params[:search][:foodtype][1].capitalize %></h2>
+  <div class="refresh-btn">
+    <button class="btn btn-success refresh" onClick="window.location.reload()">Refresh</button>
+  </div>
   <%= render 'shared/combo-card' %>
 </div>
