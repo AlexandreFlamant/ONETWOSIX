@@ -23,6 +23,9 @@ class CombosController < ApplicationController
       session[:combo_ids] = nil
       @combo = Combo.find(params[:id])
       @combo.liked_by current_user
+      respond_to do |format|
+        format.js
+      end
     else
       session[:combo_ids] = params[:combo_ids].reject(&:empty?).map(&:to_i)
       flash[:alert] = 'you must sign in/sign up before continuing'
@@ -32,7 +35,10 @@ class CombosController < ApplicationController
 
   def downvote
     @combo = Combo.find(params[:id])
-    @combo.downvote_from current_user
+    @combo.unliked_by current_user
+    respond_to do |format|
+      format.js
+    end
   end
 
   # def upvote_select
