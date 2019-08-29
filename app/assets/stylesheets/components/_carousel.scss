@@ -1,6 +1,6 @@
 .carousel {
-  margin-top: 40px;
   margin-bottom: 40px;
+  margin-top: 40px;
 }
 
 // CARD SIZE
@@ -25,13 +25,14 @@
 
 
 // TERRIBLE ARROWS
-.slick-prev, .slick-prev:before, .slick-next, .slick-next:before {
+.slick-prev, .slick-next, {
   font-size: 25px;
   border-radius: 50%;
-  // box-shadow: 0 0 10px 10px $gray;
+  // box-shadow: 0 0 10px 10px $green;
   background-color: $green;
-  width: 50px;
   line-height: 1rem;
+  width: 30px;
+  height: 30px;
 }
 
 .slick-prev {
@@ -55,5 +56,6 @@
 }
 
 .slick-next:before {
-  opacity: 0.5;
+  // opacity: 0.5;
 }
+

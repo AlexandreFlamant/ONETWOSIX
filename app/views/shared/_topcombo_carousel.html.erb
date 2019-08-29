@@ -45,12 +45,12 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
-      <h4 class="text-center mt-5"><strong>Now...choose a film & food type ♥</strong></h4>
+      <h4 class="text-center mt-4 mb-0"><strong>Now...choose a film & food type ♥</strong></h4>
 
-      <%= simple_form_for :search, url: combos_path, method: :get, html: { id: 'search_form' } do |f| %>
+      <%= simple_form_for :search, url: combos_path, class:'mt-0', method: :get, html: { id: 'search_form' } do |f| %>
         <fieldset class="form-group check_boxes required search_genre">
         <input type="hidden" name="search[genre][]" value="">
-        <div class="carousel mb-0">
+        <div class="carousel mb-0 mt-3">
           <% Genre::GENRE_CATEGORIES.each do |genre| %>
             <div class="form-check pl-0">
               <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= genre %>" name="search[genre][]" id="search_genre_<%= genre %>">
@@ -66,7 +66,7 @@
 
         <fieldset class="form-group check_boxes required search_foodtype">
         <input type="hidden" name="search[foodtype][]" value="">
-        <div class="carousel mb-0">
+        <div class="carousel mb-3">
           <% FoodType::FOODTYPE_CATEGORIES.each do |foodtype| %>
             <div class="form-check pl-0">
               <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= foodtype %>" name="search[foodtype][]" id="search_foodtype_<%= foodtype %>">
@@ -78,12 +78,12 @@
           <% end %>
         </div>
         </fieldset>
-        <fieldset class="form-group check_boxes required search_foodtype"><input type="hidden" name="search[foodtype][]" value=""><div class="form-check"></div></fieldset>
+        <fieldset class="form-group check_boxes required search_foodtype mb-0"><input type="hidden" name="search[foodtype][]" value=""><div class="form-check"></div></fieldset>
+        <div class="row d-flex justify-content-center align-items-center mb-4">
+          <%= submit_tag "Ready✌🏻", class: "btn btn-success ready" %>
+        </div>
       <% end %>
 
-      <div class="row d-flex justify-content-center align-items-center mb-5">
-        <%= submit_tag "Ready✌🏻", class: "btn btn-success ready" %>
-      </div>
     </div>
   </div>
 </div>
