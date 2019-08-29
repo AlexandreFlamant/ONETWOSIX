@@ -55,10 +55,16 @@
         <button type="button" class="btn btn-success" data-toggle="modal" data-target=<%= "#modal" + combo.id.to_s %> >Select
         </button>
       <!-- modal button end -->
-        <%= link_to like_combo_path(combo, combo_ids: random_combos.pluck(:id)), class: "like", method: :put do %>
-          <button type="button" class="btn btn-success">
-            <%= user_signed_in? ? 'Save for later' : 'Log in to Save' %>
-          </button>
+        <%= link_to like_combo_path(combo, combo_ids: random_combos.pluck(:id)), class: "like downvote", method: :put do %>
+          <% if user_signed_in? %>
+            <% if combo.liked_by current_user %>
+              <i class="fas fa-heart"></i>
+            <% else %>
+              <i class="far fa-heart"></i>
+            <% end %>
+          <% else %>
+            <button type="button" class="btn btn-success">Log in to Save</button>
+          <% end %>
         <% end %>
       </div>
     </div>

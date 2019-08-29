@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :combos, only: :index do
     member do
       put "like" => "combos#upvote"
+      put "downvote" => "combos#downvote"
       # put "select" => 'combos#upvote_select'
     end
   end
