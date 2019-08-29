@@ -44,8 +44,8 @@
                 appendDots: $(element),
                 arrows: true,
                 asNavFor: null,
-                prevArrow: '<button class="slick-prev" aria-label="Previous" type="button">Previous</button>',
-                nextArrow: '<button class="slick-next" aria-label="Next" type="button">Next</button>',
+                prevArrow: '<button class="slick-prev" type="button"></button>',
+                nextArrow: '<button class="slick-next" type="button"></button>',
                 autoplay: false,
                 autoplaySpeed: 3000,
                 centerMode: false,
@@ -701,14 +701,14 @@
 
         switch (event.data.message) {
 
-            case 'previous':
+            case '':
                 slideOffset = indexOffset === 0 ? _.options.slidesToScroll : _.options.slidesToShow - indexOffset;
                 if (_.slideCount > _.options.slidesToShow) {
                     _.slideHandler(_.currentSlide - slideOffset, false, dontAnimate);
                 }
                 break;
 
-            case 'next':
+            case '':
                 slideOffset = indexOffset === 0 ? _.options.slidesToScroll : indexOffset;
                 if (_.slideCount > _.options.slidesToShow) {
                     _.slideHandler(_.currentSlide + slideOffset, false, dontAnimate);
@@ -1373,12 +1373,12 @@
             _.$prevArrow
                .off('click.slick')
                .on('click.slick', {
-                    message: 'previous'
+                    message: ''
                }, _.changeSlide);
             _.$nextArrow
                .off('click.slick')
                .on('click.slick', {
-                    message: 'next'
+                    message: ''
                }, _.changeSlide);
 
             if (_.options.accessibility === true) {
@@ -1498,13 +1498,13 @@
             if (event.keyCode === 37 && _.options.accessibility === true) {
                 _.changeSlide({
                     data: {
-                        message: _.options.rtl === true ? 'next' :  'previous'
+                        message: _.options.rtl === true ? '' :  ''
                     }
                 });
             } else if (event.keyCode === 39 && _.options.accessibility === true) {
                 _.changeSlide({
                     data: {
-                        message: _.options.rtl === true ? 'previous' : 'next'
+                        message: _.options.rtl === true ? '' : ''
                     }
                 });
             }
@@ -1646,7 +1646,7 @@
 
         _.changeSlide({
             data: {
-                message: 'next'
+                message: ''
             }
         });
 
@@ -1721,7 +1721,7 @@
 
         _.changeSlide({
             data: {
-                message: 'previous'
+                message: ''
             }
         });
 
