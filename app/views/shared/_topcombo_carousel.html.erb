@@ -6,7 +6,11 @@
         <div class="poster" style="background-image: url('<%=image_path combo.movie.photo_url%>')">
         </div>
         <div class="combo-card-infos">
-          <h6 class="combo-item-name"><%= combo.movie.name %></h6>
+          <h6 class="combo-item-name">
+            <a href="<%=combo.movie.link_url %>" target="_blank" class="link-to">
+              <%= combo.movie.name %>
+            </a>
+          </h6>
         </div>
       </div>
 
@@ -20,7 +24,11 @@
       <div class="combo-card">
         <img src="<%=image_path combo.restaurant.photo_url%>" />
         <div class="combo-card-infos">
-          <h6 class="combo-item-name"><%= combo.restaurant.name %></h6>
+          <h6 class="combo-item-name">
+            <a href="<%=combo.restaurant.link_url%>" target="_blank" class="link-to">
+              <%= combo.restaurant.name %>
+            </a>
+          </h6>
         </div>
       </div>
     </div>
