@@ -1,7 +1,8 @@
 <div class="container">
   <br>
   <div class="header mx-2">
-    <h2>Saved Combos</h2>
+    <h2>Hello <%= current_user.name %> !</h2>
+    <h4>Here are your saved combos</h4>
   </div>
   <% if @user_combos.empty? %>
     <%= render 'no-saved-cards' %>
