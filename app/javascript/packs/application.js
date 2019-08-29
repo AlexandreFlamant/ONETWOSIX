@@ -1,26 +1,27 @@
 import "bootstrap";
 import $ from "jquery";
 import slick from "../../assets/slick/slick.min.js";
+import { initAutocomplete } from '../plugins/init_autocomplete';
+
+initAutocomplete();
 
 
-
+// carousel jQuery
 $(document).ready(function(){
 
   $('.carousel').slick({
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,
+    autoplay: true,
+    // autoplaySpeed: 3000,
+    // pauseonFocus: true,
   })
 
   $('.modal').on('shown.bs.modal', function () {
     $('.carousel').slick("setPosition", 0);
   })
 });
-
-
-import { initAutocomplete } from '../plugins/init_autocomplete';
-
-initAutocomplete();
 
 
 // for genre and foodtype selection in carousel
