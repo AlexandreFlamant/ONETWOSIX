@@ -1,11 +1,10 @@
 <div class="row d-flex align-items-center">
   <% @user_combos.each do |combo| %>
-    <div class="col-sm-12 col-md-6 col-lg-4">
+    <div id="combo_card<%= combo.id %>" class="col-sm-12 col-md-6 col-lg-4">
       <div class="home-card mx-2">
         <div class="combination" id="small-card">
           <div class="combo-box d-flex justify-content-center align-items-center">
             <div class="combo-card">
-              <a class="close-button" href="https://www.youtube.com/watch?v=wZdpNglLbt8"><img src="https://img.icons8.com/color/48/000000/close-window.png"></a>
               <div class="poster" style="background-image: url('<%= image_path combo.movie.photo_url %>')">
                 <%= render 'shared/play-button-small', combo: combo %>
               </div>
@@ -23,6 +22,17 @@
                       <%= combo.restaurant.name %>
                     </a>
                   </h6>
+                </div>
+                <div class="like" id="combo_<%= combo.id %>">
+                  <% if user_signed_in? && (current_user.voted_for? combo) %>
+                    <%= link_to downvote_combo_path(combo), method: :post, remote: true do %>
+                      <i class="fas fa-heart"></i>
+                    <% end %>
+                  <% elsif user_signed_in? && !(current_user.voted_for? combo) %>
+                    <%= link_to like_combo_path(combo), method: :post, remote: true do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>
