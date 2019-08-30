@@ -34,5 +34,13 @@
   }
 }
 
-
-
+#saved-combo {
+  @include mobile {
+    display: none;
+  }
+}
+.nav-link {
+  @include mobile {
+    font-size: 15px;
+  }
+}
