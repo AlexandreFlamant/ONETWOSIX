@@ -34,6 +34,12 @@
   }
 }
 
+.mobile-saved-combo {
+  @include desktop {
+    display: none;
+  }
+}
+
 #saved-combo {
   @include mobile {
     display: none;
