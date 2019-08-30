@@ -12,7 +12,7 @@ $(document).ready(function(){
   $('.carousel').slick({
     centerMode: true,
     centerPadding: '60px',
-    slidesToShow: 3,
+    slidesToShow: 3
   })
 
   $('.fresh-carousel').slick({
@@ -21,7 +21,7 @@ $(document).ready(function(){
     slidesToShow: 3,
     autoplay: true,
     autoplaySpeed: 2000,
-    pauseonFocus: true,
+    pauseonFocus: true
   })
 
   $('.modal').on('shown.bs.modal', function () {

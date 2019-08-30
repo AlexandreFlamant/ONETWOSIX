@@ -58,7 +58,6 @@
 .slick-prev:before {
   content: "<";
   color: $green;
-  opacity: 0.3;
   &:focus {
       transition: all 300ms ease;
       outline: none;
@@ -69,10 +68,10 @@
 
 }
 
+
 .slick-next:before {
   content: ">";
   color: $green;
-  opacity: 0.3;
   &:focus {
       transition: all 300ms ease;
       outline: none;
