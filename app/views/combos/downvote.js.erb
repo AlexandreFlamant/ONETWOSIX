@@ -1,7 +1,11 @@
-console.log('downvote')
+console.log('downvote');
 heartDiv = document.getElementById('combo_<%= @combo.id %>');
 heartDiv.innerHTML = `
   <a data-remote="true" rel="nofollow" data-method="post" href="/combos/<%= @combo.id %>/like">
                   <i class="far fa-heart"></i>
   </a>
 `;
+
+var comboCard = document.querySelector('#combo_card<%= @combo.id %>');
+comboCard.classList.add('d-none');
+

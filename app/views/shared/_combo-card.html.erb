@@ -62,15 +62,18 @@
         <h4><%= combo.name %></h4>
         <p><%= combo.description %></p>
 
-      <!-- modal button start -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target=<%= "#modal" + combo.id.to_s %> >Select<i class="far fa-hand-pointer ml-2"></i>
-        </button>
-      <!-- modal button end -->
-        <% unless user_signed_in? %>
-          <%= link_to like_combo_path(combo, combo_ids: random_combos.pluck(:id)), class: "like", method: :put, remote: user_signed_in? do %>
-              <button type="button" class="btn btn-success">Log in to Save</button>
+        <div class="index-content-bottom d-flex justify-content-start align-items-center">
+        <!-- modal button start -->
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target=<%= "#modal" + combo.id.to_s %> >Select<i class="far fa-hand-pointer ml-2"></i>
+          </button>
+        <!-- modal button end -->
+          <% unless user_signed_in? %>
+            <%= link_to like_combo_path(combo, combo_ids: random_combos.pluck(:id)), class: "like", id:"log-save", method: :post, remote: user_signed_in? do %>
+                <button type="button" class="btn btn-success ml-2">Log in to Save</button>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+
       </div>
     </div>
     <!-- render start -->
@@ -91,9 +94,9 @@
               </div>
               <h6>Why not share your combo with your friends?</h6>
               <div class="row d-flex justify-content-center align-items-center" id="modal-icons">
-                <a href="#"><i class="fab fa-instagram mx-1"></i></a>
-                <a href="#"><i class="fab fa-facebook mx-1"></i></a>
-                <a href="#"><i class="fab fa-twitter mx-1"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram mx-1 text-success"></i></a>
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook mx-1 text-success"></i></a>
+                <a href="https://twitter.com/?lang=en-gb" target="_blank"><i class="fab fa-twitter mx-1 text-success"></i></a>
               </div>
             </div>
             <div class="modal-footer">
