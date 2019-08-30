@@ -3,8 +3,18 @@
     <h2 class="text-center mb-4">Search results for <strong><i class="fas fa-film ml-2 mr-2"><i class="fas fa-utensils ml-2 mr-2"></i></i><%= params[:hidden_genre].capitalize %> & <%= params[:hidden_foodtype].capitalize %></strong></h2>
     <div class="refresh-btn">
       <p class="mb-1 text-warning">Not happy with what you got ?</p>
-      <button class="btn btn-warning refresh mb-3" onClick="window.location.reload()">Refresh<i class="fas fa-sync ml-2"></i></button>
+      <button class="btn btn-warning refresh mb-3" id="refresh">
+        Refresh<i class="fas fa-sync ml-2"></i>
+      </button>
     </div>
   <%= render 'shared/combo-card' %>
   </div>
 </div>
+
+<script>
+  const btn = document.getElementById('refresh');
+  refresh.addEventListener('click', () => {
+    <% session[:combo_ids] = nil %>
+    window.location.reload();
+  });
+</script>
