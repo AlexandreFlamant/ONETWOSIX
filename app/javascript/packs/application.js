@@ -36,6 +36,8 @@ $(document).ready(function(){
 
 
 
+
+
 // for genre and foodtype selection in carousel
 $(document).ready(function(){
   $(".select-choice").click(function(){
@@ -59,20 +61,51 @@ $(document).ready(function(){
 
 
 
-
-// $(":checkbox").click(function(){
-//   $length = $(":checkbox").length();
-//   if ( $length > 2 ) {
-//     $(":checkbox:checked").attr("disabled", true);
-//   } else {
-//     $(":checkbox").removeAttr("disabled");
+//media query for carousel for mobile photo: change slidesToShow from 3 to 1:
+// $(document).ready(function(){
+//   if (window.matchMedia("(max-width: 500px)").matches) {
+//    $('.fresh-carousel').slick({
+//       centerMode: true,
+//       centerPadding: '60px',
+//       slidesToShow: 1,
+//       autoplay: true,
+//       autoplaySpeed: 2000,
+//       pauseonFocus: true
+//     });
+//    $('.modal').on('shown.bs.modal', function () {
+//     $('.fresh-carousel').slick("setPosition", 0);
+//     });
+//    $('.carousel').slick({
+//       centerMode: true,
+//       centerPadding: '60px',
+//       slidesToShow: 1
+//     });
+//    $('.modal').on('shown.bs.modal', function () {
+//     $('.carousel').slick("setPosition", 0);
+//     });
 //   }
-// });
+//   else {
+//     $('.carousel').slick({
+//     centerMode: true,
+//     centerPadding: '60px',
+//     slidesToShow: 3
+//   })
 
+//   $('.fresh-carousel').slick({
+//     centerMode: true,
+//     centerPadding: '60px',
+//     slidesToShow: 3,
+//     autoplay: true,
+//     autoplaySpeed: 2000,
+//     pauseonFocus: true
+//   })
 
+//   $('.modal').on('shown.bs.modal', function () {
+//     $('.carousel').slick("setPosition", 0);
+//   })
 
-  // $('input[type=checkbox]').change(function(){
-  //    if ($('input[type=checkbox]:checked').length > 1) {
-  //         $(this)..attr('checked', true);
-  //    }
-  // })
+//   $('.modal').on('shown.bs.modal', function () {
+//     $('.fresh-carousel').slick("setPosition", 0);
+//   })
+//   }
+// }
