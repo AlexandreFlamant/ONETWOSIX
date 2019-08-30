@@ -72,7 +72,17 @@ Movie.create!(name:"Chasing Coral", genre: Genre.find_by_name("documentary"), de
 ",photo_url:"https://m.media-amazon.com/images/M/MV5BOTkwMGM3MzgtOGVlMy00ZGY1LWEwNTYtM2E2NzhhYTAyYTVkL2ltYWdlXkEyXkFqcGdeQXVyMTE1NjQzNDI@._V1_SY1000_SX675_AL_.jpg",link_url:"https://www.netflix.com/title/80168188")
 Movie.create!(name:"Vegucated", genre: Genre.find_by_name("documentary"), description:"Vegucated is a guerrilla-style documentary that follows three meat- and cheese-loving New Yorkers who agree to adopt a vegan diet for six weeks and learn what it's all about.
 ",photo_url:"https://m.media-amazon.com/images/M/MV5BMjIxMDg4NTcxN15BMl5BanBnXkFtZTcwODQ3MTYwNw@@._V1_SY1000_CR0,0,682,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt1814930/?ref_=tt_sims_tti")
-
+# Added by Alex Flamant on 30agu2019
+Movie.create!(name:"Enter the Anime", genre: Genre.find_by_name("documentary"), description:"Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70267802")
+Movie.create!(name:"Fyre", genre: Genre.find_by_name("documentary"), description:"The history of the Fyre Music Festival, from its creation through its unraveling.
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/81035279")
+Movie.create!(name:"Betting on Zero", genre: Genre.find_by_name("documentary"), description:"Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/80108609")
+Movie.create!(name:"Fishpeople", genre: Genre.find_by_name("documentary"), description:"The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/80196139")
+Movie.create!(name:"Losing Sight of Shore", genre: Genre.find_by_name("documentary"), description:"Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/80169548")
 
 
 # Restaurant seeds
