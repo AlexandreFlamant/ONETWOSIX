@@ -6,7 +6,7 @@
     <%= render 'no-saved-cards' %>
   <% else %>
   <h2>Hello <%= current_user.name %>!</h2>
-  <h4>Here are your saved combos</h4>
+  <h4>Here are your saved combos <i class="fas fa-save"></i></h4>
     <%= render 'shared/combo-selection-cards' %>
   <% end %>
 </div>
