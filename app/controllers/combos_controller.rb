@@ -28,7 +28,7 @@ class CombosController < ApplicationController
       end
     else
       session[:combo_ids] = params[:combo_ids].reject(&:empty?).map(&:to_i)
-      flash[:alert] = 'you must sign in/sign up before continuing'
+      flash[:alert] = 'You must sign in/sign up before continuing'
       redirect_to new_user_session_path
     end
   end
@@ -40,5 +40,4 @@ class CombosController < ApplicationController
       format.js
     end
   end
-
 end
