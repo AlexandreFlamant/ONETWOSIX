@@ -39,8 +39,12 @@ h6 {
 }
 
 #modal-icons > a > i {
-  color: #000000;
   font-size: 24px;
+  opacity: 0.7;
+}
+
+#modal-icons > a > i:hover {
+  opacity: 1;
 }
 
 .combo-card .close-button img{
