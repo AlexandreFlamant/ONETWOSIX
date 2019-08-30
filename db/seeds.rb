@@ -41,7 +41,7 @@ Movie.create!(name: "Resurface", genre: Genre.find_by_name("documentary"), descr
 
 # Added by Alex Flamant on 30agu2019
 Movie.create!(name:"Enter the Anime", genre: Genre.find_by_name("documentary"), description:"Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BMTgwNGI5MTAtMGJlZS00MzZlLWJjNmItZDcxYTFmY2VmMGJlXkEyXkFqcGdeQXVyMjUxMTEwNTE@._V1_SY1000_CR0,0,713,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70267802")
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BMTgwNGI5MTAtMGJlZS00MzZlLWJjNmItZDcxYTFmY2VmMGJlXkEyXkFqcGdeQXVyMjUxMTEwNTE@._V1_SY1000_CR0,0,713,1000_AL_.jpg",link_url:"https://www.netflix.com/title/81143771")
 Movie.create!(name:"Fyre", genre: Genre.find_by_name("documentary"), description:"The history of the Fyre Music Festival, from its creation through its unraveling.
   ",photo_url:"https://m.media-amazon.com/images/M/MV5BMjQ2NzE1MjYxMV5BMl5BanBnXkFtZTgwMjM3MDQxNzM@._V1_SY1000_SX675_AL_.jpg",link_url:"https://www.netflix.com/title/81035279")
 Movie.create!(name:"Betting on Zero", genre: Genre.find_by_name("documentary"), description:"Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.
