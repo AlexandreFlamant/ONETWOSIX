@@ -67,7 +67,7 @@ $(document).ready(function(){
 //    $('.fresh-carousel').slick({
 //       centerMode: true,
 //       centerPadding: '60px',
-//       slidesToShow: 1,
+//       // slidesToShow: 1,
 //       autoplay: true,
 //       autoplaySpeed: 2000,
 //       pauseonFocus: true
@@ -78,7 +78,7 @@ $(document).ready(function(){
 //    $('.carousel').slick({
 //       centerMode: true,
 //       centerPadding: '60px',
-//       slidesToShow: 1
+//       // slidesToShow: 1
 //     });
 //    $('.modal').on('shown.bs.modal', function () {
 //     $('.carousel').slick("setPosition", 0);

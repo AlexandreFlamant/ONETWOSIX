@@ -35,22 +35,21 @@ Movie.create!(name:"Jiro Dreams of Sushi", genre: Genre.find_by_name("documentar
 ",photo_url:"https://m.media-amazon.com/images/M/MV5BMTA5NzQzODUxOTheQTJeQWpwZ15BbWU3MDIwODg1MDc@._V1_SY1000_CR0,0,715,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70181716")
 Movie.create!(name:"Chasing Coral", genre: Genre.find_by_name("documentary"), description:"Coral reefs around the world are vanishing at an unprecedented rate. A team of divers, photographers and scientists set out on a thrilling ocean adventure to discover why and to reveal the underwater mystery to the world.
 ",photo_url:"https://m.media-amazon.com/images/M/MV5BOTkwMGM3MzgtOGVlMy00ZGY1LWEwNTYtM2E2NzhhYTAyYTVkL2ltYWdlXkEyXkFqcGdeQXVyMTE1NjQzNDI@._V1_SY1000_SX675_AL_.jpg",link_url:"https://www.netflix.com/title/80168188")
-Movie.create!(name: "Cowspiracy", genre: Genre.find_by_name("documentary"), description: "Follow the shocking, yet humorous, journey of an aspiring environmentalist, as he daringly seeks to find the real solution to the most pressing environmental issues and true path to sustainability.", photo_url: "https://m.media-amazon.com/images/M/MV5BMTU5NzAyMzk1MF5BMl5BanBnXkFtZTgwODE3NjQyNTE@._V1_.jpg
-  ",link_url: "https://www.netflix.com/title/80033772")
+Movie.create!(name: "Cowspiracy", genre: Genre.find_by_name("documentary"), description: "Follow the shocking, yet humorous, journey of an aspiring environmentalist, as he daringly seeks to find the real solution to the most pressing environmental issues and true path to sustainability.", photo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Cowspiracy_poster.jpg/220px-Cowspiracy_poster.jpg",link_url: "https://www.netflix.com/title/80033772")
 Movie.create!(name: "Resurface", genre: Genre.find_by_name("documentary"), description: "After years of nightmares, depression, and seizures, Iraq war veteran Bobby Lane could see no way out of his trauma other than suicide. Then he met Van Curaza, a former big wave surfer who since founded Operation Surf and dedicated his life to helping veterans find solace in surfing.
-  ",photo_url: "https://m.media-amazon.com/images/M/MV5BYjU4Y2NjNmEtOTQ5Mi00YzdmLTk2N2MtZTM2YWJlNzE5ZDhhXkEyXkFqcGdeQXVyMjQyMjM4MjI@._V1_SY1000_CR0,0,671,1000_AL_.jpg", link_url: "https://www.netflix.com/title/80184055")
+",photo_url: "https://m.media-amazon.com/images/M/MV5BYjU4Y2NjNmEtOTQ5Mi00YzdmLTk2N2MtZTM2YWJlNzE5ZDhhXkEyXkFqcGdeQXVyMjQyMjM4MjI@._V1_SY1000_CR0,0,671,1000_AL_.jpg", link_url: "https://www.netflix.com/title/80184055")
 
 # Added by Alex Flamant on 30agu2019
 Movie.create!(name:"Enter the Anime", genre: Genre.find_by_name("documentary"), description:"Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70267802")
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BMTgwNGI5MTAtMGJlZS00MzZlLWJjNmItZDcxYTFmY2VmMGJlXkEyXkFqcGdeQXVyMjUxMTEwNTE@._V1_SY1000_CR0,0,713,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70267802")
 Movie.create!(name:"Fyre", genre: Genre.find_by_name("documentary"), description:"The history of the Fyre Music Festival, from its creation through its unraveling.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/81035279")
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BMjQ2NzE1MjYxMV5BMl5BanBnXkFtZTgwMjM3MDQxNzM@._V1_SY1000_SX675_AL_.jpg",link_url:"https://www.netflix.com/title/81035279")
 Movie.create!(name:"Betting on Zero", genre: Genre.find_by_name("documentary"), description:"Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/80108609")
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BMjA0MTc3ODc3NF5BMl5BanBnXkFtZTgwMTQ5NDc0MTI@._V1_SY1000_CR0,0,676,1000_AL_.jpg",link_url:"https://www.netflix.com/title/80108609")
 Movie.create!(name:"Fishpeople", genre: Genre.find_by_name("documentary"), description:"The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/80196139")
+  ",photo_url:"https://m.media-amazon.com/images/M/MV5BOWM5MTU1OTgtMjVkOC00Y2VkLTgyMTAtMDI5YzE3YzZiZWE0XkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_.jpg",link_url:"https://www.netflix.com/title/80196139")
 Movie.create!(name:"Losing Sight of Shore", genre: Genre.find_by_name("documentary"), description:"Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/80169548")
+  ",photo_url:"http://www.gstatic.com/tv/thumb/v22vodart/14087387/p14087387_v_v8_ab.jpg",link_url:"https://www.netflix.com/title/80169548")
 
 
 # Restaurant seeds
