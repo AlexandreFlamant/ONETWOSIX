@@ -65,24 +65,24 @@ $(document).ready(function(){
 // $(document).ready(function(){
 //   if (window.matchMedia("(max-width: 768px)").matches) {
 //    $('.fresh-carousel').slick({
-//       centerMode: true,
-//       centerPadding: '60px',
+//       // centerMode: true,
+//       // centerPadding: '60px',
 //       // slidesToShow: 1,
 //       autoplay: true,
 //       autoplaySpeed: 2000,
 //       pauseonFocus: true
 //     });
-//    $('.modal').on('shown.bs.modal', function () {
-//     $('.fresh-carousel').slick("setPosition", 0);
-//     });
-//    $('.carousel').slick({
-//       centerMode: true,
-//       centerPadding: '60px',
+//    // $('.modal').on('shown.bs.modal', function () {
+//    //  $('.fresh-carousel').slick("setPosition", 0);
+//    //  });
+//    $('.carousel').slick(
+//       // centerMode: true,
+//       // centerPadding: '60px',
 //       // slidesToShow: 1
-//     });
-//    $('.modal').on('shown.bs.modal', function () {
-//     $('.carousel').slick("setPosition", 0);
-//     });
+//     );
+//   //  $('.modal').on('shown.bs.modal', function () {
+//   //   $('.carousel').slick("setPosition", 0);
+//   //   });
 //   };
 //   else {
 //     $('.carousel').slick({
@@ -104,8 +104,8 @@ $(document).ready(function(){
 //       $('.carousel').slick("setPosition", 0);
 //     })
 
-//     $('.modal').on('shown.bs.modal', function () {
-//       $('.fresh-carousel').slick("setPosition", 0);
-//     });
+//     // $('.modal').on('shown.bs.modal', function () {
+//     //   $('.fresh-carousel').slick("setPosition", 0);
+//     // });
 //   };
 // };
