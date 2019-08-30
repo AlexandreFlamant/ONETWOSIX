@@ -7,11 +7,21 @@
   height: 100px;
   padding: 0px 50px;
   color: white;
+
+  @include mobile {
+    height: 70px;
+    padding: 0 20px;
+  }
 }
 
 .footer-copyright {
   font-family: "Amatic SC";
   font-size: 65px;
+
+  @include mobile {
+  font-size: 55px;
+  line-height: 0.5rem;
+  }
 }
 
 .footer-links {
