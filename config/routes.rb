@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :combos, only: :index do
     member do
-      put "like" => "combos#upvote"
-      put "downvote" => "combos#downvote"
+      post "like" => "combos#upvote"
+      post "downvote" => "combos#downvote"
       # put "select" => 'combos#upvote_select'
     end
   end
