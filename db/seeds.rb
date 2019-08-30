@@ -13,7 +13,7 @@ Combo.destroy_all
 
 #Genre seeds
 Genre.create!(name: "documentary", photo_url: "https://www.adorama.com/alc/wp-content/uploads/2018/02/shutterstock_663360523-1024x483.jpg")
-Genre.create!(name: "family", photo_url: "http://vignette2.wikia.nocookie.net/disney/images/2/23/Zootopia_Hopps_Family_photo.png/revision/latest?cb=20160315132551")
+Genre.create!(name: "family", photo_url: "https://vignette2.wikia.nocookie.net/disney/images/2/23/Zootopia_Hopps_Family_photo.png/revision/latest?cb=20160315132551")
 Genre.create!(name: "sci-fi", photo_url: "https://i.imgur.com/U48eJ32.jpg")
 Genre.create!(name: "romance", photo_url: "https://img.buzzfeed.com/buzzfeed-static/static/2018-03/25/2/asset/buzzfeed-prod-web-09/sub-buzz-3893-1521958649-5.png?downsize=700:*&output-format=auto&output-quality=auto")
 Genre.create!(name: "cult", photo_url: "https://www.telegraph.co.uk/content/dam/films/2018/11/25/TELEMMGLPICT000181712910_trans_NvBQzQNjv4BqmKdRvr-WZ3BJn63Zqr5tJBCJnlk6Z3A1gx69YFOTwrk.jpeg?imwidth=450")
@@ -49,11 +49,11 @@ Movie.create!(name:"Betting on Zero", genre: Genre.find_by_name("documentary"), 
 Movie.create!(name:"Fishpeople", genre: Genre.find_by_name("documentary"), description:"The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.
   ",photo_url:"https://m.media-amazon.com/images/M/MV5BOWM5MTU1OTgtMjVkOC00Y2VkLTgyMTAtMDI5YzE3YzZiZWE0XkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_.jpg",link_url:"https://www.netflix.com/title/80196139")
 Movie.create!(name:"Losing Sight of Shore", genre: Genre.find_by_name("documentary"), description:"Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.
-  ",photo_url:"http://www.gstatic.com/tv/thumb/v22vodart/14087387/p14087387_v_v8_ab.jpg",link_url:"https://www.netflix.com/title/80169548")
+  ",photo_url:"https://www.gstatic.com/tv/thumb/v22vodart/14087387/p14087387_v_v8_ab.jpg",link_url:"https://www.netflix.com/title/80169548")
 
 
 # Restaurant seeds
-Restaurant.create!(name: "Suito Japanese", food_type: FoodType.find_by_name("sushi"), photo_url:"http://suito.uk/wp-content/uploads/2014/07/Ichi_platters.jpg", link_url:"https://deliveroo.co.uk/menu/london/brick-lane/suito-japanese-platters?day=today&postcode=E28DY&time=ASAP", address:"E1 6RL")
+Restaurant.create!(name: "Suito Japanese", food_type: FoodType.find_by_name("sushi"), photo_url:"https://resizer.otstatic.com/v2/photos/large/25630082.jpg", link_url:"https://deliveroo.co.uk/menu/london/brick-lane/suito-japanese-platters?day=today&postcode=E28DY&time=ASAP", address:"E1 6RL")
 Restaurant.create!(name: "Miyako", food_type: FoodType.find_by_name("sushi"), photo_url:"https://media-cdn.tripadvisor.com/media/photo-s/06/a6/8a/33/ginza-miyako-japanese.jpg", link_url:"https://deliveroo.co.uk/menu/london/liverpool-street/miyako?day=today&postcode=E28DY&time=ASAP", address:"EC2M 7QN")
 Restaurant.create!(name: "Island Poke", food_type: FoodType.find_by_name("sushi"), photo_url:"https://images.squaremeal.co.uk/cloud/article/9176/images/vegan-watermelon-sashimi-in-island-poke-bowl_26062019012842.jpg?w=1000", link_url:"https://deliveroo.co.uk/menu/london/shoreditch/island-poke-shoreditch?day=today&postcode=E28DY&time=ASAP", address:"EC2A 3EP")
 Restaurant.create!(name: "Poke Zone", food_type: FoodType.find_by_name("sushi"), photo_url:"https://f.roocdn.com/images/menus/94354/header-image.jpg?width=1200&height=630&auto=webp&format=jpg&fit=crop&v=1558581725", link_url:"https://deliveroo.co.uk/menu/london/whitechapel/sushizone-ltd-poke-zone-london?day=today&postcode=E28DY&time=ASAP", address:"E1 5BW")
