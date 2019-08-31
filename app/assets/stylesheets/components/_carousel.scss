@@ -49,10 +49,22 @@
 
 .slick-prev {
   left: 313px;
+  @include tablet {
+    left: 3px;
+  }
+  @include mobile {
+    left: -15px;
+  }
 }
 
 .slick-next {
   right: 313px;
+  @include tablet {
+    left: 640px;
+  }
+  @include mobile {
+    right: -15px;
+  }
 }
 
 .slick-prev:before {
