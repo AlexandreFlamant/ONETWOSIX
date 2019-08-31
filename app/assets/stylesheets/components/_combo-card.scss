@@ -88,6 +88,7 @@
 
   @include mobile {
     width: 80%;
+    text-align: center;
   }
 }
 
@@ -119,5 +120,14 @@
 #modal-icons > a > i {
   color: #255957;
   font-size: 32px;
+}
+
+.indext-content-bottom {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  @include mobile {
+    justify-content: center;
+  }
 }
 
