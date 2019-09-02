@@ -78,14 +78,14 @@ Combo.create!(name:"Fresh from the Sea", description: "A documentary following t
 movie: Movie.find_by_name("Blackfish"), restaurant: Restaurant.find_by_name("Suito Japanese"))
 Combo.create!(name: "Overpromised and underdelivered", description: "The history of the Fyre Music Festival, from its creation through its unraveling.",
 movie: Movie.find_by_name("Fyre"), restaurant: Restaurant.find_by_name("Itsu"))
-Combo.create!(name: "Anime and Yakitori", description: "Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.",
-movie: Movie.find_by_name("Enter the Anime"), restaurant: Restaurant.find_by_name("The Japanese Canteen"))
-Combo.create!(name: "Fishpeople...Fish people?!", description: "The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.",
-movie: Movie.find_by_name("Fishpeople"), restaurant: Restaurant.find_by_name("Japanika"))
-Combo.create!(name: "Betting on Jiro", description: "Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.",
-movie: Movie.find_by_name("Betting on Zero"), restaurant: Restaurant.find_by_name("Gourmet Sushi"))
-Combo.create!(name: "Losing sight of Shore", description: "Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.",
-movie: Movie.find_by_name("Losing Sight of Shore"), restaurant: Restaurant.find_by_name("EATKatsu"))
+# Combo.create!(name: "Anime and Yakitori", description: "Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.",
+# movie: Movie.find_by_name("Enter the Anime"), restaurant: Restaurant.find_by_name("The Japanese Canteen"))
+# Combo.create!(name: "Fishpeople...Fish people?!", description: "The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.",
+# movie: Movie.find_by_name("Fishpeople"), restaurant: Restaurant.find_by_name("Japanika"))
+# Combo.create!(name: "Betting on Jiro", description: "Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.",
+# movie: Movie.find_by_name("Betting on Zero"), restaurant: Restaurant.find_by_name("Gourmet Sushi"))
+# Combo.create!(name: "Losing sight of Shore", description: "Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.",
+# movie: Movie.find_by_name("Losing Sight of Shore"), restaurant: Restaurant.find_by_name("EATKatsu"))
 
 
 # Movie.create!(name:"Jaws", genre: Genre.find_by_name("cult"), description:"When a killer shark unleashes chaos on a beach community, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.
