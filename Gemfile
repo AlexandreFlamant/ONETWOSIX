@@ -10,6 +10,9 @@ gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
 gem 'geocoder'
+gem 'money-rails'
+gem 'stripe'
+
 
 gem 'acts_as_votable'
 gem 'autoprefixer-rails'
