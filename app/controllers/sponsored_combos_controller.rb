@@ -1,0 +1,2 @@
+class SponsoredCombosController < ApplicationController
+end
