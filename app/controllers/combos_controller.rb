@@ -1,20 +1,57 @@
 class CombosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :upvote]
+  skip_before_action :authenticate_user!, only: [:index, :upvote, :refresh_save]
 
   def index
-    # @combos = Combo.all
+    # # @combos = Combo.all
+    # location = params.dig(:location)
+    # genre = params.dig(:hidden_genre).downcase
+    # foodtype = params.dig(:hidden_foodtype).downcase
+    # if location.present?
+    #   restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
+    #   # restaurants = Restaurant.where(food_type: params[:search][:foodtype].reject(&:empty?).first).near(location, 6).sort_by { |r| r.id }
+    # end
+    # movies = Movie.select { |m| genre.include?(m.genre.name) }
     location = params.dig(:location)
     genre = params.dig(:hidden_genre).downcase
     foodtype = params.dig(:hidden_foodtype).downcase
     if location.present?
       restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
-      # restaurants = Restaurant.where(food_type: params[:search][:foodtype].reject(&:empty?).first).near(location, 6).sort_by { |r| r.id }
+      movies = Movie.select { |m| genre.include?(m.genre.name) }
+      3.times do
+        Combo.create(restaurant: restaurants.shuffle!.delete_at(-1), movie: movies.shuffle!.delete_at(-1))
+      end
     end
-    movies = Movie.select { |m| genre.include?(m.genre.name) }
+
     if session[:combo_ids].present?
       @combos = session[:combo_ids].map { |id| Combo.find(id) }
     else
       @combos = Combo.where(movie: movies, restaurant: restaurants)
+    end
+  end
+
+  def new
+    @combos = Combo.new
+  end
+
+  def create
+    @combo = Combo.new(combo_params)
+    if combo.save?
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def refresh_save
+    location = params.dig(:location)
+    genre = params.dig(:hidden_genre).downcase
+    foodtype = params.dig(:hidden_foodtype).downcase
+    if location.present?
+      restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
+      movies = Movie.select { |m| genre.include?(m.genre.name) }
+      3.times do
+        Combo.create(restaurant: restaurants.shuffle!.delete_at(-1), movie: movies.shuffle!.delete_at(-1))
+      end
     end
   end
 
@@ -39,5 +76,11 @@ class CombosController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  private
+
+  def combo_params
+    params.require(:combo).permit(:name, :description, :movie, :restaurant)
   end
 end

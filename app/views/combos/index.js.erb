@@ -1,0 +1,7 @@
+<% session[:combo_ids] = nil %>
+document.querySelectorAll(".result").forEach((comboCard) => {
+  comboCard.remove();
+})
+
+resultsHtml = "<%= j render 'shared/combo-card' %>"
+document.querySelector('.new_results').insertAdjacentHTML('beforeend', resultsHtml);
