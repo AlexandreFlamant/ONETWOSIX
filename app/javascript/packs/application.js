@@ -2,8 +2,13 @@ import "bootstrap";
 import $ from "jquery";
 import slick from "../../assets/slick/slick.min.js";
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import '../payment';
+import 'select2/dist/css/select2.css';
+import { initSelect2 } from '../plugins/init_select2';
+
 
 initAutocomplete();
+initSelect2();
 
 
 // carousel jQuery: for .carousel & .fresh-carousel

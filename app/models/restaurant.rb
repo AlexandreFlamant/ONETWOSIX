@@ -8,8 +8,8 @@ class Restaurant < ApplicationRecord
   has_many :combos, dependent: :destroy
   belongs_to :food_type
 
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  # geocoded_by :address
+  # after_validation :geocode, if: :will_save_change_to_address?
 
   # def self.get_food_type(food_type)
   #   self.all.where(food_type: food_type).first
