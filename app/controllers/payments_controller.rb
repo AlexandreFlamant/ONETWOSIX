@@ -55,9 +55,9 @@ class PaymentsController < ApplicationController
           render 'combos/new'
         end
       elsif Combo.where(movie: @movie, restaurant: @restaurant).any?
-        set_combo_pair.update(name: params[:combo][:name], description: params[:combo][:description])
         @sponsored_combo.combo = set_combo_pair
         if @sponsored_combo.save
+          set_combo_pair.update(name: params[:combo][:name], description: params[:combo][:description])
           flash[:notice] = 'Your payment was successful!'
           redirect_to profile_path
         else
