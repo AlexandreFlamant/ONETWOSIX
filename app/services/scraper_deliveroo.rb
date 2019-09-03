@@ -19,9 +19,8 @@ class ScraperDeliveroo
 
     html_doc.search('.HomeFeedUICard-45fe00a3d559fba5').map do |element|
       food = FoodType.find_by_name(@foodtype)
-      restaurants[@foodtype.to_sym] << Restaurant.create(name: element.search(".HomeFeedUICard-f7ccdc5e7b2c5059.HomeFeedUICard-a9d288756e60cf37").text.strip, food_type: food, photo_url: food.photo_url, link_url: "https://deliveroo.co.uk/restaurants/london/haggerston?postcode=#{@postcode}&collection=#{@foodtype}", address: @postcode)
-      # PUSH MOVIE INSTANCE INTO RESTAURANTS HASH WITHIN KEY THAT MATCHES FOOD TYPE
+      # NEED TO GET RESTAURANT NAME
+      restaurants[@foodtype.to_sym] << Restaurant.create(name: element.search(".HomeFeedUICard-f7ccdc5e7b2c5059.HomeFeedUICard-a9d288756e60cf37").text.strip, food_type: food, photo_url: food.photo_url, link_url: "# https://deliveroo.co.uk/menu/london/haggerston/#{element.search(".HomeFeedUICard-f7ccdc5e7b2c5059.HomeFeedUICard-a9d288756e60cf37").text.strip}-haggerston?day=today&postcode=E28DY&time=ASAP", address: @postcode)
     end
-
   end
 end

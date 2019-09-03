@@ -1,6 +1,6 @@
 <div class="fresh-carousel">
   <!-- start of combo card -->
-  <% @fresh_combos.each do |combo| %>
+  <% @fresh_combos.sample(25).each do |combo| %>
     <div class="combo-box d-flex justify-content-center align-items-center">
       <div class="combo-card carousel-card">
         <div class="poster" style="background-image: url('<%=image_path combo.movie.photo_url%>')">
@@ -40,8 +40,8 @@
 
 
 <!-- start of simple form for -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl mt-3">
+<div class="modal fade bd-example-modal-lg justify-content-center" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl margin-auto">
     <div class="modal-content">
 
       <h4 class="text-center mt-4 mb-0"><strong>Now...choose a film & food type ♥</strong></h4>
