@@ -1,12 +1,18 @@
 <!-- do iteration instead copy 3 sets of card when the seeds are ready -->
 <!-- iteration outside of row -->
 <% unless session[:combo_ids].present? %>
-  <% random_combos = @combos.sample(3) %>
+  <% sponsored_combo = @combos.select {|c| c.sponsored_combos.present? == true }.sample %>
+  <% non_sponsored_combo = @combos.select {|c| c.sponsored_combos.present? == false }.sample(2) %>
+  <% if sponsored_combo.present? %>
+    <% random_combos = [sponsored_combo, non_sponsored_combo[0], non_sponsored_combo[1]] %>
+  <% else %>
+    <% random_combos = @combos.sample(3) %>
+  <% end %>
 <% else %>
   <% random_combos = @combos %>
 <% end %>
 <% random_combos.each do |combo| %>
-  <div class="row d-flex align-items-center mb-3">
+  <div class="row d-flex align-items-center mb-3 result">
     <div class="col-sm-12 col-md-6">
       <div class="combination">
         <div class="combo-box d-flex justify-content-center align-items-center">
@@ -59,8 +65,13 @@
 
     <div class="col-sm-12 col-md-6">
       <div class="index-content">
-        <h4><%= combo.name %></h4>
-        <p><%= combo.description %></p>
+        <% if combo.name.present? %>
+          <h4><%= combo.name %></h4>
+          <p><%= combo.description %></p>
+        <% else %>
+          <h4><%= combo.movie.name %> & <%= combo.restaurant.name %> </h4>
+          <p><%= combo.movie.description %></p>
+        <% end %>
 
         <div class="index-content-bottom">
         <!-- modal button start -->

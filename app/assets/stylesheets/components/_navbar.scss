@@ -40,7 +40,9 @@
   }
 }
 
-#saved-combo {
+#nav-items {
+  display: flex;
+  align-items: center;
   @include mobile {
     display: none;
   }

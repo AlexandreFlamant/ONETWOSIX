@@ -1,8 +1,7 @@
 class CombosController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :upvote]
+  skip_before_action :authenticate_user!, only: [:index, :upvote, :refresh_save]
 
   def index
-    # @combos = Combo.all
     location = params.dig(:location)
     postcode = params.dig(:postcode)
     genre = params.dig(:hidden_genre).downcase
@@ -10,7 +9,10 @@ class CombosController < ApplicationController
     ScraperDeliveroo.new(postcode, foodtype).call
     if location.present?
       restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
-      # restaurants = Restaurant.where(food_type: params[:search][:foodtype].reject(&:empty?).first).near(location, 6).sort_by { |r| r.id }
+      movies = Movie.select { |m| genre.include?(m.genre.name) }
+      3.times do
+        Combo.create(restaurant: restaurants.shuffle!.delete_at(-1), movie: movies.shuffle!.delete_at(-1))
+      end
     end
     if session[:combo_ids].present?
       @combos = session[:combo_ids].map { |id| Combo.find(id)}
@@ -33,6 +35,10 @@ class CombosController < ApplicationController
       end
       @combos
     end
+  end
+
+  def new
+    @combo = Combo.new
   end
 
   def upvote

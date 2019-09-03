@@ -105,6 +105,7 @@ Restaurant.create!(name: "EATKatsu", food_type: FoodType.find_by_name("sushi"), 
 
 
 
+
 # # Combo seeds
 # Combo.create!(name:"Screen to plate", description: "Revered sushi chef Jiro Ono strives for perfection in his work, while his eldest son, Yoshikazu, has trouble living up to his father's legacy.
 # ", movie: Movie.find_by_name("Jiro Dreams of Sushi"), restaurant: Restaurant.find_by_name("Miyako"))
@@ -118,6 +119,21 @@ Restaurant.create!(name: "EATKatsu", food_type: FoodType.find_by_name("sushi"), 
 # movie: Movie.find_by_name("Blackfish"), restaurant: Restaurant.find_by_name("Suito Japanese"))
 # Combo.create!(name: "Overpromised and underdelivered", description: "The history of the Fyre Music Festival, from its creation through its unraveling.",
 # movie: Movie.find_by_name("Fyre"), restaurant: Restaurant.find_by_name("Itsu"))
+
+# Combo seeds
+# Combo.create!(name:"Screen to plate", description: "Revered sushi chef Jiro Ono strives for perfection in his work, while his eldest son, Yoshikazu, has trouble living up to his father's legacy.
+# ", movie: Movie.find_by_name("Jiro Dreams of Sushi"), restaurant: Restaurant.find_by_name("Miyako"))
+# Combo.create!(name:"Surf & Surf", description: "After years of nightmares, depression, and seizures, Iraq war veteran Bobby Lane could see no way out of his trauma other than suicide. Then he met Van Curaza, a former big wave surfer who since founded Operation Surf and dedicated his life to helping veterans find solace in surfing.
+#  ", movie: Movie.find_by_name("Resurface"), restaurant: Restaurant.find_by_name("Island Poke"))
+# Combo.create!(name:"Vegan Surf", description: "Follow the shocking, yet humorous, journey of an aspiring environmentalist, as he daringly seeks to find the real solution to the most pressing environmental issues and true path to sustainability.",
+# movie: Movie.find_by_name("Cowspiracy"), restaurant: Restaurant.find_by_name("Poke Zone"))
+# Combo.create!(name:"Ocean Adventure", description: "Coral reefs around the world are vanishing at an unprecedented rate. A team of divers, photographers and scientists set out on a thrilling ocean adventure to discover why and to reveal the underwater mystery to the world.",
+# movie: Movie.find_by_name("Chasing Coral"), restaurant: Restaurant.find_by_name("Nobu"))
+# Combo.create!(name:"Fresh from the Sea", description: "A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.",
+# movie: Movie.find_by_name("Blackfish"), restaurant: Restaurant.find_by_name("Suito Japanese"))
+# Combo.create!(name: "Overpromised and underdelivered", description: "The history of the Fyre Music Festival, from its creation through its unraveling.",
+# movie: Movie.find_by_name("Fyre"), restaurant: Restaurant.find_by_name("Itsu"))
+
 # Combo.create!(name: "Anime and Yakitori", description: "Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.",
 # movie: Movie.find_by_name("Enter the Anime"), restaurant: Restaurant.find_by_name("The Japanese Canteen"))
 # Combo.create!(name: "Fishpeople...Fish people?!", description: "The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.",
@@ -207,4 +223,25 @@ Restaurant.create!(name: "EATKatsu", food_type: FoodType.find_by_name("sushi"), 
 # Combo.create!(name:"Silence of Lamb Combo3", description:"Silence of lamb description", movie: Movie.find_by_name("The Silence of Lambs3"))
 
 
+# Demo August 30th
+# Combo.create!(name:"Screen to plate", description: "Revered sushi chef Jiro Ono strives for perfection in his work, while his eldest son, Yoshikazu, has trouble living up to his father's legacy.
+# ", movie: Movie.find_by_name("Jiro Dreams of Sushi"), restaurant: Restaurant.find_by_name("Miyako"))
+# Combo.create!(name:"Surf & Surf", description: "After years of nightmares, depression, and seizures, Iraq war veteran Bobby Lane could see no way out of his trauma other than suicide. Then he met Van Curaza, a former big wave surfer who since founded Operation Surf and dedicated his life to helping veterans find solace in surfing.
+#  ", movie: Movie.find_by_name("Resurface"), restaurant: Restaurant.find_by_name("Island Poke"))
+# Combo.create!(name:"Vegan Surf", description: "Follow the shocking, yet humorous, journey of an aspiring environmentalist, as he daringly seeks to find the real solution to the most pressing environmental issues and true path to sustainability.",
+# movie: Movie.find_by_name("Cowspiracy"), restaurant: Restaurant.find_by_name("Poke Zone"))
+# Combo.create!(name:"Ocean Adventure", description: "Coral reefs around the world are vanishing at an unprecedented rate. A team of divers, photographers and scientists set out on a thrilling ocean adventure to discover why and to reveal the underwater mystery to the world.",
+# movie: Movie.find_by_name("Chasing Coral"), restaurant: Restaurant.find_by_name("Nobu"))
+# Combo.create!(name:"Fresh from the Sea", description: "A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.",
+# movie: Movie.find_by_name("Blackfish"), restaurant: Restaurant.find_by_name("Suito Japanese"))
+# Combo.create!(name: "Overpromised and underdelivered", description: "The history of the Fyre Music Festival, from its creation through its unraveling.",
+# movie: Movie.find_by_name("Fyre"), restaurant: Restaurant.find_by_name("Itsu"))
+# Combo.create!(name: "Anime and Yakitori", description: "Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.",
+# movie: Movie.find_by_name("Enter the Anime"), restaurant: Restaurant.find_by_name("The Japanese Canteen"))
+# Combo.create!(name: "Fishpeople...Fish people?!", description: "The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.",
+# movie: Movie.find_by_name("Fishpeople"), restaurant: Restaurant.find_by_name("Japanika"))
+# Combo.create!(name: "Betting on Jiro", description: "Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.",
+# movie: Movie.find_by_name("Betting on Zero"), restaurant: Restaurant.find_by_name("Gourmet Sushi"))
+# Combo.create!(name: "Losing sight of Shore", description: "Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.",
+# movie: Movie.find_by_name("Losing Sight of Shore"), restaurant: Restaurant.find_by_name("EATKatsu"))
 

@@ -1,0 +1,62 @@
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+  box-sizing: border-box;
+
+  height: 40px;
+
+  padding: 10px 12px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+#card-element {
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+
+
+// Select2 styling
+.select2 {
+  width: 100% !important;
+}
+
+.select2-container .select2-selection--single {
+  height: calc(1.5em + 0.75rem + 2px) !important;
+  border: 1px solid #ced4da !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 36px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #495057 !important;
+  opacity: 0.8 !important;
+  padding-left:5px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 6px !important;
+}
+

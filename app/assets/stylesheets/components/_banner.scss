@@ -19,6 +19,14 @@
   }
 }
 
+#flat_address {
+  width: 318px !important;
+
+  @include mobile {
+    width: 200px !important;
+  }
+}
+
 #logo {
   font-family: "Amatic SC";
   font-size: 15vw;

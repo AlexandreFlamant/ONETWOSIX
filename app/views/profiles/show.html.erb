@@ -2,11 +2,26 @@
   <br>
   <div class="header mx-2">
   </div>
-  <% if @user_combos.empty? %>
-    <%= render 'no-saved-cards' %>
-  <% else %>
-  <h2>Hello <%= current_user.name.capitalize %>!</h2>
-  <h4>Here are your saved combos <i class="fas fa-save"></i></h4>
+
+  <% if current_user.sponsored_combos.present? && @user_combos.empty? %>
+    <h2>Hello <%= current_user.name.capitalize %>!</h2>
+    <h4>Here are your sponsored combos <i class="fas fa-shopping-basket"></i></h4>
+    <%= render 'shared/sponsored-combo-selection-cards' %>
+    <h4>You have no saved combos!</h4>
+
+  <% elsif @user_combos.present? && !current_user.sponsored_combos.present? %>
+    <h2>Hello <%= current_user.name.capitalize %>!</h2>
+    <h4>Here are your saved combos <i class="fas fa-save"></i></h4>
     <%= render 'shared/combo-selection-cards' %>
+
+  <% elsif @user_combos.present? && current_user.sponsored_combos.present? %>
+    <h2>Hello <%= current_user.name.capitalize %>!</h2>
+    <h4>Here are your sponsored combos <i class="fas fa-shopping-basket"></i></h4>
+      <%= render 'shared/sponsored-combo-selection-cards' %>
+    <h4>Here are your saved combos <i class="fas fa-save"></i></h4>
+    <%= render 'shared/combo-selection-cards' %>
+
+  <% else %>
+    <%= render 'no-saved-cards' %>
   <% end %>
 </div>

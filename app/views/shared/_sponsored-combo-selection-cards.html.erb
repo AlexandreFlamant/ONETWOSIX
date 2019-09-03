@@ -1,0 +1,38 @@
+<div class="row d-flex">
+  <% paid_sponsored_combos = current_user.sponsored_combos.select { |s| s.state == "paid"} %>
+  <% combos = paid_sponsored_combos.map do |p| %>
+    <% p.combo %>
+  <% end %>
+  <% combos.each do |combo| %>
+    <div id="combo_card<%= combo.id %>" class="col-sm-12 col-md-6 col-lg-4">
+      <div class="home-card mx-2">
+        <div class="combination" id="small-card">
+          <div class="combo-box d-flex justify-content-center align-items-center">
+            <div class="combo-card">
+              <div class="poster" style="background-image: url('<%= image_path combo.movie.photo_url %>')">
+                <%= render 'shared/play-button-small', combo: combo %>
+              </div>
+              <div class="combo-card-infos">
+                <h6 class="combo-item-name"> <a href="<%=combo.movie.link_url %>" target="_blank" class="link-to">
+                  <%= combo.movie.name %></a>
+                </h6>
+              </div>
+              </div>
+              <div class="combo-card" id="shadow-right">
+                <img src="<%= image_path combo.restaurant.photo_url %>" />
+                <div class="combo-card-infos">
+                  <h6 class="combo-item-name">
+                    <a href="<%=combo.restaurant.link_url%>" target="_blank" class="link-to">
+                      <%= combo.restaurant.name %>
+                    </a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3><%= combo.name %></h3>
+          <p><%= combo.description %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
