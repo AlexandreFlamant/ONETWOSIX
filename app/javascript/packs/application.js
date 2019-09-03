@@ -5,10 +5,13 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import '../payment';
 import 'select2/dist/css/select2.css';
 import { initSelect2 } from '../plugins/init_select2';
+import { whitenArrow } from '../plugins/slick-arrow.js';
 
 
 initAutocomplete();
 initSelect2();
+whitenArrow();
+
 
 // carousel jQuery: for .carousel & .fresh-carousel
 $(document).ready(function(){
@@ -92,6 +95,7 @@ $(document).ready(function(){
   });
 });
 
+// for alerts and notices
 $(function(){
    var flashDurationInSeconds = 3;
    var flashContainerId = 'flash-messages';
