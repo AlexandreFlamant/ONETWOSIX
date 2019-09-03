@@ -1,17 +1,6 @@
 <!-- do iteration instead copy 3 sets of card when the seeds are ready -->
 <!-- iteration outside of row -->
-<% unless session[:combo_ids].present? %>
-  <% sponsored_combo = @combos.select {|c| c.sponsored_combos.present? == true }.sample %>
-  <% non_sponsored_combo = @combos.select {|c| c.sponsored_combos.present? == false }.sample(2) %>
-  <% if sponsored_combo.present? %>
-    <% random_combos = [sponsored_combo, non_sponsored_combo[0], non_sponsored_combo[1]] %>
-  <% else %>
-    <% random_combos = @combos.sample(3) %>
-  <% end %>
-<% else %>
-  <% random_combos = @combos %>
-<% end %>
-<% random_combos.each do |combo| %>
+<% @random_combos.each do |combo| %>
   <div class="row d-flex align-items-center mb-3 result">
     <div class="col-sm-12 col-md-6">
       <div class="combination">
@@ -65,11 +54,11 @@
 
     <div class="col-sm-12 col-md-6">
       <div class="index-content">
-        <% if combo.name.present? %>
-          <h4><%= combo.name %></h4>
+        <% if combo.class == SponsoredCombo %>
+          <h4><span class="sponsor-strong">Sponsored:</span> <%= combo.name %></h4>
           <p><%= combo.description %></p>
         <% else %>
-          <h4><%= combo.movie.name %> & <%= combo.restaurant.name %> </h4>
+          <h4><%= combo.movie.name %> + <%= combo.restaurant.name %> </h4>
           <p><%= combo.movie.description %></p>
         <% end %>
 
@@ -79,7 +68,7 @@
           </button>
         <!-- modal button end -->
           <% unless user_signed_in? %>
-            <%= link_to like_combo_path(combo, combo_ids: random_combos.pluck(:id)), class: "like", id:"log-save", method: :post, remote: user_signed_in? do %>
+            <%= link_to like_combo_path(combo, combo_ids: @random_combos.pluck(:id)), class: "like", id:"log-save", method: :post, remote: user_signed_in? do %>
                 <button type="button" class="btn btn-success ml-2">Log in to Save</button>
             <% end %>
           <% end %>
