@@ -49,6 +49,7 @@
       <%= simple_form_for :search, url: combos_path, class:'mt-0', method: :get, html: { id: 'search_form' } do |f| %>
         <%= hidden_field_tag "hidden_genre" %>
         <%= hidden_field_tag "hidden_foodtype" %>
+        <%= hidden_field_tag "postcode", params[:query] %>
         <fieldset class="form-group check_boxes required search_genre">
         <input type="hidden" name="search[genre][]" value="">
         <div class="carousel mb-0 mt-3">

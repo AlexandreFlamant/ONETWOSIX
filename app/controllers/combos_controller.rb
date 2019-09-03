@@ -4,17 +4,34 @@ class CombosController < ApplicationController
   def index
     # @combos = Combo.all
     location = params.dig(:location)
+    postcode = params.dig(:postcode)
     genre = params.dig(:hidden_genre).downcase
     foodtype = params.dig(:hidden_foodtype).downcase
+    ScraperDeliveroo.new(postcode, foodtype).call
     if location.present?
       restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
       # restaurants = Restaurant.where(food_type: params[:search][:foodtype].reject(&:empty?).first).near(location, 6).sort_by { |r| r.id }
     end
-    movies = Movie.select { |m| genre.include?(m.genre.name) }
     if session[:combo_ids].present?
-      @combos = session[:combo_ids].map { |id| Combo.find(id) }
+      @combos = session[:combo_ids].map { |id| Combo.find(id)}
     else
-      @combos = Combo.where(movie: movies, restaurant: restaurants)
+      @combos = []
+      movies = Movie.select { |m| genre == m.genre.name }
+      restaurants.each do |rest|
+        movie = movies.pop
+        unless movies.empty?
+          combo_find = Combo.find_by(name: "#{rest.name} + #{movie.name}")
+          if combo_find.nil?
+            new_combo = Combo.create(name: "#{rest.name} + #{movie.name}", description: movie.description, movie: movie, restaurant: rest)
+          end
+          if combo_find.nil?
+            @combos << new_combo
+          else
+            @combos << combo_find
+          end
+        end
+      end
+      @combos
     end
   end
 

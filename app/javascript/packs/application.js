@@ -5,7 +5,6 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 initAutocomplete();
 
-
 // carousel jQuery: for .carousel & .fresh-carousel
 $(document).ready(function(){
 

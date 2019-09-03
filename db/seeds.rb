@@ -1,22 +1,87 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'uri'
+require 'net/http'
+require 'openssl'
+require 'json'
+require 'pry'
+
 Genre.destroy_all
 FoodType.destroy_all
 Movie.destroy_all
 Restaurant.destroy_all
 Combo.destroy_all
 
-#Genre seeds
 Genre.create!(name: "documentary", photo_url: "https://www.adorama.com/alc/wp-content/uploads/2018/02/shutterstock_663360523-1024x483.jpg")
 Genre.create!(name: "family", photo_url: "https://vignette2.wikia.nocookie.net/disney/images/2/23/Zootopia_Hopps_Family_photo.png/revision/latest?cb=20160315132551")
 Genre.create!(name: "sci-fi", photo_url: "https://i.imgur.com/U48eJ32.jpg")
 Genre.create!(name: "romance", photo_url: "https://img.buzzfeed.com/buzzfeed-static/static/2018-03/25/2/asset/buzzfeed-prod-web-09/sub-buzz-3893-1521958649-5.png?downsize=700:*&output-format=auto&output-quality=auto")
 Genre.create!(name: "cult", photo_url: "https://www.telegraph.co.uk/content/dam/films/2018/11/25/TELEMMGLPICT000181712910_trans_NvBQzQNjv4BqmKdRvr-WZ3BJn63Zqr5tJBCJnlk6Z3A1gx69YFOTwrk.jpeg?imwidth=450")
+
+# https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi?q={query}-!{syear},{eyear}-!{snfrate},{enfrate}-!{simdbrate},{eimdbrate}-!{genreid}-!{vtype}-!{audio}-!{subtitle}-!{imdbvotes}&t=ns&cl={clist}&st=adv&ob={sortby}&p={page}&sa={andor}
+#                                                  new(days) start year, end year, rating (netflix, 0-5), imdb rating (0-10), genre, movie/series, lang, lang, how many imdb votes, country ID, sort-by (relavance/rating), how many, subtitile and language exclusive?
+
+# TO GET NETFLIX GENRE ID'S TO USE FOR SEARCH
+genre = URI("https://unogs-unogs-v1.p.rapidapi.com/api.cgi?t=genres")
+
+http = Net::HTTP.new(genre.host, genre.port)
+http.use_ssl = true
+http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+request = Net::HTTP::Get.new(genre)
+request["x-rapidapi-host"] = 'unogs-unogs-v1.p.rapidapi.com'
+request["x-rapidapi-key"] = 'c4b46c86c3msh3a9ef6c601b14a6p140610jsnb585dd1486dc'
+response = http.request(request)
+parsed = JSON.parse(response.read_body)
+
+
+kids_family_genre = parsed["ITEMS"][2]["All Childrens"]
+sci_fi_genre = parsed["ITEMS"][16]["All Sci-Fi"]
+cult_genre = parsed["ITEMS"][5]["All Cult"]
+documentary_genre = parsed["ITEMS"][6]["All Documentaries"]
+romance_genre = parsed["ITEMS"][15]["All Romance"]
+
+genres = [kids_family_genre, sci_fi_genre, cult_genre, documentary_genre, romance_genre]
+
+# SEARCH FOR MOVIES WITH INFO:
+# (IMDB RATING 7-10, year 1900-2019, netflix rating 0-5, genreID, movie, language(spoken & subtitle), countryID(uk = 46))
+movies = []
+
+genres.each do |genre|
+  url = URI("https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi?q=get%3Anew5000-!1900%2C2019-!0%2C5-!7%2C10-!#{genre.join(",")}-!movie-!Any-!Any-!gt100-!%7Bdownloadable%7D&t=ns&cl=46&st=adv&ob=Relevance&p=1&sa=and")
+
+  http = Net::HTTP.new(url.host, url.port)
+  http.use_ssl = true
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+  request = Net::HTTP::Get.new(url)
+  request["x-rapidapi-host"] = 'unogs-unogs-v1.p.rapidapi.com'
+  request["x-rapidapi-key"] = 'c4b46c86c3msh3a9ef6c601b14a6p140610jsnb585dd1486dc'
+
+  response = http.request(request)
+  parsed = JSON.parse(response.read_body)
+  movies << parsed
+end
+
+kids_family_genre = movies[0]["ITEMS"]
+sci_fi_genre = movies[1]["ITEMS"]
+cult_genre = movies[2]["ITEMS"]
+documentary_genre = movies[3]["ITEMS"]
+romance_genre = movies[4]["ITEMS"]
+movie_genres = {
+  "family" => kids_family_genre,
+  "sci-fi" => sci_fi_genre,
+  "cult" => cult_genre,
+  "documentary" => documentary_genre,
+  "romance" => romance_genre
+}
+
+# p movie_genres["family"].first
+
+movie_genres.each do |genre, films|
+  films.each do |item|
+    Movie.create(name: item["title"], genre: Genre.find_by_name(genre), description: "#{item["synopsis"]}", photo_url: "#{item["image"]}", link_url: "https://www.netflix.com/title/#{item["netflixid"]}")
+  end
+end
+
 
 
 #FoodType seeds
@@ -26,33 +91,7 @@ FoodType.create!(name: "salad", photo_url: "https://www.bbcgoodfood.com/sites/de
 FoodType.create!(name: "vietnamese", photo_url: "https://duyt4h9nfnj50.cloudfront.net/resized/1543931229557-w2880-41.jpg")
 FoodType.create!(name: "sushi", photo_url: "https://d22ir9aoo7cbf6.cloudfront.net/wp-content/uploads/sites/2/2017/04/standing-sushi-bar-singapore-header.jpg")
 
-# Movie seeds
-# Movie.create!(name:"Kung Fu Panda", genre: Genre.find_by_name("family"), description:"The Dragon Warrior has to clash against the savage Tai Lung as China's fate hangs in the balance. However, the Dragon Warrior mantle is supposedly mistaken to be bestowed upon an obese panda who is a novice in martial arts.
-# # ",photo_url:"https://m.media-amazon.com/images/M/MV5BODJkZTZhMWItMDI3Yy00ZWZlLTk4NjQtOTI1ZjU5NjBjZTVjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SY1000_CR0,0,689,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70075480")
-Movie.create!(name:"Blackfish", genre: Genre.find_by_name("documentary"), description:"A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.
-",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70267802")
-Movie.create!(name:"Jiro Dreams of Sushi", genre: Genre.find_by_name("documentary"), description:"Revered sushi chef Jiro Ono strives for perfection in his work, while his eldest son, Yoshikazu, has trouble living up to his father's legacy.
-",photo_url:"https://m.media-amazon.com/images/M/MV5BMTA5NzQzODUxOTheQTJeQWpwZ15BbWU3MDIwODg1MDc@._V1_SY1000_CR0,0,715,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70181716")
-Movie.create!(name:"Chasing Coral", genre: Genre.find_by_name("documentary"), description:"Coral reefs around the world are vanishing at an unprecedented rate. A team of divers, photographers and scientists set out on a thrilling ocean adventure to discover why and to reveal the underwater mystery to the world.
-",photo_url:"https://m.media-amazon.com/images/M/MV5BOTkwMGM3MzgtOGVlMy00ZGY1LWEwNTYtM2E2NzhhYTAyYTVkL2ltYWdlXkEyXkFqcGdeQXVyMTE1NjQzNDI@._V1_SY1000_SX675_AL_.jpg",link_url:"https://www.netflix.com/title/80168188")
-Movie.create!(name: "Cowspiracy", genre: Genre.find_by_name("documentary"), description: "Follow the shocking, yet humorous, journey of an aspiring environmentalist, as he daringly seeks to find the real solution to the most pressing environmental issues and true path to sustainability.", photo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Cowspiracy_poster.jpg/220px-Cowspiracy_poster.jpg",link_url: "https://www.netflix.com/title/80033772")
-Movie.create!(name: "Resurface", genre: Genre.find_by_name("documentary"), description: "After years of nightmares, depression, and seizures, Iraq war veteran Bobby Lane could see no way out of his trauma other than suicide. Then he met Van Curaza, a former big wave surfer who since founded Operation Surf and dedicated his life to helping veterans find solace in surfing.
-",photo_url: "https://m.media-amazon.com/images/M/MV5BYjU4Y2NjNmEtOTQ5Mi00YzdmLTk2N2MtZTM2YWJlNzE5ZDhhXkEyXkFqcGdeQXVyMjQyMjM4MjI@._V1_SY1000_CR0,0,671,1000_AL_.jpg", link_url: "https://www.netflix.com/title/80184055")
-
-# Added by Alex Flamant on 30agu2019
-Movie.create!(name:"Enter the Anime", genre: Genre.find_by_name("documentary"), description:"Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BMTgwNGI5MTAtMGJlZS00MzZlLWJjNmItZDcxYTFmY2VmMGJlXkEyXkFqcGdeQXVyMjUxMTEwNTE@._V1_SY1000_CR0,0,713,1000_AL_.jpg",link_url:"https://www.netflix.com/title/81143771")
-Movie.create!(name:"Fyre", genre: Genre.find_by_name("documentary"), description:"The history of the Fyre Music Festival, from its creation through its unraveling.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BMjQ2NzE1MjYxMV5BMl5BanBnXkFtZTgwMjM3MDQxNzM@._V1_SY1000_SX675_AL_.jpg",link_url:"https://www.netflix.com/title/81035279")
-Movie.create!(name:"Betting on Zero", genre: Genre.find_by_name("documentary"), description:"Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BMjA0MTc3ODc3NF5BMl5BanBnXkFtZTgwMTQ5NDc0MTI@._V1_SY1000_CR0,0,676,1000_AL_.jpg",link_url:"https://www.netflix.com/title/80108609")
-Movie.create!(name:"Fishpeople", genre: Genre.find_by_name("documentary"), description:"The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.
-  ",photo_url:"https://m.media-amazon.com/images/M/MV5BOWM5MTU1OTgtMjVkOC00Y2VkLTgyMTAtMDI5YzE3YzZiZWE0XkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_.jpg",link_url:"https://www.netflix.com/title/80196139")
-Movie.create!(name:"Losing Sight of Shore", genre: Genre.find_by_name("documentary"), description:"Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.
-  ",photo_url:"https://www.gstatic.com/tv/thumb/v22vodart/14087387/p14087387_v_v8_ab.jpg",link_url:"https://www.netflix.com/title/80169548")
-
-
-# Restaurant seeds
+# # Restaurant seeds
 Restaurant.create!(name: "Suito Japanese", food_type: FoodType.find_by_name("sushi"), photo_url:"https://resizer.otstatic.com/v2/photos/large/25630082.jpg", link_url:"https://deliveroo.co.uk/menu/london/brick-lane/suito-japanese-platters?day=today&postcode=E28DY&time=ASAP", address:"E1 6RL")
 Restaurant.create!(name: "Miyako", food_type: FoodType.find_by_name("sushi"), photo_url:"https://media-cdn.tripadvisor.com/media/photo-s/06/a6/8a/33/ginza-miyako-japanese.jpg", link_url:"https://deliveroo.co.uk/menu/london/liverpool-street/miyako?day=today&postcode=E28DY&time=ASAP", address:"EC2M 7QN")
 Restaurant.create!(name: "Island Poke", food_type: FoodType.find_by_name("sushi"), photo_url:"https://images.squaremeal.co.uk/cloud/article/9176/images/vegan-watermelon-sashimi-in-island-poke-bowl_26062019012842.jpg?w=1000", link_url:"https://deliveroo.co.uk/menu/london/shoreditch/island-poke-shoreditch?day=today&postcode=E28DY&time=ASAP", address:"EC2A 3EP")
@@ -65,27 +104,28 @@ Restaurant.create!(name: "Itsu", food_type: FoodType.find_by_name("sushi"), phot
 Restaurant.create!(name: "EATKatsu", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/138386/header-image.jpg?width=740&height=320&auto=webp&format=jpg&fit=crop&v=1557227226", link_url: "https://deliveroo.co.uk/menu/london/bethnal-green/eatkatsu?day=today&postcode=E28DY&time=ASAP", address: "E29RF")
 
 
-# Combo seeds
-Combo.create!(name:"Screen to plate", description: "Revered sushi chef Jiro Ono strives for perfection in his work, while his eldest son, Yoshikazu, has trouble living up to his father's legacy.
-", movie: Movie.find_by_name("Jiro Dreams of Sushi"), restaurant: Restaurant.find_by_name("Miyako"))
-Combo.create!(name:"Surf & Surf", description: "After years of nightmares, depression, and seizures, Iraq war veteran Bobby Lane could see no way out of his trauma other than suicide. Then he met Van Curaza, a former big wave surfer who since founded Operation Surf and dedicated his life to helping veterans find solace in surfing.
- ", movie: Movie.find_by_name("Resurface"), restaurant: Restaurant.find_by_name("Island Poke"))
-Combo.create!(name:"Vegan Surf", description: "Follow the shocking, yet humorous, journey of an aspiring environmentalist, as he daringly seeks to find the real solution to the most pressing environmental issues and true path to sustainability.",
-movie: Movie.find_by_name("Cowspiracy"), restaurant: Restaurant.find_by_name("Poke Zone"))
-Combo.create!(name:"Ocean Adventure", description: "Coral reefs around the world are vanishing at an unprecedented rate. A team of divers, photographers and scientists set out on a thrilling ocean adventure to discover why and to reveal the underwater mystery to the world.",
-movie: Movie.find_by_name("Chasing Coral"), restaurant: Restaurant.find_by_name("Nobu"))
-Combo.create!(name:"Fresh from the Sea", description: "A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.",
-movie: Movie.find_by_name("Blackfish"), restaurant: Restaurant.find_by_name("Suito Japanese"))
-Combo.create!(name: "Overpromised and underdelivered", description: "The history of the Fyre Music Festival, from its creation through its unraveling.",
-movie: Movie.find_by_name("Fyre"), restaurant: Restaurant.find_by_name("Itsu"))
-Combo.create!(name: "Anime and Yakitori", description: "Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.",
-movie: Movie.find_by_name("Enter the Anime"), restaurant: Restaurant.find_by_name("The Japanese Canteen"))
-Combo.create!(name: "Fishpeople...Fish people?!", description: "The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.",
-movie: Movie.find_by_name("Fishpeople"), restaurant: Restaurant.find_by_name("Japanika"))
-Combo.create!(name: "Betting on Jiro", description: "Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.",
-movie: Movie.find_by_name("Betting on Zero"), restaurant: Restaurant.find_by_name("Gourmet Sushi"))
-Combo.create!(name: "Losing sight of Shore", description: "Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.",
-movie: Movie.find_by_name("Losing Sight of Shore"), restaurant: Restaurant.find_by_name("EATKatsu"))
+
+# # Combo seeds
+# Combo.create!(name:"Screen to plate", description: "Revered sushi chef Jiro Ono strives for perfection in his work, while his eldest son, Yoshikazu, has trouble living up to his father's legacy.
+# ", movie: Movie.find_by_name("Jiro Dreams of Sushi"), restaurant: Restaurant.find_by_name("Miyako"))
+# Combo.create!(name:"Surf & Surf", description: "After years of nightmares, depression, and seizures, Iraq war veteran Bobby Lane could see no way out of his trauma other than suicide. Then he met Van Curaza, a former big wave surfer who since founded Operation Surf and dedicated his life to helping veterans find solace in surfing.
+#  ", movie: Movie.find_by_name("Resurface"), restaurant: Restaurant.find_by_name("Island Poke"))
+# Combo.create!(name:"Vegan Surf", description: "Follow the shocking, yet humorous, journey of an aspiring environmentalist, as he daringly seeks to find the real solution to the most pressing environmental issues and true path to sustainability.",
+# movie: Movie.find_by_name("Cowspiracy"), restaurant: Restaurant.find_by_name("Poke Zone"))
+# Combo.create!(name:"Ocean Adventure", description: "Coral reefs around the world are vanishing at an unprecedented rate. A team of divers, photographers and scientists set out on a thrilling ocean adventure to discover why and to reveal the underwater mystery to the world.",
+# movie: Movie.find_by_name("Chasing Coral"), restaurant: Restaurant.find_by_name("Nobu"))
+# Combo.create!(name:"Fresh from the Sea", description: "A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.",
+# movie: Movie.find_by_name("Blackfish"), restaurant: Restaurant.find_by_name("Suito Japanese"))
+# Combo.create!(name: "Overpromised and underdelivered", description: "The history of the Fyre Music Festival, from its creation through its unraveling.",
+# movie: Movie.find_by_name("Fyre"), restaurant: Restaurant.find_by_name("Itsu"))
+# Combo.create!(name: "Anime and Yakitori", description: "Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.",
+# movie: Movie.find_by_name("Enter the Anime"), restaurant: Restaurant.find_by_name("The Japanese Canteen"))
+# Combo.create!(name: "Fishpeople...Fish people?!", description: "The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.",
+# movie: Movie.find_by_name("Fishpeople"), restaurant: Restaurant.find_by_name("Japanika"))
+# Combo.create!(name: "Betting on Jiro", description: "Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.",
+# movie: Movie.find_by_name("Betting on Zero"), restaurant: Restaurant.find_by_name("Gourmet Sushi"))
+# Combo.create!(name: "Losing sight of Shore", description: "Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.",
+# movie: Movie.find_by_name("Losing Sight of Shore"), restaurant: Restaurant.find_by_name("EATKatsu"))
 
 
 # Movie.create!(name:"Jaws", genre: Genre.find_by_name("cult"), description:"When a killer shark unleashes chaos on a beach community, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.
@@ -116,7 +156,29 @@ movie: Movie.find_by_name("Losing Sight of Shore"), restaurant: Restaurant.find_
 # ",photo_url:"https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,677,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt0102926/?ref_=nv_sr_1?ref_=nv_sr_1")
 # Movie.create!(name:"Blade Runner3", genre: Genre.find_by_name("family"), description:"A blade runner must pursue and terminate four replicants who stole a ship in space, and have returned to Earth to find their creator.
 # ",photo_url:"https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,671,1000_AL_.jpg",link_url:"https://www.imdb.com/title/tt0083658/?ref_=nv_sr_2?ref_=nv_sr_2")
+# # Movie.create!(name:"Kung Fu Panda", genre: Genre.find_by_name("family"), description:"The Dragon Warrior has to clash against the savage Tai Lung as China's fate hangs in the balance. However, the Dragon Warrior mantle is supposedly mistaken to be bestowed upon an obese panda who is a novice in martial arts.
+# # # ",photo_url:"https://m.media-amazon.com/images/M/MV5BODJkZTZhMWItMDI3Yy00ZWZlLTk4NjQtOTI1ZjU5NjBjZTVjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SY1000_CR0,0,689,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70075480")
+# Movie.create!(name:"Blackfish", genre: Genre.find_by_name("documentary"), description:"A documentary following the controversial captivity of killer whales, and its dangers for both humans and whales.
+# ",photo_url:"https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70267802")
+# Movie.create!(name:"Jiro Dreams of Sushi", genre: Genre.find_by_name("documentary"), description:"Revered sushi chef Jiro Ono strives for perfection in his work, while his eldest son, Yoshikazu, has trouble living up to his father's legacy.
+# ",photo_url:"https://m.media-amazon.com/images/M/MV5BMTA5NzQzODUxOTheQTJeQWpwZ15BbWU3MDIwODg1MDc@._V1_SY1000_CR0,0,715,1000_AL_.jpg",link_url:"https://www.netflix.com/title/70181716")
+# Movie.create!(name:"Chasing Coral", genre: Genre.find_by_name("documentary"), description:"Coral reefs around the world are vanishing at an unprecedented rate. A team of divers, photographers and scientists set out on a thrilling ocean adventure to discover why and to reveal the underwater mystery to the world.
+# ",photo_url:"https://m.media-amazon.com/images/M/MV5BOTkwMGM3MzgtOGVlMy00ZGY1LWEwNTYtM2E2NzhhYTAyYTVkL2ltYWdlXkEyXkFqcGdeQXVyMTE1NjQzNDI@._V1_SY1000_SX675_AL_.jpg",link_url:"https://www.netflix.com/title/80168188")
+# Movie.create!(name: "Cowspiracy", genre: Genre.find_by_name("documentary"), description: "Follow the shocking, yet humorous, journey of an aspiring environmentalist, as he daringly seeks to find the real solution to the most pressing environmental issues and true path to sustainability.", photo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Cowspiracy_poster.jpg/220px-Cowspiracy_poster.jpg",link_url: "https://www.netflix.com/title/80033772")
+# Movie.create!(name: "Resurface", genre: Genre.find_by_name("documentary"), description: "After years of nightmares, depression, and seizures, Iraq war veteran Bobby Lane could see no way out of his trauma other than suicide. Then he met Van Curaza, a former big wave surfer who since founded Operation Surf and dedicated his life to helping veterans find solace in surfing.
+# ",photo_url: "https://m.media-amazon.com/images/M/MV5BYjU4Y2NjNmEtOTQ5Mi00YzdmLTk2N2MtZTM2YWJlNzE5ZDhhXkEyXkFqcGdeQXVyMjQyMjM4MjI@._V1_SY1000_CR0,0,671,1000_AL_.jpg", link_url: "https://www.netflix.com/title/80184055")
 
+# # Added by Alex Flamant on 30agu2019
+# Movie.create!(name:"Enter the Anime", genre: Genre.find_by_name("documentary"), description:"Enter the Anime is a documentary featuring Tania Nolan trying to explain the popularity of anime by interviewing Shinji Aramaki, Kôzô Morishita and Yoko Takahashi, creators behind well-known productions like Castlevania, Aggretsuko and Kengan Ashura.
+#   ",photo_url:"https://m.media-amazon.com/images/M/MV5BMTgwNGI5MTAtMGJlZS00MzZlLWJjNmItZDcxYTFmY2VmMGJlXkEyXkFqcGdeQXVyMjUxMTEwNTE@._V1_SY1000_CR0,0,713,1000_AL_.jpg",link_url:"https://www.netflix.com/title/81143771")
+# Movie.create!(name:"Fyre", genre: Genre.find_by_name("documentary"), description:"The history of the Fyre Music Festival, from its creation through its unraveling.
+#   ",photo_url:"https://m.media-amazon.com/images/M/MV5BMjQ2NzE1MjYxMV5BMl5BanBnXkFtZTgwMjM3MDQxNzM@._V1_SY1000_SX675_AL_.jpg",link_url:"https://www.netflix.com/title/81035279")
+# Movie.create!(name:"Betting on Zero", genre: Genre.find_by_name("documentary"), description:"Hedge fund titan Bill Ackman is on a crusade to expose global nutritional giant Herbalife as the largest pyramid scheme in history, while Herbalife executives claim Ackman is a market manipulator out to bankrupt them.
+#   ",photo_url:"https://m.media-amazon.com/images/M/MV5BMjA0MTc3ODc3NF5BMl5BanBnXkFtZTgwMTQ5NDc0MTI@._V1_SY1000_CR0,0,676,1000_AL_.jpg",link_url:"https://www.netflix.com/title/80108609")
+# Movie.create!(name:"Fishpeople", genre: Genre.find_by_name("documentary"), description:"The stories of people who have dedicated their lives to the sea, from surfers and spearfishers to a long-distance swimmer, a former coal miner and a group of at-risk kids on the streets of San Francisco.
+#   ",photo_url:"https://m.media-amazon.com/images/M/MV5BOWM5MTU1OTgtMjVkOC00Y2VkLTgyMTAtMDI5YzE3YzZiZWE0XkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_.jpg",link_url:"https://www.netflix.com/title/80196139")
+# Movie.create!(name:"Losing Sight of Shore", genre: Genre.find_by_name("documentary"), description:"Four women set out to row across the Pacific Ocean, from America to Australia. As they row over 8,000 miles during their nine months at sea, they must overcome extreme mental and physical challenges to make history.
+#   ",photo_url:"https://www.gstatic.com/tv/thumb/v22vodart/14087387/p14087387_v_v8_ab.jpg",link_url:"https://www.netflix.com/title/80169548")
 
 # Restaurant.create!(name:"The Old Street Chinese", food_type: FoodType.find_by_name("vietname"), photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/old-street/the-old-street-chinese?day=today&postcode=E28DY&time=ASAP", address:"EC1V 9FR")
 # Restaurant.create!(name:"Great British Fish & Chips", food_type: FoodType.find_by_name("vietname"), photo_url:"https://www.thegrove.co.uk/wp-content/uploads/2019/05/The-Glasshouse-1-New.jpg", link_url:"https://deliveroo.co.uk/menu/london/tower-hill/great-british-fish-and-chips?day=today&postcode=E28DY&time=1100", address:"SE1 7PB")

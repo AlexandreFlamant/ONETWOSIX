@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   def search
     @location = params.dig(:search, :query)
     respond_to do |format|
-        format.js
+      format.js
     end
   end
 end
