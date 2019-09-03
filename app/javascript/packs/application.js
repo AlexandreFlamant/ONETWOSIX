@@ -43,6 +43,8 @@ $(document).ready(function(){
   })
 
   $('.fresh-carousel').slick({
+    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/left-arrow'>`,
+    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/right-arrow'>`,
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,

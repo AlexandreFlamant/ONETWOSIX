@@ -10,7 +10,7 @@
               </div>
               <div class="combo-card-infos">
                 <h6 class="combo-item-name"> <a href="<%=combo.movie.link_url %>" target="_blank" class="link-to">
-                  <%= combo.movie.name %></a>
+                  <%= h truncate(combo.movie.name, :length => 30) %></a>
                 </h6>
               </div>
               </div>
@@ -19,7 +19,7 @@
                 <div class="combo-card-infos">
                   <h6 class="combo-item-name">
                     <a href="<%=combo.restaurant.link_url%>" target="_blank" class="link-to">
-                      <%= combo.restaurant.name %>
+                      <%= h truncate(combo.restaurant.name, :length => 30) %>
                     </a>
                   </h6>
                 </div>
