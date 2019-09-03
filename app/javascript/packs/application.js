@@ -10,7 +10,6 @@ import { initSelect2 } from '../plugins/init_select2';
 initAutocomplete();
 initSelect2();
 
-
 // carousel jQuery: for .carousel & .fresh-carousel
 $(document).ready(function(){
 
