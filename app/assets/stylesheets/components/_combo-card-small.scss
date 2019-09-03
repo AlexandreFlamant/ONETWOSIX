@@ -63,3 +63,15 @@ h6 {
   animation: 0.2s;
 }
 
+.media-query-size {
+  @include mobile {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.home-card {
+  @include mobile {
+    max-width: min-content;
+  }
+}

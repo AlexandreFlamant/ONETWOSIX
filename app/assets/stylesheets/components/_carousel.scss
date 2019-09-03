@@ -30,20 +30,25 @@
   line-height: 1rem;
   width: 48px;
   height: 48px;
-  padding-left: 18px;
   position: absolute;
   top: 112px;
   z-index: 5;
   font-weight: bolder;
   background-color: white;
-  opacity: 0.7;
-  &:hover {
+  opacity: 0.4;
+  &:hover, &:active {
       transition: all 300ms ease;
       outline: none;
       font-weight: regular;
-      opacity: 1;
+      opacity: 0.8;
       background-color: white;
     }
+}
+
+#text {
+  display: none;
+  color: transparent;
+  opacity: 0;
 }
 
 .slick-prev {
@@ -64,37 +69,6 @@
   @include mobile {
     right: -15px;
   }
-}
-
-.slick-prev:before {
-  content: "<";
-  color: $green;
-  &:focus {
-      transition: all 300ms ease;
-      outline: none;
-      font-weight: regular;
-      opacity: 1;
-      background-color: white;
-    }
-
-}
-
-
-.slick-next:before {
-  content: ">";
-  color: $green;
-  &:focus {
-      transition: all 300ms ease;
-      outline: none;
-      font-weight: regular;
-      opacity: 1;
-      background-color: white;
-    }
-}
-
-#text {
-  content: "";
-  color: transparent;
 }
 
 .margin-auto {
