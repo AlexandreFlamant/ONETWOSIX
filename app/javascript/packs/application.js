@@ -12,6 +12,7 @@ initAutocomplete();
 initSelect2();
 whitenArrow();
 
+
 // carousel jQuery: for .carousel & .fresh-carousel
 $(document).ready(function(){
 
