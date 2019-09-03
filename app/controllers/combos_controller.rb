@@ -10,27 +10,33 @@ class CombosController < ApplicationController
     if location.present?
       restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
       movies = Movie.select { |m| genre.include?(m.genre.name) }
-    end
-    if session[:combo_ids].present?
-      @combos = session[:combo_ids].map { |id| Combo.find(id)}
-    else
-      @combos = []
-      movies = Movie.select { |m| genre == m.genre.name }
       restaurants.each do |rest|
         movie = movies.pop
         unless movies.empty?
-          combo_find = Combo.find_by(name: "#{rest.name} + #{movie.name}")
-          if combo_find.nil?
-            new_combo = Combo.create(name: "#{rest.name} + #{movie.name}", description: movie.description, movie: movie, restaurant: rest)
-          end
-          if combo_find.nil?
-            @combos << new_combo
-          else
-            @combos << combo_find
+          combo_find = Combo.where(restaurant: rest, movie: movie)
+          unless combo_find.any?
+            new_combo = Combo.create(movie: movie, restaurant: rest)
           end
         end
       end
-      @combos
+    end
+
+    if session[:combo_ids].present?
+      @combos = session[:combo_ids].map { |id| Combo.find(id) }
+    else
+      @combos = Combo.joins(:movie).merge(Movie.joins(:genre).merge(Genre.where(name: genre))).joins(:restaurant).merge(Restaurant.joins(:food_type).merge(FoodType.where(name: foodtype)))
+    end
+
+    unless session[:combo_ids].present?
+      @sponsored_combos = SponsoredCombo.where(combo_id: @combos.ids)
+      @non_sponsored_combos = Combo.where.not(id: @sponsored_combos.map(&:combo_id))
+      if @sponsored_combos.any?
+       @random_combos = [@sponsored_combos.sample, @non_sponsored_combos.sample, @non_sponsored_combos.sample]
+      else
+       @random_combos = @combos.sample(3)
+      end
+    else
+      @random_combos = @combos
     end
   end
 
