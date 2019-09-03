@@ -6,6 +6,11 @@
 
         <form action="/payments" method="post" id="payment-form">
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <% if @sponsored_combo.present? && @sponsored_combo.errors.any? %>
+            <% @sponsored_combo.errors.full_messages.each do |error| %>
+              <p class="text-danger"><%= error %></p>
+            <% end %>
+          <% end %>
           <div class="form-group">
             <label for="name">Combo name*</label>
             <input required type="text" class="form-control" id="name" name="combo[name]" placeholder="Enter combo name" value="<%= combo.name %>" >
@@ -17,17 +22,18 @@
           </div>
 
           <div class="form-group">
-            <label for="movie_name">Movie name* (choose from the movie list)</label>
+            <label for="movie_name">Movie name*</label>
               <select required class="select2 form-control" id="movie_name" name="combo[movie]" value="<%= combo.movie %>" >
+                <option></option>
                 <% Movie.all.each do |m| %>
                   <option><%= m.name %></option>
                 <% end %>
               </select>
           </div>
-
           <div class="form-group">
-            <label for="restaurant_name">Restaurant name* (choose from the restaurant list)</label>
+            <label for="restaurant_name">Restaurant name*</label>
             <select required class="select2 form-control" id="restaurant_name" name="combo[restaurant]" value="<%= combo.restaurant %>" >
+              <option></option>
                 <% Restaurant.all.each do |r| %>
                   <option><%= r.name %></option>
                 <% end %>

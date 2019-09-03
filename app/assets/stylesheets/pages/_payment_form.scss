@@ -30,6 +30,11 @@
   background-color: #fefde5 !important;
 }
 
+#card-element {
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+
 
 // Select2 styling
 .select2 {
@@ -43,5 +48,15 @@
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
   line-height: 36px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #495057 !important;
+  opacity: 0.8 !important;
+  padding-left:5px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 6px !important;
 }
 
