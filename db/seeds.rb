@@ -83,13 +83,22 @@ movie_genres.each do |genre, films|
 end
 
 
-
 #FoodType seeds
 FoodType.create!(name: "burgers", photo_url: "https://www.traegergrills.com/images/en-us/Shared/images/recipes/banners/Beef/Peanut-Butter-Burger_Traeger-Wood-Fired-Grills_RE_HE_M.jpg")
 FoodType.create!(name: "italian", photo_url: "https://serafinamia.com/wp-content/uploads/2018/09/10-Italian-Fun-Facts-The-Food-Fashion-and-Culture-of-Italy.jpg")
 FoodType.create!(name: "salad", photo_url: "https://www.bbcgoodfood.com/sites/default/files/editor_files/2017/10/healthy-meal-prep-ideas-meal-prep-pasta-700-350.jpg")
 FoodType.create!(name: "vietnamese", photo_url: "https://duyt4h9nfnj50.cloudfront.net/resized/1543931229557-w2880-41.jpg")
 FoodType.create!(name: "sushi", photo_url: "https://d22ir9aoo7cbf6.cloudfront.net/wp-content/uploads/sites/2/2017/04/standing-sushi-bar-singapore-header.jpg")
+
+#FoodType Images
+images_hash = {
+  burgers: ["https://campaignforkids.com/wp-content/uploads/2019/02/UnionsStreet.jpeg", "https://www.thepkpway.com/wp-content/uploads/2016/06/alaskan-pollock-burger-pineapple-jalapeno-slaw-6a.jpg", "https://img-aws.ehowcdn.com/700x/cdn.onlyinyourstate.com/wp-content/uploads/2018/07/33808810_2115675235129629_44295518142070784_n-700x933.jpg", "https://cdn1.clickthecity.com/images/establishment/common/raw/8296.jpg", "https://cms.hostelworld.com/hwblog/wp-content/uploads/sites/2/2017/10/vegan-restaurants-paris-@parisbyvegan-Hank-burger-701x875.jpg"],
+  italian: ["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-190606-flatbread-pizza-432-portrait-pf-1560544301.jpg?crop=0.9997369113391213xw:1xh;center,top&resize=480:*", "https://www.italianbreaks.com/wp-content/uploads/2017/12/27-reasons-Italian-food-is-the-worst-italian-brunch-546x682.jpg", "https://static.wixstatic.com/media/e610d1_eb548ee62cb34fa2af8d3bb8fbc3c01e~mv2_d_3000_1946_s_2.jpg/v1/fill/w_640,h_910,al_c,q_85,usm_0.66_1.00_0.01/e610d1_eb548ee62cb34fa2af8d3bb8fbc3c01e~mv2_d_3000_1946_s_2.webp", "https://marisasitaliankitchen.com/wp-content/uploads/2019/08/Kale-Pesto-with-Spaghetti-6-of-6-1-680x900.jpg", "https://www.limewoodhotel.co.uk/media/1305/cookery-class-classics2.jpg?mode=crop&quality=70&width=1120&height=2080&format=jpg]"],
+  salad: ["https://tatyanaseverydayfood.com/wp-content/uploads/2016/02/Garlic-Chicken-Salad.jpg", "https://www.spendwithpennies.com/wp-content/uploads/2018/07/healthy-kale-brocoli-salad-lemon-dressing-recipe-.jpg", "https://sugarandcharm.com/wp-content/uploads/2019/02/easiest-salad-ever-2.jpg", "https://www.littlebroken.com/wp-content/uploads/2019/07/Tomato-Mozzarella-Salad-with-Balsamic-Reduction-13.jpg", "https://www.foodfaithfitness.com/wp-content/uploads/2018/06/three-bean-mexican-corn-black-bean-salad-picture.jpg"],
+  sushi: ["https://simple-veganista.com/wp-content/uploads/2012/07/raw-vegan-sushi-rolls-5.jpg", "https://images.squarespace-cdn.com/content/v1/58ae5064d482e9529405676a/1549201753059-1Q5FOR0ZUDTWJO3PM9YW/ke17ZwdGBToddI8pDm48kO4Ymik7jCTU-OigDuhUoP17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UbjWf3F0osKH369u33AEJniJgEHb_R28Um2LA17-lActY7x6kDsGDMYkQIOJRDvK5g/Whole30+sushi+burritos+are+the+perfect+thing+to+get+your+through+that+sushi+craving+whether+you+are+following+a+whole30%2C+paleo+or+low+carb+diet.+You+can+easily+make+one+of+these+delicious+and+simple+Whole30+Sushi+Burritos+at+home", "https://www.happyfoodstube.com/wp-content/uploads/2016/03/homemade-sushi-picture.jpg", "https://www.julieslifestyle.com/src/Frontend/Files/blog/images/source/mushroom-avocado-sushi-rolls-vegan-gluten-free-inspiration-anett-velsberg-en-662.jpg", "https://lifemadesweeter.com/wp-content/uploads/Calfornia-Roll-Bowl-Recipe-Picture-photo-two-bowls-picture-recipe.jpg"],
+  vietnamese: ["https://www.watchwhatueat.com/wp-content/uploads/2016/06/Healthy-Spring-Rolls-1.jpg", "https://www.readingchronicle.co.uk/resources/images/6666082.jpg?display=1&htype=0&type=responsive-gallery", "https://www.roadiscalling.com/wp-content/uploads/2018/04/60A62182-0331-4067-B2DF-9C4316B5128E.jpg", "https://www.willflyforfood.net/wp-content/uploads/2017/08/banh-mi-hoa-ma2.jpg", "https://static.wixstatic.com/media/68e7a4_e8964124c5334a31a570bf95b3c47dec~mv2.jpg/v1/fill/w_284,h_354,al_c,q_80,usm_0.66_1.00_0.01/68e7a4_e8964124c5334a31a570bf95b3c47dec~mv2.jpg"]
+}
+
 
 # # Restaurant seeds
 Restaurant.create!(name: "Suito Japanese", food_type: FoodType.find_by_name("sushi"), photo_url:"https://resizer.otstatic.com/v2/photos/large/25630082.jpg", link_url:"https://deliveroo.co.uk/menu/london/brick-lane/suito-japanese-platters?day=today&postcode=E28DY&time=ASAP", address:"E1 6RL")
