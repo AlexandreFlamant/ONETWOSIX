@@ -29,9 +29,9 @@ class CombosController < ApplicationController
 
     unless session[:combo_ids].present?
       @sponsored_combos = SponsoredCombo.where(combo_id: @combos.ids)
-      @non_sponsored_combos = Combo.where.not(id: @sponsored_combos.map(&:combo_id))
+      @non_sponsored_combos = @combos.where.not(id: @sponsored_combos.map(&:combo_id))
       if @sponsored_combos.any?
-       @random_combos = [@sponsored_combos.sample, @non_sponsored_combos.sample, @non_sponsored_combos.sample]
+       @random_combos = [@sponsored_combos.sample.combo, @non_sponsored_combos.sample, @non_sponsored_combos.sample]
       else
        @random_combos = @combos.sample(3)
       end
