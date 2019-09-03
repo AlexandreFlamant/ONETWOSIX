@@ -48,7 +48,7 @@ class PaymentsController < ApplicationController
       if @combo.save
         @sponsored_combo.combo = @combo
         if @sponsored_combo.save
-          flash[:alert] = 'Your payment was successful!'
+          flash[:notice] = 'Your payment was successful!'
           redirect_to profile_path
         else
           @sponsored_combo.destroy
@@ -58,7 +58,7 @@ class PaymentsController < ApplicationController
         set_combo_pair.update(name: params[:combo][:name], description: params[:combo][:description])
         @sponsored_combo.combo = set_combo_pair
         if @sponsored_combo.save
-          flash[:alert] = 'Your payment was successful!'
+          flash[:notice] = 'Your payment was successful!'
           redirect_to profile_path
         else
           @sponsored_combo.destroy
