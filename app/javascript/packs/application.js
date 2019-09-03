@@ -73,11 +73,6 @@ $(document).ready(function(){
   })
 });
 
-
-
-
-
-
 // for genre and foodtype selection in carousel
 $(document).ready(function(){
   $(".select-choice").click(function(){
@@ -96,3 +91,14 @@ $(document).ready(function(){
     }
   });
 });
+
+$(function(){
+   var flashDurationInSeconds = 3;
+   var flashContainerId = 'flash-messages';
+
+   function removeFlashMessages() {
+     $('#' + flashContainerId).remove();
+   }
+
+   setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
+})
