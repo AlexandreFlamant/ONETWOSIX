@@ -2,7 +2,6 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'json'
-require 'pry'
 
 Genre.destroy_all
 FoodType.destroy_all
