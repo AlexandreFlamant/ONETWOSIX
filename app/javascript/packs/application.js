@@ -76,11 +76,6 @@ $(document).ready(function(){
   })
 });
 
-
-
-
-
-
 // for genre and foodtype selection in carousel
 $(document).ready(function(){
   $(".select-choice").click(function(){

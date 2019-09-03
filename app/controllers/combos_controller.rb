@@ -10,9 +10,6 @@ class CombosController < ApplicationController
     if location.present?
       restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
       movies = Movie.select { |m| genre.include?(m.genre.name) }
-      3.times do
-        Combo.create(restaurant: restaurants.shuffle!.delete_at(-1), movie: movies.shuffle!.delete_at(-1))
-      end
     end
     if session[:combo_ids].present?
       @combos = session[:combo_ids].map { |id| Combo.find(id)}
