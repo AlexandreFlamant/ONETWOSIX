@@ -23,28 +23,6 @@ class CombosController < ApplicationController
     @combo = Combo.new
   end
 
-  def create
-    @movie = Movie.find_by_name(params[:combo][:movie])
-    @restaurant = Restaurant.find_by_name(params[:combo][:restaurant])
-    params[:combo].delete(:movie)
-    params[:combo].delete(:restaurant)
-    @combo = Combo.new(combo_params)
-    @combo.movie = @movie
-    @combo.restaurant = @restaurant
-    if @combo.save
-      # create a sponsered combo
-      @sponsored_combo = SponsoredCombo.create(combo: @combo, user: current_user, state: 'pending')
-      # redirect to payment
-      redirect_to new_sponsored_combo_payment_path(@sponsored_combo)
-    elsif Combo.where(movie: @movie, restaurant: @restaurant).any?
-      set_combo_pair.update(name: params[:combo][:name], description: params[:combo][:description])
-      @sponsored_combo = SponsoredCombo.create(combo: set_combo_pair, user: current_user, state: 'pending')
-      redirect_to new_sponsored_combo_payment_path(@sponsored_combo)
-    else
-      render :new
-    end
-  end
-
   def upvote
     if user_signed_in?
       session[:combo_ids] = nil
@@ -67,15 +45,4 @@ class CombosController < ApplicationController
       format.js
     end
   end
-
-  private
-
-  def combo_params
-    params.require(:combo).permit(:name, :description, :movie, :restaurant)
-  end
-
-  def set_combo_pair
-    Combo.where(movie: @movie, restaurant: @restaurant).first
-  end
-
 end

@@ -9,6 +9,7 @@
     "jquery": "^3.4.1",
     "places.js": "^1.16.4",
     "popper.js": "^1.15.0",
+    "select2": "^4.0.10",
     "youtube-search": "^1.1.4"
   },
   "devDependencies": {

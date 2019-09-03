@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     end
   end
   resource :profile, only: :show
-  resources :sponsored_combos, only: :create do
-    resources :payments, only: [:new, :create]
-  end
+  resources :sponsored_combos, only: :create
+  resources :payments, only: [:new, :create]
 end
