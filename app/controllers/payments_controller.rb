@@ -1,9 +1,5 @@
 class PaymentsController < ApplicationController
 
-  def new
-    @combo = Combo.new
-  end
-
   def create
     # create sponsored_combo
     set_sponsored_combo
@@ -66,7 +62,6 @@ class PaymentsController < ApplicationController
           redirect_to profile_path
         else
           @sponsored_combo.destroy
-          flash[:alert] = 'Combo has already been taken. Please choose a new one!'
           render 'combos/new'
         end
       else
