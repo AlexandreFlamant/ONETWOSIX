@@ -27,17 +27,6 @@
                     </a>
                   </h6>
                 </div>
-                <div class="like" id="combo_<%= combo.id %>">
-                  <% if user_signed_in? && (current_user.voted_for? combo) %>
-                    <%= link_to downvote_combo_path(combo), method: :post, remote: true do %>
-                      <i class="fas fa-heart"></i>
-                    <% end %>
-                  <% elsif user_signed_in? && !(current_user.voted_for? combo) %>
-                    <%= link_to like_combo_path(combo), method: :post, remote: true do %>
-                      <i class="far fa-heart"></i>
-                    <% end %>
-                  <% end %>
-                </div>
               </div>
             </div>
           </div>
