@@ -2,6 +2,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'json'
+require 'htmlentities'
 
 Genre.destroy_all
 FoodType.destroy_all
@@ -77,7 +78,8 @@ movie_genres = {
 
 movie_genres.each do |genre, films|
   films.each do |item|
-    Movie.create(name: item["title"], genre: Genre.find_by_name(genre), description: "#{item["synopsis"]}", photo_url: "#{item["image"]}", link_url: "https://www.netflix.com/title/#{item["netflixid"]}")
+    coder = HTMLEntities.new
+    Movie.create(name: coder.decode(item["title"]), genre: Genre.find_by_name(genre), description: coder.decode(item["synopsis"]), photo_url: "#{item["image"]}", link_url: "https://www.netflix.com/title/#{item["netflixid"]}")
   end
 end
 
