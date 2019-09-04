@@ -28,6 +28,7 @@ class PaymentsController < ApplicationController
 
     rescue Stripe::CardError => e
       flash[:alert] = e.message
+      raise
       render 'combos/new'
   end
 
