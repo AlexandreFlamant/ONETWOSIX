@@ -10,7 +10,7 @@
         <li class="nav-item dropdown">
           <%= image_tag "https://cdn0.iconfinder.com/data/icons/ballicons/128/3d-512.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "SponsorCombo", new_combo_path, class: "dropdown-item mobile-saved-combo" %>
+            <%= link_to "SponsorCombo", new_combo_path, class: "dropdown-item", id:"mobile-saved-combo" %>
             <%= link_to "Dashboard", profile_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
