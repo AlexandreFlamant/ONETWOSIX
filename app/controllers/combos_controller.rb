@@ -13,29 +13,43 @@ class CombosController < ApplicationController
       return redirect_to root_path, notice: 'That postcode might be invalid!'
     end
     restaurants = ScraperDeliveroo.new(postcode, foodtype, response['url']).call
+    # raise
     if postcode.present?
+
+      @combotest = []
       # restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
       movies = Movie.select { |m| genre.include?(m.genre.name) }
       restaurants.each do |rest|
         movie = movies.pop
         unless movies.empty?
           combo_find = Combo.where(restaurant: rest, movie: movie)
+          combo_find.each do |c|
+            @combotest << c
+          end
           unless combo_find.any?
             new_combo = Combo.create(movie: movie, restaurant: rest)
+            @combotest << new_combo
           end
         end
       end
+
     end
 
     if session[:combo_ids].present?
       @combos = session[:combo_ids].map { |id| Combo.find(id) }
     else
-      @combos = Combo.joins(:movie).merge(Movie.joins(:genre).merge(Genre.where(name: genre))).joins(:restaurant).merge(Restaurant.joins(:food_type).merge(FoodType.where(name: foodtype)))
+      @combos = @combotest
     end
 
     unless session[:combo_ids].present?
-      @sponsored_combos = SponsoredCombo.where(combo_id: @combos.ids)
-      @non_sponsored_combos = @combos.where.not(id: @sponsored_combos.map(&:combo_id))
+      @sponsored_combos = SponsoredCombo.all.select do |sc|
+        @combos.each do |c|
+          c.id == sc.combo_id
+        end
+      end
+
+      @non_sponsored_combos = @combos - @sponsored_combos
+
       if @sponsored_combos.any?
        @random_combos = [@sponsored_combos.sample.combo, @non_sponsored_combos.sample, @non_sponsored_combos.sample]
       else

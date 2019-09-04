@@ -9,6 +9,7 @@ class ScraperDeliveroo
     @postcode = postcode
     @foodtype = foodtype
     @url = url
+    @right_restaurants = []
   end
 
   def call
@@ -22,7 +23,6 @@ class ScraperDeliveroo
       @foodtype.to_sym => []
     }
 
-    right_restaurants = []
 
     #FoodType Images
     images_hash = {
@@ -38,20 +38,27 @@ class ScraperDeliveroo
           food = FoodType.find_by_name(@foodtype)
           rest_link = element.parent.attributes['href'].value
           if foodtype == food.name.to_sym
+              restaurant = Restaurant.find_by(name: element.search(".HomeFeedUICard-f7ccdc5e7b2c5059.HomeFeedUICard-a9d288756e60cf37").text.strip)
+              if restaurant.nil?
+                restaurant = Restaurant.create(name: element.search(".HomeFeedUICard-f7ccdc5e7b2c5059.HomeFeedUICard-a9d288756e60cf37").text.strip, food_type: food, photo_url: links.sample, link_url: "https://deliveroo.co.uk#{rest_link}", address: @postcode)
+              else
+                restaurant.update(address: @postcode, link_url: "https://deliveroo.co.uk#{rest_link}")
+              end
             # NEED TO GET RESTAURANT NAME
-            right_restaurants << Restaurant.find_or_create_by(name: element.search(".HomeFeedUICard-f7ccdc5e7b2c5059.HomeFeedUICard-a9d288756e60cf37").text.strip) do |restaurant|
-              restaurant.food_type = food
-              restaurant.photo_url = links.sample
-              restaurant.link_url = "https://deliveroo.co.uk#{rest_link}"
-              restaurant.address = @postcode
-            end
+              # restaurant = Restaurant.find_or_create_by(name: element.search(".HomeFeedUICard-f7ccdc5e7b2c5059.HomeFeedUICard-a9d288756e60cf37").text.strip) do |restaurant|
+              # restaurant.food_type = food
+              # restaurant.photo_url = links.sample
+              # restaurant.link_url = "https://deliveroo.co.uk#{rest_link}"
+              # restaurant.address = @postcode
+              # restaurant.save
+
+              @right_restaurants << restaurant
           end
         end
       end
-      right_restaurants
+      @right_restaurants
     end
   end
-
 
 
 
