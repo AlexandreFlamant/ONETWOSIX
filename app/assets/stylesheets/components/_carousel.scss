@@ -31,7 +31,7 @@
   width: 48px;
   height: 48px;
   position: absolute;
-  top: 112px;
+  top: 87px;
   z-index: 5;
   font-weight: bolder;
   background-color: white;
@@ -52,22 +52,34 @@
 }
 
 .slick-prev {
-  left: 313px;
+  left: 309px;
+  @include desktop {
+    left: 251px;
+  }
+  @include large-tablet {
+    left: 251px;
+  }
   @include tablet {
     left: 3px;
   }
   @include mobile {
-    left: -15px;
+    left: 12px;
   }
 }
 
 .slick-next {
-  right: 313px;
+  right: 309px;
+  @include desktop {
+    right: 251px
+  }
+  @include large-tablet {
+    right: 251px;
+  }
   @include tablet {
-    left: 640px;
+    right: 3px;
   }
   @include mobile {
-    right: -15px;
+    right: 12px;
   }
 }
 
