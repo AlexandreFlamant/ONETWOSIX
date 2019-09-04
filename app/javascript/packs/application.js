@@ -99,14 +99,21 @@ $(document).ready(function(){
   });
 });
 
-// for alerts and notices
-$(function(){
-   var flashDurationInSeconds = 3;
-   var flashContainerId = 'flash-messages';
+var flash = document.querySelector('.alert');
+if (flash) {
+  var flashMessage = flash.firstElementChild.innerText;
+  console.log(flashMessage);
+  if (flashMessage != 'Your payment was successful!') {
+    $(function(){
+       var flashDurationInSeconds = 3;
+       var flashContainerId = 'flash-messages';
 
-   function removeFlashMessages() {
-     $('#' + flashContainerId).remove();
-   }
+       function removeFlashMessages() {
+         $('#' + flashContainerId).remove();
+       }
 
-   setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
-})
+       setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
+    })
+  }
+}
+
