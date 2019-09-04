@@ -24,6 +24,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'rest-client'
 gem 'jquery-rails'
+gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
