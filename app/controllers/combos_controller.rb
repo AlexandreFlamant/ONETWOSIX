@@ -2,12 +2,12 @@ class CombosController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :upvote, :refresh_save]
 
   def index
-    location = params.dig(:location)
+    # location = params.dig(:location)
     postcode = params.dig(:postcode)
     genre = params.dig(:hidden_genre).downcase
     foodtype = params.dig(:hidden_foodtype).downcase
     ScraperDeliveroo.new(postcode, foodtype).call
-    if location.present?
+    if postcode.present?
       restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
       movies = Movie.select { |m| genre.include?(m.genre.name) }
       restaurants.each do |rest|
