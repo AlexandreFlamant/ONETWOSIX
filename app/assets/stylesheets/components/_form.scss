@@ -22,3 +22,9 @@
   margin-bottom: 12px;
   margin-top:12px;
 }
+
+.form-control:focus {
+  border-color: #255957;
+  box-shadow: 0 0 0 0.2rem rgba(37, 89, 87, 0.25);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
