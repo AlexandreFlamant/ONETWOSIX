@@ -34,9 +34,9 @@
   }
 }
 
-.mobile-saved-combo {
-  @include desktop {
-    display: none;
+@media only screen and (min-width: 768px) {
+  #mobile-saved-combo {
+      display: none;
   }
 }
 
