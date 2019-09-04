@@ -24,17 +24,26 @@
             <label for="movie_name">Movie name*</label>
               <select required class="select2 form-control" id="movie_name" name="combo[movie]" value="<%= combo.movie %>" >
                 <option></option>
-                <% Movie.all.each do |m| %>
-                  <option><%= m.name %></option>
+                <% Genre.all.each do |g| %>
+                  <optgroup label="<%= g.name.capitalize %>">
+                    <% Movie.joins(:genre).merge(Genre.where(name: g.name)).each do |m| %>
+                      <option><%= m.name %></option>
+                    <% end %>
+                  </optgroup>
                 <% end %>
+
               </select>
           </div>
           <div class="form-group">
             <label for="restaurant_name">Restaurant name*</label>
             <select required class="select2 form-control" id="restaurant_name" name="combo[restaurant]" value="<%= combo.restaurant %>" >
               <option></option>
-                <% Restaurant.all.each do |r| %>
-                  <option><%= r.name %></option>
+                <% FoodType.all.each do |f| %>
+                  <optgroup label="<%= f.name.capitalize %>">
+                    <% Restaurant.joins(:food_type).merge(FoodType.where(name: f.name)).each do |r| %>
+                      <option><%= r.name %></option>
+                    <% end %>
+                  </optgroup>
                 <% end %>
               </select>
           </div>
