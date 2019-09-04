@@ -6,7 +6,7 @@
       <!-- <button class="btn btn-warning refresh mb-3" id="refresh">
         Refresh<i class="fas fa-sync ml-2"></i>
       </button> -->
-      <%= link_to "Refresh <i class='fas fa-sync ml-2'></i>".html_safe, combos_path(postcode: params[:postcode], hidden_foodtype: params.dig(:hidden_foodtype), hidden_genre: params.dig(:hidden_genre)), class:"btn btn-warning refresh mb-3", id:"refresh", remote: true %>
+      <%= link_to "Refresh <i class='fas fa-sync ml-2'></i>".html_safe, combos_path(location: params[:location], hidden_foodtype: params.dig(:hidden_foodtype), hidden_genre: params.dig(:hidden_genre)), class:"btn btn-warning refresh mb-3", id:"refresh", remote: true %>
     </div>
   <%= render 'shared/combo-card' %>
   </div>

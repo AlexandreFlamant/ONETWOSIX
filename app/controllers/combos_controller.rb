@@ -20,8 +20,9 @@ class CombosController < ApplicationController
       # restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
       movies = Movie.select { |m| genre.include?(m.genre.name) }
       restaurants.each do |rest|
-        movie = movies.pop
-        unless movies.empty?
+        movies.each do |movie|
+        # movie = movies.pop
+        # unless movies.empty?
           combo_find = Combo.where(restaurant: rest, movie: movie)
           combo_find.each do |c|
             @combotest << c
@@ -32,7 +33,6 @@ class CombosController < ApplicationController
           end
         end
       end
-
     end
 
     if session[:combo_ids].present?
@@ -42,13 +42,23 @@ class CombosController < ApplicationController
     end
 
     unless session[:combo_ids].present?
-      @sponsored_combos = SponsoredCombo.all.select do |sc|
+      @sponsored_combos = []
+      SponsoredCombo.all.each do |sc|
         @combos.each do |c|
-          c.id == sc.combo_id
+          if sc.combo_id == c.id
+          @sponsored_combos << sc
+          end
         end
       end
 
-      @non_sponsored_combos = @combos - @sponsored_combos
+      @non_sponsored_combos = []
+      @combos.each do |c|
+        SponsoredCombo.all.each do |sc|
+          if c.id != sc.combo_id
+          @non_sponsored_combos << c
+          end
+        end
+      end
 
       if @sponsored_combos.any?
        @random_combos = [@sponsored_combos.sample.combo, @non_sponsored_combos.sample, @non_sponsored_combos.sample]
