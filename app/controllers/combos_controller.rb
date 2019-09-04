@@ -12,9 +12,9 @@ class CombosController < ApplicationController
     rescue
       return redirect_to root_path, notice: 'That postcode might be invalid!'
     end
-    ScraperDeliveroo.new(postcode, foodtype, response['url']).call
+    restaurants = ScraperDeliveroo.new(postcode, foodtype, response['url']).call
     if postcode.present?
-      restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
+      # restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
       movies = Movie.select { |m| genre.include?(m.genre.name) }
       restaurants.each do |rest|
         movie = movies.pop

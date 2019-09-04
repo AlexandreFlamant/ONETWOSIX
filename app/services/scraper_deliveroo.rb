@@ -13,7 +13,7 @@ class ScraperDeliveroo
 
   def call
     url = "https://deliveroo.co.uk#{@url}&collection=#{@foodtype}"
-
+    p url
 
     html_file = open(url).read
     html_doc = Nokogiri::HTML(html_file)
@@ -21,6 +21,8 @@ class ScraperDeliveroo
     restaurants = {
       @foodtype.to_sym => []
     }
+
+    right_restaurants = []
 
     #FoodType Images
     images_hash = {
@@ -37,14 +39,18 @@ class ScraperDeliveroo
           rest_link = element.parent.attributes['href'].value
           if foodtype == food.name.to_sym
             # NEED TO GET RESTAURANT NAME
-            restaurants[@foodtype.to_sym] << Restaurant.create(name: element.search(".HomeFeedUICard-f7ccdc5e7b2c5059.HomeFeedUICard-a9d288756e60cf37").text.strip, food_type: food, photo_url: links.sample,
-            link_url: "https://deliveroo.co.uk#{rest_link}", address: @postcode)          
+            right_restaurants << Restaurant.find_or_create_by(name: element.search(".HomeFeedUICard-f7ccdc5e7b2c5059.HomeFeedUICard-a9d288756e60cf37").text.strip) do |restaurant|
+              restaurant.food_type = food
+              restaurant.photo_url = links.sample
+              restaurant.link_url = "https://deliveroo.co.uk#{rest_link}"
+              restaurant.address = @postcode
+            end
           end
         end
       end
+      right_restaurants
     end
   end
-
 
 
 
