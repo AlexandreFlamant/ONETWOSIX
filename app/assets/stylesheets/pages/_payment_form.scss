@@ -60,3 +60,11 @@
   top: 6px !important;
 }
 
+.select2-results__group {
+  color: $white;
+  background-color: rgba(37, 89, 87, 0.4);
+}
+
+.select2-results__option[role="option"] {
+  padding-left: 1.5em !important;
+}

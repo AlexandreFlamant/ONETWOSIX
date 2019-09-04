@@ -1,14 +1,14 @@
 import "bootstrap";
 import $ from "jquery";
 import slick from "../../assets/slick/slick.min.js";
-import { initAutocomplete } from '../plugins/init_autocomplete';
+// import { initAutocomplete } from '../plugins/init_autocomplete';
 import '../payment';
 import 'select2/dist/css/select2.css';
 import { initSelect2 } from '../plugins/init_select2';
 import { whitenArrow } from '../plugins/slick-arrow.js';
 
 
-initAutocomplete();
+// initAutocomplete();
 initSelect2();
 whitenArrow();
 
@@ -17,8 +17,8 @@ whitenArrow();
 $(document).ready(function(){
 
   $('.carousel').slick({
-    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/arrow-left'>`,
-    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/arrow-right'>`,
+    prevArrow: `<img class="a-left control-c prev slick-prev" src="${$('#arrow').data('left')}">`,
+    nextArrow: `<img class="a-right control-c next slick-next" src="${$('#arrow').data('right')}">`,
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,
@@ -43,8 +43,8 @@ $(document).ready(function(){
   })
 
   $('.fresh-carousel').slick({
-    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/arrow-left'>`,
-    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/arrow-right'>`,
+    prevArrow: `<img class="a-left control-c prev slick-prev" src="${$('#arrow').data('left')}">`,
+    nextArrow: `<img class="a-right control-c next slick-next" src="${$('#arrow').data('right')}">`,
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,
@@ -95,6 +95,10 @@ $(document).ready(function(){
     if(genreAndFoodTypeChoice[1]) {
       var foodtype = genreAndFoodTypeChoice[1].lastElementChild.innerText;
       foodtypeInput.value = foodtype;
+    }
+    if (genreAndFoodTypeChoice.length == 2) {
+      const btnReady = document.querySelector('.ready');
+      btnReady.disabled = false;
     }
   });
 });

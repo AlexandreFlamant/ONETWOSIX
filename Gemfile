@@ -13,7 +13,7 @@ gem 'geocoder'
 gem 'json', '~> 1.8', '>= 1.8.3'
 gem 'money-rails'
 gem 'stripe'
-
+gem 'httparty', '~> 0.17.0'\
 
 gem 'acts_as_votable'
 gem 'autoprefixer-rails'
@@ -22,6 +22,9 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'rest-client'
+gem 'jquery-rails'
+gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

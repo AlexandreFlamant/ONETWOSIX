@@ -2,6 +2,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'json'
+require 'htmlentities'
 
 Genre.destroy_all
 FoodType.destroy_all
@@ -77,7 +78,8 @@ movie_genres = {
 
 movie_genres.each do |genre, films|
   films.each do |item|
-    Movie.create(name: item["title"], genre: Genre.find_by_name(genre), description: "#{item["synopsis"]}", photo_url: "#{item["image"]}", link_url: "https://www.netflix.com/title/#{item["netflixid"]}")
+    coder = HTMLEntities.new
+    Movie.create(name: coder.decode(item["title"]), genre: Genre.find_by_name(genre), description: coder.decode(item["synopsis"]), photo_url: "#{item["image"]}", link_url: "https://www.netflix.com/title/#{item["netflixid"]}")
   end
 end
 
@@ -92,16 +94,46 @@ FoodType.create!(name: "sushi", photo_url: "https://d22ir9aoo7cbf6.cloudfront.ne
 
 
 # # Restaurant seeds
-Restaurant.create!(name: "Suito Japanese", food_type: FoodType.find_by_name("sushi"), photo_url:"https://resizer.otstatic.com/v2/photos/large/25630082.jpg", link_url:"https://deliveroo.co.uk/menu/london/brick-lane/suito-japanese-platters?day=today&postcode=E28DY&time=ASAP", address:"E1 6RL")
-Restaurant.create!(name: "Miyako", food_type: FoodType.find_by_name("sushi"), photo_url:"https://media-cdn.tripadvisor.com/media/photo-s/06/a6/8a/33/ginza-miyako-japanese.jpg", link_url:"https://deliveroo.co.uk/menu/london/liverpool-street/miyako?day=today&postcode=E28DY&time=ASAP", address:"EC2M 7QN")
-Restaurant.create!(name: "Island Poke", food_type: FoodType.find_by_name("sushi"), photo_url:"https://images.squaremeal.co.uk/cloud/article/9176/images/vegan-watermelon-sashimi-in-island-poke-bowl_26062019012842.jpg?w=1000", link_url:"https://deliveroo.co.uk/menu/london/shoreditch/island-poke-shoreditch?day=today&postcode=E28DY&time=ASAP", address:"EC2A 3EP")
-Restaurant.create!(name: "Poke Zone", food_type: FoodType.find_by_name("sushi"), photo_url:"https://f.roocdn.com/images/menus/94354/header-image.jpg?width=1200&height=630&auto=webp&format=jpg&fit=crop&v=1558581725", link_url:"https://deliveroo.co.uk/menu/london/whitechapel/sushizone-ltd-poke-zone-london?day=today&postcode=E28DY&time=ASAP", address:"E1 5BW")
-Restaurant.create!(name: "Nobu", food_type: FoodType.find_by_name("sushi"), photo_url:"https://noburestaurants.com/assets/Food-and-Beverage-Images/Fifty-Seven/24c2e7d152/Nobu-Fifty-Seven-Sunday-Lunch.jpg", link_url:"https://deliveroo.co.uk/menu/london/shoreditch/nobu-shoreditch?day=today&postcode=E28DY&time=ASAP", address:"EC2A 4BH")
-Restaurant.create!(name: "The Japanese Canteen", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/113814/header-image.jpg?width=1382&amp;height=320&amp;auto=webp&amp;format=jpg&amp;fit=crop&amp;v=1550753361&quot;", link_url: "https://deliveroo.co.uk/menu/london/spitalfields/the-japanese-canteen-middlesex-street?day=today&postcode=E28DY&time=ASAP", address: "E17EZ")
-Restaurant.create!(name: "Gourmet Sushi", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/149864/header-image.jpg?width=740&height=320&auto=webp&format=jpg&fit=crop&v=1558361162", link_url: "https://deliveroo.co.uk/menu/london/brick-lane/gourmet-sushi?day=today&postcode=E28DY&time=ASAP", address: "E16PX")
-Restaurant.create!(name: "Japanika", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/51477/header-image.jpg?width=740&height=320&auto=webp&format=jpg&fit=crop&v=1513955042", link_url: "https://deliveroo.co.uk/menu/london/brick-lane/japanika?day=today&postcode=E28DY&time=ASAP", address: "E16QR")
-Restaurant.create!(name: "Itsu", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/100760/header-image.jpg?width=740&height=320&auto=webp&format=jpg&fit=crop&v=1559730881", link_url: "https://deliveroo.co.uk/menu/london/the-city/itsu-copthall-ave?day=today&postcode=E28DY&time=ASAP", address: "EC2R7BH")
-Restaurant.create!(name: "EATKatsu", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/138386/header-image.jpg?width=740&height=320&auto=webp&format=jpg&fit=crop&v=1557227226", link_url: "https://deliveroo.co.uk/menu/london/bethnal-green/eatkatsu?day=today&postcode=E28DY&time=ASAP", address: "E29RF")
+# Restaurant.create!(name: "Suito Japanese", food_type: FoodType.find_by_name("sushi"), photo_url:"https://resizer.otstatic.com/v2/photos/large/25630082.jpg", link_url:"https://deliveroo.co.uk/menu/london/brick-lane/suito-japanese-platters?day=today&postcode=E28DY&time=ASAP", address:"E1 6RL")
+# Restaurant.create!(name: "Miyako", food_type: FoodType.find_by_name("sushi"), photo_url:"https://media-cdn.tripadvisor.com/media/photo-s/06/a6/8a/33/ginza-miyako-japanese.jpg", link_url:"https://deliveroo.co.uk/menu/london/liverpool-street/miyako?day=today&postcode=E28DY&time=ASAP", address:"EC2M 7QN")
+# Restaurant.create!(name: "Island Poke", food_type: FoodType.find_by_name("sushi"), photo_url:"https://images.squaremeal.co.uk/cloud/article/9176/images/vegan-watermelon-sashimi-in-island-poke-bowl_26062019012842.jpg?w=1000", link_url:"https://deliveroo.co.uk/menu/london/shoreditch/island-poke-shoreditch?day=today&postcode=E28DY&time=ASAP", address:"EC2A 3EP")
+# Restaurant.create!(name: "Poke Zone", food_type: FoodType.find_by_name("sushi"), photo_url:"https://f.roocdn.com/images/menus/94354/header-image.jpg?width=1200&height=630&auto=webp&format=jpg&fit=crop&v=1558581725", link_url:"https://deliveroo.co.uk/menu/london/whitechapel/sushizone-ltd-poke-zone-london?day=today&postcode=E28DY&time=ASAP", address:"E1 5BW")
+# Restaurant.create!(name: "Nobu", food_type: FoodType.find_by_name("sushi"), photo_url:"https://noburestaurants.com/assets/Food-and-Beverage-Images/Fifty-Seven/24c2e7d152/Nobu-Fifty-Seven-Sunday-Lunch.jpg", link_url:"https://deliveroo.co.uk/menu/london/shoreditch/nobu-shoreditch?day=today&postcode=E28DY&time=ASAP", address:"EC2A 4BH")
+# Restaurant.create!(name: "The Japanese Canteen", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/113814/header-image.jpg?width=1382&amp;height=320&amp;auto=webp&amp;format=jpg&amp;fit=crop&amp;v=1550753361&quot;", link_url: "https://deliveroo.co.uk/menu/london/spitalfields/the-japanese-canteen-middlesex-street?day=today&postcode=E28DY&time=ASAP", address: "E17EZ")
+# Restaurant.create!(name: "Gourmet Sushi", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/149864/header-image.jpg?width=740&height=320&auto=webp&format=jpg&fit=crop&v=1558361162", link_url: "https://deliveroo.co.uk/menu/london/brick-lane/gourmet-sushi?day=today&postcode=E28DY&time=ASAP", address: "E16PX")
+# Restaurant.create!(name: "Japanika", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/51477/header-image.jpg?width=740&height=320&auto=webp&format=jpg&fit=crop&v=1513955042", link_url: "https://deliveroo.co.uk/menu/london/brick-lane/japanika?day=today&postcode=E28DY&time=ASAP", address: "E16QR")
+# Restaurant.create!(name: "Itsu", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/100760/header-image.jpg?width=740&height=320&auto=webp&format=jpg&fit=crop&v=1559730881", link_url: "https://deliveroo.co.uk/menu/london/the-city/itsu-copthall-ave?day=today&postcode=E28DY&time=ASAP", address: "EC2R7BH")
+# Restaurant.create!(name: "EATKatsu", food_type: FoodType.find_by_name("sushi"), photo_url: "https://f.roocdn.com/images/menus/138386/header-image.jpg?width=740&height=320&auto=webp&format=jpg&fit=crop&v=1557227226", link_url: "https://deliveroo.co.uk/menu/london/bethnal-green/eatkatsu?day=today&postcode=E28DY&time=ASAP", address: "E29RF")
+
+
+
+
+# "https://deliveroo.co.uk/menu/london/the-city/shake-shack-mansion-house?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/brick-lane/pepes-brick-lane?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/islington/bird-islington?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/dalston/arancini-brothers-dalston?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/aldgate/10566-burger-king-whitechapel?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/brick-lane/wicked-burgers?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/angel/byron-islington?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/bank/bleecker-bloomberg?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/shoreditch/the-vurger-co?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/brick-lane/wicked-wings-co?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/upper-street/five-guys-islington?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/dalston/beer-and-burger-dalston?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/spitalfields/gourmet-burger-kitchen-spitalfields?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/bethnal-green/gym-food?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/hackney/patty-and-bun-london-fields?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/spitalfields/leon-spitalfields?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/brick-lane/wraps-and-wings-bethnal-green?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/shoreditch/butchies-camden?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/old-street/best-mangal-bar-and-kitchen?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/old-street/honest-burger-old-street?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/spitalfields/bleecker-st-burger?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/dalston/cafe-route?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/shoreditch/coqfighter-shoreditch?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/bethnal-green/king-of-wings-bethnal-green?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/shoreditch/the-diner-shoreditch?day=today&postcode=E28DY&time=ASAP",
+# "https://deliveroo.co.uk/menu/london/old-street/the-posh-burger-co?day=today&postcode=E28DY&time=ASAP",
 
 
 

@@ -2,11 +2,17 @@ class CombosController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :upvote, :refresh_save]
 
   def index
-    # location = params.dig(:location)
-    postcode = params.dig(:postcode)
+    location = params.dig(:location)
+    postcode = params.dig(:location)
     genre = params.dig(:hidden_genre).downcase
     foodtype = params.dig(:hidden_foodtype).downcase
-    ScraperDeliveroo.new(postcode, foodtype).call
+    begin
+      response = RestClient.post('https://deliveroo.co.uk/api/restaurants', {location: {post_code: postcode, confirmed_on_map: false}}.to_json, { 'Content-Type': 'application/json' })
+      response = JSON.parse(response.body)
+    rescue
+      return redirect_to root_path, notice: 'That postcode might be invalid!'
+    end
+    ScraperDeliveroo.new(postcode, foodtype, response['url']).call
     if postcode.present?
       restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
       movies = Movie.select { |m| genre.include?(m.genre.name) }
@@ -39,6 +45,7 @@ class CombosController < ApplicationController
       @random_combos = @combos
     end
   end
+
 
   def new
     @combo = Combo.new
