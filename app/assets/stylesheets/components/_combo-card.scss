@@ -42,7 +42,7 @@
 
 .plus {
   background-color: white;
-  height: 50px;
+  height: 45px;
   width: 50px;
   border-radius: 50%;
   display: flex;
@@ -55,17 +55,15 @@
 }
 
 .y-line {
-  background-color: black;
+  background-color: #255957;
   height: 30px;
   width: 5px;
-  border-radius: 4px;
 }
 
 .x-line {
-  background-color: black;
+  background-color: #255957;
   height: 5px;
   width: 30px;
-  border-radius: 4px;
   position: absolute;
 }
 

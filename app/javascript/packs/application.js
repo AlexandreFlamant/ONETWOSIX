@@ -17,8 +17,8 @@ whitenArrow();
 $(document).ready(function(){
 
   $('.carousel').slick({
-    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/left-arrow'>`,
-    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/right-arrow'>`,
+    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/arrow-left'>`,
+    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/arrow-right'>`,
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,
@@ -43,8 +43,8 @@ $(document).ready(function(){
   })
 
   $('.fresh-carousel').slick({
-    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/left-arrow'>`,
-    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/right-arrow'>`,
+    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/arrow-left'>`,
+    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/arrow-right'>`,
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,
@@ -99,14 +99,21 @@ $(document).ready(function(){
   });
 });
 
-// for alerts and notices
-$(function(){
-   var flashDurationInSeconds = 3;
-   var flashContainerId = 'flash-messages';
+var flash = document.querySelector('.alert');
+if (flash) {
+  var flashMessage = flash.firstElementChild.innerText;
+  console.log(flashMessage);
+  if (flashMessage != 'Your payment was successful!') {
+    $(function(){
+       var flashDurationInSeconds = 3;
+       var flashContainerId = 'flash-messages';
 
-   function removeFlashMessages() {
-     $('#' + flashContainerId).remove();
-   }
+       function removeFlashMessages() {
+         $('#' + flashContainerId).remove();
+       }
 
-   setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
-})
+       setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
+    })
+  }
+}
+

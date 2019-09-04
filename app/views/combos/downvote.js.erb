@@ -7,4 +7,10 @@ heartDiv.innerHTML = `
 `;
 
 var comboCard = document.querySelector('#combo_card<%= @combo.id %>');
-comboCard.classList.add('d-none');
+// comboCard.classList.add('d-none');
+comboCard.remove();
+
+cards = document.querySelectorAll('.combo-box');
+if (cards.length < 3) {
+  window.location.reload();
+};
