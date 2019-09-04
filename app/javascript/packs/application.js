@@ -96,6 +96,10 @@ $(document).ready(function(){
       var foodtype = genreAndFoodTypeChoice[1].lastElementChild.innerText;
       foodtypeInput.value = foodtype;
     }
+    if (genreAndFoodTypeChoice.length == 2) {
+      const btnReady = document.querySelector('.ready');
+      btnReady.disabled = false;
+    }
   });
 });
 
