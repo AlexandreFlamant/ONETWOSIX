@@ -12,13 +12,12 @@ class CombosController < ApplicationController
     rescue
       return redirect_to root_path, notice: 'That postcode might be invalid!'
     end
-    restaurants = ScraperDeliveroo.new(postcode, foodtype, response['url']).call
-    # raise
-    if postcode.present?
 
+    restaurants = ScraperDeliveroo.new(postcode, foodtype, response['url']).call
+
+    if postcode.present?
       @combotest = []
-      # restaurants = Restaurant.select { |r| foodtype.include?(r.food_type.name) }
-      movies = Movie.select { |m| genre.include?(m.genre.name) }
+      movies = Movie.joins(:genre).merge(Genre.where(name: genre))
       restaurants.each do |rest|
         movies.each do |movie|
         # movie = movies.pop
