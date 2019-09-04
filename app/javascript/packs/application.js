@@ -17,8 +17,8 @@ whitenArrow();
 $(document).ready(function(){
 
   $('.carousel').slick({
-    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/arrow-left'>`,
-    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/arrow-right'>`,
+    prevArrow: $('#arrow-left').data('left'),
+    nextArrow: $('#arrow-right').data('right'),
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,
