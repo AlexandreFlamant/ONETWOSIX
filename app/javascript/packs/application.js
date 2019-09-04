@@ -17,8 +17,8 @@ whitenArrow();
 $(document).ready(function(){
 
   $('.carousel').slick({
-    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/left-arrow'>`,
-    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/right-arrow'>`,
+    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/arrow-left'>`,
+    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/arrow-right'>`,
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,
@@ -43,8 +43,8 @@ $(document).ready(function(){
   })
 
   $('.fresh-carousel').slick({
-    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/left-arrow'>`,
-    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/right-arrow'>`,
+    prevArrow:`<img class='a-left control-c prev slick-prev' src='/assets/arrow-left'>`,
+    nextArrow:`<img class='a-right control-c next slick-next' src='/assets/arrow-right'>`,
     centerMode: true,
     centerPadding: '60px',
     slidesToShow: 3,
