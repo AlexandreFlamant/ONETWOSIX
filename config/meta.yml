@@ -1,5 +1,5 @@
 meta_product_name: "ONE TWO SIX"
 meta_title: "126 - We will take care of tonight"
 meta_description: "Bringing you curated movie & takeout recommendations"
-meta_image: "netflix-watching.jpg" # should exist in `app/assets/images/`
+meta_image: "home-cinema.jpg" # should exist in `app/assets/images/`
 twitter_account: "@ONETWOSIX"   # required for Twitter Cards
