@@ -18,8 +18,14 @@
   transition: box-shadow 150ms ease;
 }
 
+.StripeElement {
+  border-color: #ced4da;
+}
+
 .StripeElement--focus {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+  border-color: #255957;
+  box-shadow: 0 0 0 0.2rem rgba(37, 89, 87, 0.25);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .StripeElement--invalid {
@@ -29,12 +35,6 @@
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
-
-#card-element {
-  border: 1px solid #ced4da;
-  box-shadow: none;
-}
-
 
 // Select2 styling
 .select2 {
