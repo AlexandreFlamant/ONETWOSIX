@@ -14,53 +14,34 @@ class CombosController < ApplicationController
     end
 
     restaurants = ScraperDeliveroo.new(postcode, foodtype, response['url']).call
-
     if postcode.present?
-      @combotest = []
       movies = Movie.joins(:genre).merge(Genre.where(name: genre))
-      restaurants.each do |rest|
-        movies.each do |movie|
         # movie = movies.pop
         # unless movies.empty?
-          combo_find = Combo.where(restaurant: rest, movie: movie)
-          combo_find.each do |c|
-            @combotest << c
-          end
-          unless combo_find.any?
-            new_combo = Combo.create(movie: movie, restaurant: rest)
-            @combotest << new_combo
+      combos = Combo.where(restaurant_id: restaurants.map(&:id), movie_id: movies.ids)
+      restaurants.each do |rest|
+        movies.each do |movie|
+          unless combos.where(movie: movie, restaurant: rest).any?
+            Combo.create(movie: movie, restaurant: rest)
           end
         end
       end
+      @combotest = Combo.where(restaurant_id: restaurants.map(&:id), movie_id: movies.ids)
     end
 
     if session[:combo_ids].present?
-      @combos = session[:combo_ids].map { |id| Combo.find(id) }
+      @combos = Combo.where(id: session[:combo_ids])
     else
       @combos = @combotest
     end
 
     unless session[:combo_ids].present?
-      @sponsored_combos = []
-      SponsoredCombo.all.each do |sc|
-        @combos.each do |c|
-          if sc.combo_id == c.id
-          @sponsored_combos << sc
-          end
-        end
-      end
+      @sponsored_combos = SponsoredCombo.where(combo_id: @combos.ids)
 
-      @non_sponsored_combos = []
-      @combos.each do |c|
-        SponsoredCombo.all.each do |sc|
-          if c.id != sc.combo_id
-          @non_sponsored_combos << c
-          end
-        end
-      end
+      @non_sponsored_combos = @combos.where.not(id: @sponsored_combos.map(&:combo_id))
 
       if @sponsored_combos.any?
-       @random_combos = [@sponsored_combos.sample.combo, @non_sponsored_combos.sample, @non_sponsored_combos.sample]
+       @random_combos = [@sponsored_combos.sample.combo, *@non_sponsored_combos.sample(2)]
       else
        @random_combos = @combos.sample(3)
       end
