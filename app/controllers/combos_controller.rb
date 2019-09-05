@@ -25,8 +25,8 @@ class CombosController < ApplicationController
         # unless movies.empty?
       # combos = Combo.where(restaurant_id: restaurants.map(&:id), movie_id: movies.ids)
       # raise
-      restaurants.take(13).each do |rest|
-        movies.take(13).each do |movie|
+      restaurants.take(16).each do |rest|
+        movies.take(16).each do |movie|
           if Combo.find_by(movie: movie, restaurant: rest).nil?
             Combo.create(movie: movie, restaurant: rest)
           end
@@ -45,11 +45,15 @@ class CombosController < ApplicationController
       @sponsored_combos = SponsoredCombo.where(combo_id: @combos.ids)
 
       @non_sponsored_combos = @combos.where.not(id: @sponsored_combos.map(&:combo_id))
+      sample1 = @non_sponsored_combos.sample
+      sample2 = @non_sponsored_combos.where.not(movie: sample1.movie, restaurant: sample1.restaurant).sample
+      sample3 = @non_sponsored_combos.where.not(movie: [sample1.movie, sample2.movie], restaurant: [sample1.restaurant, sample2.restaurant]).sample
 
       if @sponsored_combos.any?
-       @random_combos = [@sponsored_combos.sample.combo, *@non_sponsored_combos.sample(2)]
+        # show_non_sponsored = @non_sponsored_combos.sample(2)
+        @random_combos = [@sponsored_combos.sample.combo, sample1, sample2]
       else
-       @random_combos = @combos.sample(3)
+        @random_combos = [sample1, sample2, sample3]
       end
     else
       @random_combos = @combos
