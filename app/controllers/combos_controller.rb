@@ -15,13 +15,19 @@ class CombosController < ApplicationController
 
     restaurants = ScraperDeliveroo.new(postcode, foodtype, response['url']).call
     if postcode.present?
+      # start_time = Time.now
+      # movies = Movie.all.select { |m| m.genre.name = genre}
+      # end_time = Time.now
+      # p 'TIME'
+      # p (end_time - start_time)
       movies = Movie.joins(:genre).merge(Genre.where(name: genre))
         # movie = movies.pop
         # unless movies.empty?
-      combos = Combo.where(restaurant_id: restaurants.map(&:id), movie_id: movies.ids)
-      restaurants.each do |rest|
-        movies.each do |movie|
-          unless combos.where(movie: movie, restaurant: rest).any?
+      # combos = Combo.where(restaurant_id: restaurants.map(&:id), movie_id: movies.ids)
+      # raise
+      restaurants.take(13).each do |rest|
+        movies.take(13).each do |movie|
+          if Combo.find_by(movie: movie, restaurant: rest).nil?
             Combo.create(movie: movie, restaurant: rest)
           end
         end
