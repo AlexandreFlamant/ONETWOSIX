@@ -1,24 +1,20 @@
 .alert {
   position: fixed;
-  top: 17px;
+  top: 13px;
   left: 85px;
   z-index: 1000;
   background-color: $green;
   border: none;
   border-radius: 2px;
-  padding: 7px 22px 7px 10px;
+  padding: 9px 25px 6px 10px;
   color: white;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .alert-dismissible .close {
-  padding: 0 5px;
-  top: 5px;
+  padding: 0 7px;
+  top: 7px;
   &:hover {
     color: white;
   }
-}
-
-#notice {
-
 }
