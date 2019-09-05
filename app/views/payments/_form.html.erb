@@ -12,15 +12,6 @@
             <% end %>
           <% end %>
           <div class="form-group">
-            <label for="name">Combo name*</label>
-            <input required type="text" class="form-control" id="name" name="combo[name]" placeholder="Enter combo name" value="<%= combo.name %>" >
-          </div>
-          <div class="form-group">
-            <label for="description">Combo description*</label>
-            <input required type="text" class="form-control" id="description" name="combo[description]" placeholder="Enter combo description" value="<%= combo.description %>" >
-          </div>
-
-          <div class="form-group">
             <label for="movie_name">Movie name*</label>
               <select required class="select2 form-control" id="movie_name" name="combo[movie]" value="<%= combo.movie %>" >
                 <option></option>
@@ -47,7 +38,14 @@
                 <% end %>
               </select>
           </div>
-
+          <div class="form-group">
+            <label for="name">Combo name*</label>
+            <input required type="text" class="form-control" id="name" name="combo[name]" placeholder="Enter combo name" value="<%= combo.name %>" >
+          </div>
+          <div class="form-group">
+            <label for="description">Combo description*</label>
+            <input required type="text" class="form-control" id="description" name="combo[description]" placeholder="Enter combo description" value="<%= combo.description %>" >
+          </div>
           <div class="form-group">
             <label for="card-element">
               Credit or debit card*
