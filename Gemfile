@@ -10,7 +10,7 @@ gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
 gem 'geocoder'
-gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'json', '~> 2.3'
 gem 'money-rails'
 gem 'stripe'
 gem 'httparty', '~> 0.17.0'\
