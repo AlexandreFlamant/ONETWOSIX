@@ -13,7 +13,7 @@ gem 'geocoder'
 gem 'json', '~> 1.8', '>= 1.8.3'
 gem 'money-rails'
 gem 'stripe'
-gem 'httparty', '~> 0.17.0'\
+gem 'httparty', '~> 0.21.0'\
 
 gem 'acts_as_votable'
 gem 'autoprefixer-rails'
